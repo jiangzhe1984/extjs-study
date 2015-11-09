@@ -13,7 +13,6 @@ var store = Ext.create('Ext.data.TreeStore', {
 Ext.define('TutorialApp.view.tree.LeftTree',{
         extend:'Ext.tree.Panel',
         xtype:'app-leftTree',
-        title: 'Simple Tree',
         width: 200,
         height: 150,
         store: store,
