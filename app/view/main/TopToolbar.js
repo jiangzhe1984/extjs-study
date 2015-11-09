@@ -9,6 +9,7 @@ Ext.define('TutorialApp.view.main.TopToolbar', {
             text: 'add',
             iconCls : 'icon-plus-sign-alt',
             handler : function() {
+
                Ext.Msg.alert('message','add');
             }
         },
