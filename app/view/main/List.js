@@ -7,9 +7,10 @@ Ext.define('TutorialApp.view.main.List', {
     xtype: 'mainlist',
     requires: [
         'TutorialApp.store.Personnel',
-        'TutorialApp.view.login.Login'
+        'TutorialApp.view.main.TopToolbar'
     ],
     columnLines: true,
+
     initComponent:function(){
         var me = this;
         var store = Ext.create('TutorialApp.store.Personnel');//创建store实例
@@ -31,7 +32,7 @@ Ext.define('TutorialApp.view.main.List', {
                 flex: 1,
                 align: 'center',
                 dataIndex: 'phone'
-            },{
+            }/*,{
                 xtype: 'widgetcolumn',
                 text:'操作',
                 width:150,
@@ -90,7 +91,7 @@ Ext.define('TutorialApp.view.main.List', {
                                     inputType: 'phone',
                                     allowBlank: false,
                                     bind: rec.get('phone')
-                                }]/*,
+                                }]/!*,
                                 buttons: [{
                                     xtype: 'tbtext',
                                     html: '账户不存在或者密码错误',
@@ -101,19 +102,22 @@ Ext.define('TutorialApp.view.main.List', {
                                     reference: 'login',
                                     formBind: true,
                                     handler: 'onLoginClick'
-                                }]*/
+                                }]*!/
                             }
                         });
 
                     }
                 }
-            }
+            }*/
         ];
         me.dockedItems = [{
             xtype: 'pagingtoolbar',
             dock: 'bottom',
             store:store,
             displayInfo: true
+        },{
+            xtype: 'app-topToolbar',
+            dock: 'top'
         }];
         me.callParent();
     },
