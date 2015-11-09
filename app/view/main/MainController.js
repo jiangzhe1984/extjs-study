@@ -21,13 +21,16 @@ Ext.define('TutorialApp.view.main.MainController', {
 
        var tabs = this.getView().down('app-contentPanel');
 
-        var tab = tabs.add({
-            title: 'Tab ' + record.getId(),
-            html : 'Another one',
-            closable:true
-        });
+       if(!record.get('isParent')){
+           var tab = tabs.add({
+               title: record.getId(),
+               html : 'Another one',
+               closable:true
+           });
 
-        tabs.setActiveTab(tab);
+           tabs.setActiveTab(tab);
+       }
+
 
     },
 

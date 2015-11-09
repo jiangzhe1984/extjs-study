@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4900631-2fe9-40df-9754-817d6b7b9bce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/data/LeftTree.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/tree/LeftTree.js" afterPath="$PROJECT_DIR$/app/view/tree/LeftTree.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/main/MainController.js" afterPath="$PROJECT_DIR$/app/view/main/MainController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/data/LeftTree.json" afterPath="$PROJECT_DIR$/resources/data/LeftTree.json" />
     </list>
     <ignored path="myApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LeftTree.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LeftTree.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/tree/LeftTree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36048064">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -39,18 +39,32 @@
         <entry file="file://$PROJECT_DIR$/app/view/main/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeftTree.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LeftTree.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/data/LeftTree.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.3333335">
-              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-              <folding />
+            <state vertical-scroll-proportion="0.27423823">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+              <folding>
+                <element signature="e#409#2243#0" expanded="false" />
+                <element signature="e#2247#3812#0" expanded="false" />
+                <element signature="e#3816#4657#0" expanded="false" />
+                <element signature="e#4661#5709#0" expanded="false" />
+                <element signature="e#5713#6005#0" expanded="false" />
+                <element signature="e#6009#7247#0" expanded="false" />
+                <element signature="e#7251#7466#0" expanded="false" />
+                <element signature="e#7470#8846#0" expanded="false" />
+                <element signature="e#8850#10111#0" expanded="false" />
+                <element signature="e#10115#10524#0" expanded="false" />
+                <element signature="e#10528#11698#0" expanded="false" />
+                <element signature="e#11702#12107#0" expanded="false" />
+                <element signature="e#12111#12397#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,10 +155,10 @@
         <option value="$PROJECT_DIR$/app/view/main/Main.js" />
         <option value="$PROJECT_DIR$/app/view/main/List.js" />
         <option value="$PROJECT_DIR$/app/view/main/ContentPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/main/MainController.js" />
         <option value="$PROJECT_DIR$/app/store/main/LeftTree.js" />
-        <option value="$PROJECT_DIR$/resources/data/LeftTree.json" />
         <option value="$PROJECT_DIR$/app/view/tree/LeftTree.js" />
+        <option value="$PROJECT_DIR$/resources/data/LeftTree.json" />
+        <option value="$PROJECT_DIR$/app/view/main/MainController.js" />
       </list>
     </option>
   </component>
@@ -446,7 +460,25 @@
       <option name="project" value="LOCAL" />
       <updated>1447039297331</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="20151109">
+      <created>1447040721918</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1447040721918</updated>
+    </task>
+    <task id="LOCAL-00003" summary="20151109">
+      <created>1447040747391</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1447040747391</updated>
+    </task>
+    <task id="LOCAL-00004" summary="20151109">
+      <created>1447040890275</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1447040890275</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -825,22 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/data/LeftTree.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.3333335">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/MainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/Main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -891,9 +907,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/tree/LeftTree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36048064">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/MainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/LeftTree.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27423823">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding>
+            <element signature="e#409#2243#0" expanded="false" />
+            <element signature="e#2247#3812#0" expanded="false" />
+            <element signature="e#3816#4657#0" expanded="false" />
+            <element signature="e#4661#5709#0" expanded="false" />
+            <element signature="e#5713#6005#0" expanded="false" />
+            <element signature="e#6009#7247#0" expanded="false" />
+            <element signature="e#7251#7466#0" expanded="false" />
+            <element signature="e#7470#8846#0" expanded="false" />
+            <element signature="e#8850#10111#0" expanded="false" />
+            <element signature="e#10115#10524#0" expanded="false" />
+            <element signature="e#10528#11698#0" expanded="false" />
+            <element signature="e#11702#12107#0" expanded="false" />
+            <element signature="e#12111#12397#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -2,6 +2,7 @@
   {
     text: 'Panels',
     id: 'panels',
+    isParent:true,
     expanded: false,
     children: [
       {
@@ -25,6 +26,7 @@
     text: 'Grids',
     id: 'grids',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'array-grid',
@@ -122,6 +124,7 @@
     text: 'Data Binding',
     id: 'data-binding',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'binding-hello-world',
@@ -195,6 +198,7 @@
     text: 'Trees',
     id: 'trees',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'basic-trees',
@@ -242,6 +246,7 @@
     text: 'Tabs',
     id: 'tabs',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'basic-tabs',
@@ -299,6 +304,7 @@
     text: 'Windows',
     id: 'windows',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'basic-window',
@@ -316,6 +322,7 @@
     text: 'Buttons',
     id: 'buttons',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'basic-buttons',
@@ -378,6 +385,7 @@
     text: 'DataView',
     id: 'data-view',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'dataview-multisort',
@@ -390,6 +398,7 @@
     text: 'Form Fields',
     id: 'form-fields',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'form-number',
@@ -462,6 +471,7 @@
     text: 'Forms',
     id: 'forms',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'form-login',
@@ -529,6 +539,7 @@
     text: 'Toolbars',
     id: 'toolbars',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'basic-toolbar',
@@ -551,6 +562,7 @@
     text: 'Layouts',
     id: 'layouts',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'layout-absolute',
@@ -613,6 +625,7 @@
     text: 'Drag & Drop',
     id: 'drag-drop',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'dd-field-to-grid',
@@ -635,6 +648,7 @@
     text: 'Enterprise',
     id: 'enterprise',
     expanded: false,
+    isParent:true,
     children: [
       {
         id: 'amf-grid',
