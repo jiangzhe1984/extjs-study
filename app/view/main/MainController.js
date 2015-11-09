@@ -35,6 +35,7 @@ Ext.define('TutorialApp.view.main.MainController', {
     },
 
    onItemSelected: function (sender, record) {
+      // alert(record.get('name'));
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
 
