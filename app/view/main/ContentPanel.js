@@ -1,7 +1,28 @@
 Ext.define('TutorialApp.view.main.ContentPanel', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.tab.Panel',
     xtype: 'app-contentPanel',
-    layout:'center',
-    autoScroll: true,
-    bodyCls:'app-contentPanel-body'
+    bind: {
+        title: '{contentTitle}'
+    },
+    renderTo: document.body,
+    items: [{
+        title: 'Home',
+        itemId: 'home',
+        items: [{
+            xtype: 'mainlist'
+        }],
+        closable:true
+    }, {
+        title: 'Users',
+        html: 'Users',
+        itemId: 'users',
+       // hidden: true,
+        closable:true
+    }, {
+        title: 'Tickets',
+        html: 'Tickets',
+        itemId: 'tickets',
+        closable:true
+    }]
 });
+

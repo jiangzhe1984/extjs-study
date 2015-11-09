@@ -11,10 +11,10 @@ Ext.define('TutorialApp.view.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
         'TutorialApp.view.main.MainController',
         'TutorialApp.view.main.MainModel',
-        'TutorialApp.view.main.List'
+        'TutorialApp.view.tree.LeftTree', //tree
+        'TutorialApp.view.main.ContentPanel' //centercontent
     ],
     controller: 'main',
     viewModel: 'main',
@@ -35,7 +35,7 @@ Ext.define('TutorialApp.view.main.Main', {
         // xtype: 'panel' implied by default
         title: 'West',
         region:'west',
-        xtype: 'panel',
+        xtype: 'app-leftTree',
         margin: '5 0 0 5',
         width: 200,
         collapsible: true,   // make collapsible
@@ -44,7 +44,7 @@ Ext.define('TutorialApp.view.main.Main', {
     },{
         title: 'Center Region',
         region: 'center',     // center region is required, no width/height specified
-        xtype: 'panel',
+        xtype: 'app-contentPanel',
         layout: 'fit',
         margin: '5 5 0 0'
     }],

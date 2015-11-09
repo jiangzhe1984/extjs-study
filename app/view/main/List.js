@@ -9,8 +9,6 @@ Ext.define('TutorialApp.view.main.List', {
         'TutorialApp.store.Personnel'
     ],
 
-    title: 'Personnel',
-
     store: {
         type: 'personnel'
     },
