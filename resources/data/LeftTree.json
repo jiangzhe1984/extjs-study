@@ -2,7 +2,7 @@
   {
     text: 'Panels',
     id: 'panels',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'basic-panels',
@@ -24,7 +24,7 @@
   {
     text: 'Grids',
     id: 'grids',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'array-grid',
@@ -121,7 +121,7 @@
   {
     text: 'Data Binding',
     id: 'data-binding',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'binding-hello-world',
@@ -194,7 +194,7 @@
   {
     text: 'Trees',
     id: 'trees',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'basic-trees',
@@ -241,7 +241,7 @@
   {
     text: 'Tabs',
     id: 'tabs',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'basic-tabs',
@@ -298,7 +298,7 @@
   {
     text: 'Windows',
     id: 'windows',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'basic-window',
@@ -315,7 +315,7 @@
   {
     text: 'Buttons',
     id: 'buttons',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'basic-buttons',
@@ -377,7 +377,7 @@
   {
     text: 'DataView',
     id: 'data-view',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'dataview-multisort',
@@ -389,7 +389,7 @@
   {
     text: 'Form Fields',
     id: 'form-fields',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'form-number',
@@ -461,7 +461,7 @@
   {
     text: 'Forms',
     id: 'forms',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'form-login',
@@ -528,7 +528,7 @@
   {
     text: 'Toolbars',
     id: 'toolbars',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'basic-toolbar',
@@ -550,7 +550,7 @@
   {
     text: 'Layouts',
     id: 'layouts',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'layout-absolute',
@@ -612,7 +612,7 @@
   {
     text: 'Drag & Drop',
     id: 'drag-drop',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'dd-field-to-grid',
@@ -634,7 +634,7 @@
   {
     text: 'Enterprise',
     id: 'enterprise',
-    expanded: true,
+    expanded: false,
     children: [
       {
         id: 'amf-grid',
