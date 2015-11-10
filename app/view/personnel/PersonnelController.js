@@ -4,53 +4,18 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('TutorialApp.view.main.MainController', {
+Ext.define('TutorialApp.view.personnel.PersonnelController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.main',
+    alias: 'controller.personnel',
 
-    control: {
-        'app-leftTree': {//组件别名，表示要控制的是该组件
-            selectionchange: 'onTreeNavSelectionChange'
-        }
+
+    addPersonnelRecord: function(){
+       Ext.MessageBox.alert('message','新增');
     },
 
-
-    onTreeNavSelectionChange:function(selModel, records){
-        var record = records[0];
-
-       var tabs = this.getView().down('app-contentPanel');
-
-       if(!record.get('isParent')){
-           var tab = tabs.add({
-               title: record.getId(),
-               html : 'Another one',
-               closable:true
-           });
-
-           tabs.setActiveTab(tab);
-       }
-
-
-    },
-
-   onItemSelected: function (sender, record) {
-      // alert(record.get('name'));
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-    },
-
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-
-        }
-    },
-
- /*   addRecord: function(){
-
-    },
-
-    editRecord: function(){
-        var grid = this.getView().down('mainlist');
+    editPersonnelRecord: function(){
+        var grid = this.getView().down('personnellist');
         var selection = grid.getSelectionModel().getSelection();
 
         Ext.create('Ext.window.Window', {
@@ -116,26 +81,12 @@ Ext.define('TutorialApp.view.main.MainController', {
         });
     },
 
-    removeRecord: function(){
+    removePersonnelRecord: function(){
 
     },
 
-    viewRecord: function(){
+    viewPersonnelRecord: function(){
 
-    }*/
+    }
 
-
-    /*
-    onClickButton: function () {
-        // Remove the localStorage key/value
-        localStorage.removeItem('TutorialLoggedIn');
-
-        // Remove Main View
-        this.getView().destroy();
-
-        // Add the Login Window
-        Ext.create({
-            xtype: 'login'
-        });
-    }*/
 });

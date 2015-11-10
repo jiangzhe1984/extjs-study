@@ -9,7 +9,9 @@ Ext.define('TutorialApp.Application', {
 
     views: [
         'TutorialApp.view.login.Login',
-        'TutorialApp.view.main.Main'
+        'TutorialApp.view.main.Main',
+        'TutorialApp.view.personnel.PersonnelMain'
+
     ],
 
 

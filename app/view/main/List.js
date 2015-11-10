@@ -5,7 +5,7 @@
 Ext.define('TutorialApp.view.main.List', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlist',
-
+    multiSelect : true,
     requires: [
         'TutorialApp.store.Personnel',
         'TutorialApp.view.main.TopToolbar'

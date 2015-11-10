@@ -1,6 +1,7 @@
 Ext.define('TutorialApp.view.main.ContentPanel', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-contentPanel',
+
     bind: {
         title: '{contentTitle}'
     },
@@ -9,7 +10,7 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
         title: 'Home',
         itemId: 'home',
         items: [{
-            xtype: 'mainlist'
+            xtype: 'app-personnelMain'
         }],
         closable:true
     }, {
