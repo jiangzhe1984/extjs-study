@@ -11,14 +11,10 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
 
 
     addPersonnelRecord: function(){
-       Ext.MessageBox.alert('message','新增');
-    },
 
-    editPersonnelRecord: function(){
         var grid = this.getView().down('personnellist');
-        var selection = grid.getSelectionModel().getSelection();
-
         Ext.create('Ext.window.Window', {
+            id: 'personnelSaveForm',
 
             requires: [
                 'Ext.form.Panel',
@@ -30,7 +26,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
 
 
             bodyPadding: 10,
-            title: '修改',
+            title: '新增',
             closable: true,
             autoShow: true,
             width: 350,
@@ -48,44 +44,176 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                     labelWidth: 40
                 },
                 items: [{
-                    fieldLabel: 'Name',
+                    fieldLabel: '姓名',
                     name: 'name',
                     itemId: 'name',
                     allowBlank: false,
-                    bind: selection[0].get('name')
+                    emptyText: '请输入姓名'
                 }, {
-                    fieldLabel: 'Email',
+                    fieldLabel: '邮箱',
                     name: 'email',
                     inputType: 'email',
                     allowBlank: false,
-                    bind: selection[0].get('email')
+                    emptyText: '请输入邮箱'
                 }, {
-                    fieldLabel: 'Phone',
+                    fieldLabel: '电话',
                     name: 'phone',
                     inputType: 'phone',
                     allowBlank: false,
-                    bind: selection[0].get('phone')
+                    emptyText: '请输入电话'
                 }],
                 buttons: [{
                     xtype: 'tbtext',
-                    html: '账户不存在或者密码错误',
+                    html: '错误',
                     style: 'color:red',
                     hidden: true
                 }, '->', {
-                    text: '修改',
-                    reference: 'login',
-                    formBind: true,
-                    handler: 'onLoginClick'
+                    text: '保存',
+                    handler: function(){
+                        var saveForm = Ext.getCmp('personnelSaveForm');
+                        var form = this.up('form').getForm();
+                        var formValues = form.getValues();
+                        var model = Ext.create(grid.getStore().model);
+                        model.set('name',formValues["name"]);
+                        model.set('email',formValues["email"]);
+                        model.set('phone',formValues["phone"]);
+                        grid.getStore().insert(0, model);
+                        saveForm.close();
+                    }
                 }]
             }
         });
     },
+//不能为空
+    editPersonnelRecord: function(){
+        var grid = this.getView().down('personnellist');
+        var selection = grid.getSelectionModel().getSelection();
+        switch(selection.length){
+            case 0: Ext.Msg.alert('message','请选择数据!'); break;
+            default:
+                Ext.create('Ext.window.Window', {
+                    id: 'personnelUpdateForm',
+
+                    requires: [
+                        'Ext.form.Panel',
+                        'Ext.form.field.Text',
+                        'Ext.layout.container.Fit',
+                        'Ext.toolbar.Fill',
+                        'Ext.toolbar.TextItem'
+                    ],
+
+                    bodyPadding: 10,
+                    title: '修改',
+                    closable: true,
+                    autoShow: true,
+                    width: 350,
+                    layout: 'fit',
+
+                    items: {
+                        xtype: 'form',
+                        reference: 'form',
+                        bodyPadding: 10,
+                        defaultType: 'textfield',
+
+                        fieldDefaults: {
+                            anchor: '100%',
+                            labelAlign: 'right',
+                            labelWidth: 40
+                        },
+                        items: [{
+                            fieldLabel: '姓名',
+                            name: 'name',
+                            itemId: 'name',
+                            allowBlank: false,
+                            bind: selection[0].get('name')
+                        }, {
+                            fieldLabel: '邮箱',
+                            name: 'email',
+                            inputType: 'email',
+                            allowBlank: false,
+                            bind: selection[0].get('email')
+                        }, {
+                            fieldLabel: '电话',
+                            name: 'phone',
+                            inputType: 'phone',
+                            allowBlank: false,
+                            bind: selection[0].get('phone')
+                        }],
+                        buttons: [{
+                            xtype: 'tbtext',
+                            html: '错误',
+                            style: 'color:red',
+                            hidden: true
+                        }, '->', {
+                            text: '修改',
+                            handler: function(){
+
+                                var updateForm = Ext.getCmp('personnelUpdateForm');
+                                var form = this.up('form').getForm();
+                                var formValues = form.getValues();
+                                selection[0].set('name',formValues["name"]);
+                                selection[0].set('email',formValues["email"]);
+                                selection[0].set('phone',formValues["phone"]);
+                               /* grid.getStore().update(selection[0],false,function(){
+                                    updateForm.close();
+                                });*/
+                                form.updateRecord(selection[0]);
+                              //  grid.getStore().commitChanges();
+                                updateForm.close();
+
+                            }
+                        }]
+                    }
+                });
+                break;
+        }
+
+    },
 
     removePersonnelRecord: function(){
+        var grid = this.getView().down('personnellist'), selection = grid
+            .getSelectionModel().getSelection(), message = '';
+        if (selection.length == 1) // 如果只选择了一条
+            message = ' 『' + selection[0].get('name') + '』 吗?';
+        else if(selection.length == 0){
+            Ext.Msg.alert('message','请选择数据!');
+        }else { // 选择了多条记录
+            message = '<ol>';
+            Ext.Array.each(grid.getSelectionModel().getSelection(), function(record) {
+                message += '<li>' + record.get('name') + '</li>';
+            });
+            message += '</ol>';
+            message = '以下 ' + selection.length + ' 条记录吗?' + message;
+        }
+
+        if(message != ''){
+            Ext.Msg.confirm('确定删除', '确定要删除 <strong>列表</strong> 中的' + message, function(btn) {
+                if (btn == 'yes') {
+                    grid.getStore().remove(grid.getSelectionModel().getSelection());
+                    // grid.getStore().sync();
+                }
+            })
+        }
 
     },
 
     viewPersonnelRecord: function(){
+        var grid = this.getView().down('personnellist'), selection = grid
+            .getSelectionModel().getSelection();
+        switch(selection.length){
+            case 0 :Ext.Msg.alert('message','请选择数据!'); break;
+            default: Ext.create('Ext.window.Window', {
+                title: '显示',
+                height: 200,
+                width: 400,
+                layout: 'fit',
+                items: {
+                    xtype: 'panel',
+                    html: '<table><tr><td>姓名</td><td>'+selection[0].get('name') +'</td></tr><tr><td>邮箱</td><td>'+selection[0].get('email') +'</td></tr><tr><td>电话</td><td>'+selection[0].get('phone') +'</td></tr></table>'
+
+                }
+            }).show(); break;
+        }
 
     }
 

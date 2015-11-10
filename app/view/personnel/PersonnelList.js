@@ -5,13 +5,15 @@
 Ext.define('TutorialApp.view.personnel.Personnel', {
     extend: 'Ext.grid.Panel',
     xtype: 'personnellist',
-    multiSelect : true,
+
     requires: [
         'TutorialApp.store.Personnel',
         'TutorialApp.view.personnel.PersonnelTopToolbar'
     ],
 
     columnLines: true,
+
+    multiSelect : true,//能够多选记录
 
     initComponent:function(){
         var me = this;
