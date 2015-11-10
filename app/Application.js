@@ -10,9 +10,30 @@ Ext.define('TutorialApp.Application', {
     views: [
         'TutorialApp.view.login.Login',
         'TutorialApp.view.main.Main',
-        'TutorialApp.view.personnel.PersonnelMain'
+        'TutorialApp.view.personnel.PersonnelMain',
+        'TutorialApp.Config'
 
     ],
+
+ /*   init: function (app) {
+        //Ext.Ajax.setCors(true);
+        Ext.Ajax.on({
+            beforerequest: function (conn, opts, eOpts) {
+                opts.url = TutorialApp.Config.api.host + opts.url;
+                Ext.Msg.alert('message',opts.url);
+            },
+            requestexception: function (conn, res, opts, eOpts) {
+                switch (res.status) {
+                    case 401:
+                        Ext.Msg.alert('message','ok');
+                        break;
+                    default:
+                        Ext.Msg.alert('message','服务器宕机了, 请联系管理员!');
+                        break;
+                }
+            }
+        })
+    },*/
 
 
     launch: function () {
