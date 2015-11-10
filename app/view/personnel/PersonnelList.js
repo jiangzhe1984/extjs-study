@@ -15,12 +15,26 @@ Ext.define('TutorialApp.view.personnel.Personnel', {
 
     multiSelect : true,//能够多选记录
 
+
+    selType: "checkboxmodel",//使用复选框来选择行
+
+    selModel: {
+        injectCheckbox: 0,
+        mode: "SIMPLE",     //"SINGLE"/"SIMPLE"/"MULTI"
+        checkOnly: true     //只能通过checkbox选择
+    },
+
     initComponent:function(){
         var me = this;
         var store = Ext.create('TutorialApp.store.Personnel');//创建store实例
         this.store = store;
         me.columns = [
-
+            {
+                text: 'ID',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'id'
+            },
             {
                 text: 'Name',
                 flex: 1,
