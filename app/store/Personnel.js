@@ -13,6 +13,7 @@ Ext.define('TutorialApp.store.Personnel', {
     proxy: {
         type: 'ajax',
         url: 'resources/data/Personnel.json',
+        //  url: 'http://localhost:8080/user/findPersonnels',
         reader: {
             type: 'json',
             successProperty: 'success',

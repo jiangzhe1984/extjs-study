@@ -43,7 +43,7 @@ Ext.define('TutorialApp.view.main.MainController', {
         if (choice === 'yes') {
 
         }
-    },
+    }
 
  /*   addRecord: function(){
 
