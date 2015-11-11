@@ -11,9 +11,9 @@ Ext.define('TutorialApp.store.Personnel', {
     pageSize: itemsPerPage, // items per page
 
     proxy: {
-        type: 'ajax',//跨域交互的代理JsonP
-        url: 'resources/data/Personnel.json',
-        //url: 'http://localhost:8080/user/findPersonnels',
+        type: 'jsonp',//跨域交互的代理jsonp
+      //  url: 'resources/data/Personnel.json',
+        url: 'http://localhost:8080/user/findPersonnels',
 
         reader: {
             type: 'json',
