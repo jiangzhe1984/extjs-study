@@ -8,7 +8,7 @@
 function Addsel(){
     var a=document.getElementById("sel1");
     if(a.selectedIndex<0){
-        alert("please select");
+        Ext.Msg.alert("message","请选择人员");
         return false;
     }
 
@@ -35,7 +35,7 @@ function Delsel(){
 
     var b=document.getElementById("sel2");
     if(b.selectedIndex<0){
-        alert("please select");
+        Ext.Msg.alert("message","请选择人员");
         return false;
     }
 
@@ -56,7 +56,7 @@ function Delsel(){
     return true;
 }
 
-var htmlValue = "<div align='right'><div  style='width:500px'><form name=\"sel\"><div style=\"float:left; width:200px;\"><span>未选人员</span>";
+var htmlValue = "<div align='center'><div  style='width:500px'><form name=\"sel\"><div style=\"float:left; width:200px;\"><span>未选人员</span>";
 htmlValue += "<select name=\"res1\" id=sel1 size=20 style=\"width:200px\" multiple><option value=\"1\" >aa</option><option value=\"2\" >bb</option><option value=\"3\" >cc</option></select></div>";
 htmlValue += "<div style=\"float: left;padding-top: 100px;\"><a onclick=\"Addsel()\">选择>></a><br><br><br><a onclick=\"Delsel()\"><<还原</a></div>";
 htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
@@ -502,13 +502,13 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
         Ext.create('Ext.window.Window', {
             title: '角色',
             height: 600,
-            width: 800,
-            layout: 'fit',
+            width: 900,
+            layout: 'column',
             modal: true,//它背后的东西都会被遮罩
             items: [
-              /*  {
-                    xtype: 'app-authTree'
-                },*/
+                {
+                    xtype: 'app-deptTree'
+                },
                 {
                 xtype: 'panel',
                 html: htmlValue

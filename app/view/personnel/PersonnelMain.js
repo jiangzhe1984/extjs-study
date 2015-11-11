@@ -11,7 +11,8 @@ Ext.define('TutorialApp.view.personnel.PersonnelMain', {
     requires: [
         'TutorialApp.view.personnel.Personnel',
         'TutorialApp.view.personnel.PersonnelController',
-        'TutorialApp.view.tree.AuthTree'
+        'TutorialApp.view.tree.AuthTree',
+        'TutorialApp.view.tree.DeptTree'
     ],
     controller: 'personnel',
 

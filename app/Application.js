@@ -52,6 +52,34 @@ Ext.define('TutorialApp.Application', {
             xtype: loggedIn ? 'app-main' : 'login'
         });
 
+       /* Ext.create('Ext.Window',{
+            title:'Anchor layout',
+            width:400,
+            height:400,
+            layout:'anchor',
+            plain: true,
+            items:[
+                Ext.create('Ext.panel.Panel',{
+                    title:'panel1',
+                    height:100,
+                    anchor:'-50',
+                    html:'高度等于100，宽度= 容器宽度-50'
+                }),
+                Ext.create('Ext.panel.Panel',{
+                    title:'panel2',
+                    height:100,
+                    anchor:'50%',
+                    html:'高度等于100，宽度=容器的宽度*50%'
+                }),
+                Ext.create('Ext.panel.Panel',{
+                    title:'panel3',
+                    anchor:'-10,-200',
+                    html:'高度等于容器高度-10,宽度等于容器宽度-200'
+                })
+            ]
+
+        }).show();*/
+
     },
 
     onAppUpdate: function () {

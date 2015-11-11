@@ -14,7 +14,7 @@ Ext.define('TutorialApp.view.tree.AuthTree',{
     extend:'Ext.tree.Panel',
     xtype:'app-authTree',
     width: 200,
-    height: 150,
+    height: 200,
     store: store,
     rootVisible: false,
     renderTo: Ext.getBody(),
