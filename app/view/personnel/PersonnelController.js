@@ -4,6 +4,64 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
+
+// The data store containing the list of states
+var states = Ext.create('Ext.data.Store', {
+    fields: ['abbr', 'name'],
+    data : [
+        {"abbr":"AL", "name":"Alabama"},
+        {"abbr":"AK", "name":"Alaska"},
+        {"abbr":"AZ", "name":"Arizona"}
+        //...
+    ]
+});
+
+// Create the combo box, attached to the states data store
+Ext.define('Ext.ux.ComboBox', {
+    extend:'Ext.form.ComboBox',
+    alias: 'widget.combobox',
+    fieldLabel: 'Choose State',
+    store: states,
+    queryMode: 'local',
+    displayField: 'name',
+    valueField: 'abbr',
+    // all of your config options
+    listeners:{
+        //scope: yourScope,
+        'select': function(obj){
+             alert(obj.getValue());
+        }
+    }
+});
+
+Ext.define('Ext.ux.CustomSpinner', {
+    extend: 'Ext.form.field.Spinner',
+    alias: 'widget.customspinner',
+
+    // override onSpinUp (using step isn't neccessary)
+    onSpinUp: function() {
+        var me = this;
+        if (!me.readOnly) {
+            var val = parseInt(me.getValue().split(' '), 10)||0; // gets rid of " Pack", defaults to zero on parse failure
+            me.setValue((val + me.step) + ' Pack');
+        }
+    },
+
+    // override onSpinDown
+    onSpinDown: function() {
+        var me = this;
+        if (!me.readOnly) {
+            var val = parseInt(me.getValue().split(' '), 10)||0; // gets rid of " Pack", defaults to zero on parse failure
+            if (val <= me.step) {
+                me.setValue('Dry!');
+            } else {
+                me.setValue((val - me.step) + ' Pack');
+            }
+        }
+    }
+});
+
+
 Ext.define('TutorialApp.view.personnel.PersonnelController', {
     extend: 'Ext.app.ViewController',
 
@@ -61,7 +119,124 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                     inputType: 'phone',
                     allowBlank: false,
                     emptyText: '请输入电话'
-                }],
+                },{
+                    xtype: 'datefield',
+                    anchor: '100%',
+                    fieldLabel: 'From',
+                    name: 'from_date',
+                    maxValue: new Date()  // limited to the current date or prior
+                }, {
+                    xtype: 'datefield',
+                    anchor: '100%',
+                    fieldLabel: 'To',
+                    name: 'to_date',
+                    value: new Date()  // defaults to today
+                },{
+                    xtype: 'checkboxgroup',
+                    fieldLabel: 'Two Columns',
+                    // Arrange checkboxes into two columns, distributed vertically
+                    columns: 2,
+                    vertical: true,
+                    items: [
+                        { boxLabel: 'Item 1', name: 'cb', inputValue: '1' },
+                        { boxLabel: 'Item 2', name: 'cb', inputValue: '2', checked: true },
+                        { boxLabel: 'Item 3', name: 'cb', inputValue: '3' },
+                        { boxLabel: 'Item 4', name: 'cb', inputValue: '4' },
+                        { boxLabel: 'Item 5', name: 'cb', inputValue: '5' },
+                        { boxLabel: 'Item 6', name: 'cb', inputValue: '6' }
+                    ]
+                },{
+                    xtype: 'radiogroup',
+                    fieldLabel: 'Two Columns',
+                    // Arrange radio buttons into two columns, distributed vertically
+                    columns: 2,
+                    vertical: true,
+                    items: [
+                        { boxLabel: 'Item 1', name: 'rb', inputValue: '1' },
+                        { boxLabel: 'Item 2', name: 'rb', inputValue: '2', checked: true},
+                        { boxLabel: 'Item 3', name: 'rb', inputValue: '3' },
+                        { boxLabel: 'Item 4', name: 'rb', inputValue: '4' },
+                        { boxLabel: 'Item 5', name: 'rb', inputValue: '5' },
+                        { boxLabel: 'Item 6', name: 'rb', inputValue: '6' }
+                    ]
+                }],  bbar: [
+                    {
+                        text: 'Smaller Size',
+                        handler: function() {
+                            var radio1 = Ext.getCmp('radio1'),
+                                radio2 = Ext.getCmp('radio2'),
+                                radio3 = Ext.getCmp('radio3');
+
+                            //if L is selected, change to M
+                            if (radio2.getValue()) {
+                                radio1.setValue(true);
+                                return;
+                            }
+
+                            //if XL is selected, change to L
+                            if (radio3.getValue()) {
+                                radio2.setValue(true);
+                                return;
+                            }
+
+                            //if nothing is set, set size to S
+                            radio1.setValue(true);
+                        }
+                    },
+                    {
+                        text: 'Larger Size',
+                        handler: function() {
+                            var radio1 = Ext.getCmp('radio1'),
+                                radio2 = Ext.getCmp('radio2'),
+                                radio3 = Ext.getCmp('radio3');
+
+                            //if M is selected, change to L
+                            if (radio1.getValue()) {
+                                radio2.setValue(true);
+                                return;
+                            }
+
+                            //if L is selected, change to XL
+                            if (radio2.getValue()) {
+                                radio3.setValue(true);
+                                return;
+                            }
+
+                            //if nothing is set, set size to XL
+                            radio3.setValue(true);
+                        }
+                    },
+                    '-',
+                    {
+                        text: 'Select color',
+                        menu: {
+                            indent: false,
+                            items: [
+                                {
+                                    text: 'Blue',
+                                    handler: function() {
+                                        var radio = Ext.getCmp('radio4');
+                                        radio.setValue(true);
+                                    }
+                                },
+                                {
+                                    text: 'Grey',
+                                    handler: function() {
+                                        var radio = Ext.getCmp('radio5');
+                                        radio.setValue(true);
+                                    }
+                                },
+                                {
+                                    text: 'Black',
+                                    handler: function() {
+                                        var radio = Ext.getCmp('radio6');
+                                        radio.setValue(true);
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
                 buttons: [{
                     xtype: 'tbtext',
                     html: '错误',
@@ -74,6 +249,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                         var form = this.up('form').getForm();
                         var formValues = form.getValues();
                         var model = Ext.create(grid.getStore().model);
+                        model.set('id',formValues["rb"]);
                         model.set('name',formValues["name"]);
                         model.set('email',formValues["email"]);
                         model.set('phone',formValues["phone"]);
@@ -138,6 +314,34 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                             inputType: 'phone',
                             allowBlank: false,
                             bind: selection[0].get('phone')
+                        },{
+                            xtype: 'customspinner',
+                            fieldLabel: 'How Much Beer?',
+                            step: 6
+                        },{
+                            xtype: 'combobox'
+                        },{
+                            xtype     : 'textareafield',
+                            grow      : true,
+                            name      : 'message',
+                            fieldLabel: 'Message',
+                            anchor    : '100%'
+                        },{
+                            xtype: 'timefield',
+                            name: 'in',
+                            fieldLabel: 'Time In',
+                            minValue: '6:00 AM',
+                            maxValue: '8:00 PM',
+                            increment: 30,
+                            anchor: '100%'
+                        }, {
+                            xtype: 'timefield',
+                            name: 'out',
+                            fieldLabel: 'Time Out',
+                            minValue: '6:00 AM',
+                            maxValue: '8:00 PM',
+                            increment: 30,
+                            anchor: '100%'
                         }],
                         buttons: [{
                             xtype: 'tbtext',
