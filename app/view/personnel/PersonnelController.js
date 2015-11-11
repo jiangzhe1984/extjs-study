@@ -5,6 +5,67 @@
  * TODO - Replace this content of this view to suite the needs of your application.
  */
 
+function Addsel(){
+    var a=document.getElementById("sel1");
+    if(a.selectedIndex<0){
+        alert("please select");
+        return false;
+    }
+
+    var removeCount = 0;
+    for(var i=0;i<a.length;i++){
+        if(a.options[i-removeCount].selected){
+            var pOption = document.createElement("OPTION");
+            document.sel.res.options.add(pOption);
+            pOption.innerText =a.options[i-removeCount].text;
+            pOption.value ==a.options[i-removeCount].value;
+            a.options.remove(i-removeCount);
+            removeCount++;
+        }
+
+    }
+
+    return true;
+}
+
+
+
+
+function Delsel(){
+
+    var b=document.getElementById("sel2");
+    if(b.selectedIndex<0){
+        alert("please select");
+        return false;
+    }
+
+    var removeCount = 0;
+
+    for(var i=0;i<b.length;i++){
+        if(b.options[i-removeCount].selected){
+            var pOption = document.createElement("OPTION");
+            document.sel.res1.options.add(pOption);
+            pOption.innerText =b.options[i-removeCount].text;
+            pOption.value =b.options[i-removeCount].value;
+            b.options.remove(i-removeCount);
+            removeCount++;
+        }
+
+    }
+
+    return true;
+}
+
+var htmlValue = "<div align='right'><div  style='width:500px'><form name=\"sel\"><div style=\"float:left; width:200px;\"><span>未选人员</span>";
+htmlValue += "<select name=\"res1\" id=sel1 size=20 style=\"width:200px\" multiple><option value=\"1\" >aa</option><option value=\"2\" >bb</option><option value=\"3\" >cc</option></select></div>";
+htmlValue += "<div style=\"float: left;padding-top: 100px;\"><a onclick=\"Addsel()\">选择>></a><br><br><br><a onclick=\"Delsel()\"><<还原</a></div>";
+htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
+htmlValue += "<select name=\"res\" id=sel2 size=20 style=\"width:200px\"  multiple>";
+htmlValue += " <option value=\"4\" >dd</option>";
+htmlValue += " <option value=\"5\" >ee</option>";
+htmlValue += " <option value=\"6\" >ff</option>";
+htmlValue += "</select></div></form></div></div>";
+
 // The data store containing the list of states
 var states = Ext.create('Ext.data.Store', {
     fields: ['abbr', 'name'],
@@ -15,6 +76,7 @@ var states = Ext.create('Ext.data.Store', {
         //...
     ]
 });
+
 
 // Create the combo box, attached to the states data store
 Ext.define('Ext.ux.ComboBox', {
@@ -432,6 +494,25 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                 xtype: 'app-authTree'
 
             }
+        }).show();
+    },
+
+    roleAction: function(){
+
+        Ext.create('Ext.window.Window', {
+            title: '角色',
+            height: 600,
+            width: 800,
+            layout: 'fit',
+            modal: true,//它背后的东西都会被遮罩
+            items: [
+              /*  {
+                    xtype: 'app-authTree'
+                },*/
+                {
+                xtype: 'panel',
+                html: htmlValue
+            }]
         }).show();
     }
 

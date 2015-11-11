@@ -45,6 +45,14 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
                 click: 'authAction'
             }
         },
+        {
+            // xtype: 'button', // default for Toolbars
+            text: '角色',
+            iconCls : 'icon-group',
+            listeners: {
+                click: 'roleAction'
+            }
+        },
         /* {
          xtype: 'splitbutton',
          text : 'Split Button'
