@@ -31,7 +31,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
             autoShow: true,
             width: 350,
             layout: 'fit',
-
+            modal: true,//它背后的东西都会被遮罩
             items: {
                 xtype: 'form',
                 reference: 'form',
@@ -108,7 +108,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                     autoShow: true,
                     width: 350,
                     layout: 'fit',
-
+                    modal: true,//它背后的东西都会被遮罩
                     items: {
                         xtype: 'form',
                         reference: 'form',
@@ -215,6 +215,20 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
             }).show(); break;
         }
 
+    },
+
+    authAction: function(){
+        Ext.create('Ext.window.Window', {
+            title: '权限',
+            height: 600,
+            width: 400,
+            layout: 'fit',
+            modal: true,//它背后的东西都会被遮罩
+            items: {
+                xtype: 'app-authTree'
+
+            }
+        }).show();
     }
 
 });
