@@ -514,6 +514,8 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                 html: htmlValue
             }]
         }).show();
-    }
+    },
+
+
 
 });
