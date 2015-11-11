@@ -12,11 +12,18 @@ var store = Ext.create('Ext.data.TreeStore', {
 
 
 function findByKeyWordFiler(node, event){
-    Ext.Msg.alert('message',event);
+    var treepanel = Ext.getCmp('treepanel');
+    Ext.Msg.alert('message',treepanel);
+    //Ext.Msg.alert('message',event);
+  //  var node=treepanel.getNodeById('grouped-grid');
+    // treepanel.expandPath(node.getPath())
+   // treepanel.getSelectionModel().select(node);
+  //  node.fireEvent('click',node);
 }
 
 Ext.define('TutorialApp.view.tree.DeptTree', {
     extend:'Ext.tree.Panel',
+    id:'treepanel',
     xtype:'app-deptTree',
     requires: [
         'TutorialApp.view.personnel.RoleUserTopToolbar'
