@@ -8,7 +8,7 @@ Ext.define('TutorialApp.view.personnel.RoleUserTopToolbar', {
         {
             xtype    : 'textfield',
             name     : 'field1',
-            emptyText: 'enter search term'
+            emptyText: '快速检索'
         }, {
             // xtype: 'button', // default for Toolbars
             text: '查询',

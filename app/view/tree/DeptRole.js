@@ -33,7 +33,7 @@ Ext.define('TutorialApp.view.tree.DeptTree', {
     store: store,
     rootVisible: false,
     renderTo: Ext.getBody(),
-    tbar:[' ',
+   /* tbar:[' ',
         new Ext.form.TextField({
             width:150,
             emptyText:'快速检索',
@@ -45,9 +45,9 @@ Ext.define('TutorialApp.view.tree.DeptTree', {
                 scope: this
             }
         })
-    ]
-   /* dockedItems: [{
+    ]*!/*/
+    dockedItems: [{
         xtype: 'app-roleUserTopToolbar',
         dock: 'top'
-    }]*/
+    }]
 });
