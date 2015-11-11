@@ -27,96 +27,115 @@
     id: 'grids',
     expanded: false,
     isParent:true,
+    checked: false,
     children: [
       {
         id: 'array-grid',
         text: 'Array Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'grouped-grid',
         text: 'Grouped Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'locking-grid',
         text: 'Locking Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'grouped-header-grid',
         text: 'Grouped Header Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'multi-sort-grid',
         text: 'Multiple Sort Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'progress-bar-pager',
         text: 'Progress Bar Pager',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'sliding-pager',
         text: 'Sliding Pager',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'xml-grid',
         text: 'XML Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'paging-grid',
         text: 'Paging',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'grid-plugins',
         text: 'Grid Plugins',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'grid-filtering',
         text: 'Grid Filtering',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'reconfigure-grid',
         text: 'Reconfigure Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'property-grid',
         text: 'Property Grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'cell-editing',
         text: 'Cell Editing',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'row-expander-grid',
         text: 'Row Expander',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'big-data-grid',
         text: 'Big Data',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'widget-grid',
         text: 'Widget grid',
-        leaf: true
+        leaf: true,
+        checked: false
       },
       {
         id: 'customer-grid',
         text: 'Customer/Order grid',
-        leaf: true
+        leaf: true,
+        checked: false
       }
     ]
   },

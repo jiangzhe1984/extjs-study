@@ -1,6 +1,6 @@
 var itemsPerPage = 10;
 Ext.define('TutorialApp.store.Personnel', {
-    extend: 'Ext.data.Store',//Ext.data.JsonPStore
+    extend: 'Ext.data.Store',
 
     alias: 'store.personnel', //设置store别名
 
@@ -11,9 +11,9 @@ Ext.define('TutorialApp.store.Personnel', {
     pageSize: itemsPerPage, // items per page
 
     proxy: {
-        type: 'ajax',//跨域交互的代理JsonP
+        type: 'ajax',//跨域交互的代理jsonp
         url: 'resources/data/Personnel.json',
-        //url: 'http://localhost:8080/user/findPersonnels',
+       // url: 'http://localhost:8080/user/findPersonnels',
 
         reader: {
             type: 'json',
