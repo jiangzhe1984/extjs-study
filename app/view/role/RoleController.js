@@ -143,7 +143,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
 
         var selection = grid.getSelectionModel().getSelection();
         switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择数据!'); break;
+            case 0: Ext.Msg.alert('message','请选择角色!'); break;
             default:
                 Ext.create('Ext.window.Window', {
                     id: 'roleUpdateForm',
@@ -228,7 +228,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
         if (selection.length == 1) // 如果只选择了一条
             message = ' 『' + selection[0].get('name') + '』 吗?';
         else if(selection.length == 0){
-            Ext.Msg.alert('message','请选择数据!');
+            Ext.Msg.alert('message','请选择角色!');
         }else { // 选择了多条记录
             message = '<ol>';
             Ext.Array.each(grid.getSelectionModel().getSelection(), function(record) {
@@ -253,7 +253,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
         var grid = Ext.getCmp('role_list'), selection = grid
             .getSelectionModel().getSelection();
         switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择数据!'); break;
+            case 0 :Ext.Msg.alert('message','请选择角色!'); break;
             default: Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
@@ -270,6 +270,12 @@ Ext.define('TutorialApp.view.role.RoleController', {
     },
 
     authAction: function(){
+        var grid = Ext.getCmp('role_list');
+
+        var selection = grid.getSelectionModel().getSelection();
+        switch(selection.length){
+            case 0: Ext.Msg.alert('message','请选择角色!'); break;
+            default:
         Ext.create('Ext.window.Window', {
             title: '关联权限',
             height: 600,
@@ -280,11 +286,16 @@ Ext.define('TutorialApp.view.role.RoleController', {
                 xtype: 'app-authTree'
 
             }
-        }).show();
+        }).show(); break;}
     },
 
     roleAction: function(){
+        var grid = Ext.getCmp('role_list');
 
+        var selection = grid.getSelectionModel().getSelection();
+        switch(selection.length){
+            case 0: Ext.Msg.alert('message','请选择角色!'); break;
+            default:
         Ext.create('Ext.window.Window', {
             title: '分配角色',
             height: 700,
@@ -325,6 +336,6 @@ Ext.define('TutorialApp.view.role.RoleController', {
                     });
                 }
             }
-        }).show();
+        }).show();break;}
     }
 });

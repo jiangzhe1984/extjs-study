@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/view/personnel/PersonnelController.js" line="422" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/app/view/personnel/PersonnelController.js" line="362" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4900631-2fe9-40df-9754-817d6b7b9bce" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/personnel/PersonnelController.js" afterPath="$PROJECT_DIR$/app/view/personnel/PersonnelController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/role/RoleController.js" afterPath="$PROJECT_DIR$/app/view/role/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/role/RoleUserTopToolbar.js" afterPath="$PROJECT_DIR$/app/view/role/RoleUserTopToolbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap.json" afterPath="$PROJECT_DIR$/bootstrap.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/example/bootstrap.json" afterPath="$PROJECT_DIR$/sass/example/bootstrap.json" />
     </list>
@@ -30,40 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PersonnelMain.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/personnel/PersonnelMain.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PersonnelController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/personnel/PersonnelController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="483" column="5" selection-start-line="132" selection-start-column="4" selection-end-line="483" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <marker date="1447320525397" expanded="true" signature="1668:1679" placeholder="..." />
-                <marker date="1447320525397" expanded="true" signature="1713:1737" placeholder="..." />
-                <marker date="1447320525397" expanded="true" signature="1713:1738" placeholder="..." />
-                <marker date="1447320525397" expanded="true" signature="1820:1831" placeholder="..." />
-                <marker date="1447320525397" expanded="true" signature="1887:1918" placeholder="..." />
-                <marker date="1447320525397" expanded="true" signature="2049:2072" placeholder="..." />
-                <marker date="1447320525397" expanded="true" signature="2154:2165" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoleList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/role/RoleList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -73,15 +44,25 @@
         <entry file="file://$PROJECT_DIR$/app/view/role/RoleController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="322" column="25" selection-start-line="322" selection-start-column="25" selection-end-line="322" selection-end-column="25" />
+              <caret line="285" column="31" selection-start-line="285" selection-start-column="31" selection-end-line="285" selection-end-column="31" />
               <folding>
-                <marker date="1447322325021" expanded="true" signature="1436:1447" placeholder="..." />
-                <marker date="1447322325021" expanded="true" signature="1481:1505" placeholder="..." />
-                <marker date="1447322325021" expanded="true" signature="1588:1599" placeholder="..." />
-                <marker date="1447322325021" expanded="true" signature="1655:1686" placeholder="..." />
-                <marker date="1447322325021" expanded="true" signature="1817:1840" placeholder="..." />
-                <marker date="1447322325021" expanded="true" signature="1922:1933" placeholder="..." />
+                <marker date="1447323158621" expanded="true" signature="1436:1447" placeholder="..." />
+                <marker date="1447323158621" expanded="true" signature="1481:1505" placeholder="..." />
+                <marker date="1447323158621" expanded="true" signature="1588:1599" placeholder="..." />
+                <marker date="1447323158621" expanded="true" signature="1655:1686" placeholder="..." />
+                <marker date="1447323158621" expanded="true" signature="1817:1840" placeholder="..." />
+                <marker date="1447323158621" expanded="true" signature="1922:1933" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthTree.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/data/AuthTree.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.666667">
+              <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,16 +72,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoleTopToolbar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/role/RoleTopToolbar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -116,11 +87,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoleUserTopToolbar.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AuthTree.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view/tree/AuthTree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5046729">
+              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeptTree.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/data/DeptTree.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="26.666666">
+              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeftTree.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/data/LeftTree.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.074074">
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoleUserTopToolbar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/role/RoleUserTopToolbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26435247">
-              <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -190,11 +191,11 @@
         <option value="$PROJECT_DIR$/app/view/role/RoleM.js" />
         <option value="$PROJECT_DIR$/app/view/role/RoleTopToolbar.js" />
         <option value="$PROJECT_DIR$/app/Application.js" />
-        <option value="$PROJECT_DIR$/app/view/personnel/PersonnelController.js" />
         <option value="$PROJECT_DIR$/app/view/role/RoleList.js" />
         <option value="$PROJECT_DIR$/app/view/personnel/PersonnelMain.js" />
-        <option value="$PROJECT_DIR$/app/view/role/RoleController.js" />
         <option value="$PROJECT_DIR$/app/view/role/RoleUserTopToolbar.js" />
+        <option value="$PROJECT_DIR$/app/view/personnel/PersonnelController.js" />
+        <option value="$PROJECT_DIR$/app/view/role/RoleController.js" />
       </list>
     </option>
   </component>
@@ -669,7 +670,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447322071413</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="20151112">
+      <created>1447322754846</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1447322754846</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -885,26 +892,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/data/AuthTree.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.0">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17451523">
           <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/data/DeptTree.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -973,14 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/data/LeftTree.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.407408">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/development/TutorialApp/resources/TutorialApp-all.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1039,31 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/personnel/PersonnelController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="483" column="5" selection-start-line="132" selection-start-column="4" selection-end-line="483" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1447320525397" expanded="true" signature="1668:1679" placeholder="..." />
-            <marker date="1447320525397" expanded="true" signature="1713:1737" placeholder="..." />
-            <marker date="1447320525397" expanded="true" signature="1713:1738" placeholder="..." />
-            <marker date="1447320525397" expanded="true" signature="1820:1831" placeholder="..." />
-            <marker date="1447320525397" expanded="true" signature="1887:1918" placeholder="..." />
-            <marker date="1447320525397" expanded="true" signature="2049:2072" placeholder="..." />
-            <marker date="1447320525397" expanded="true" signature="2154:2165" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/tree/AuthTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11081442">
-          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/personnel/PersonnelMain.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1112,25 +1070,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/role/RoleUserTopToolbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/personnel/PersonnelController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/AuthTree.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.666667">
+          <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/DeptTree.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="26.666666">
+          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/LeftTree.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.074074">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/role/RoleController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="322" column="25" selection-start-line="322" selection-start-column="25" selection-end-line="322" selection-end-column="25" />
+          <caret line="285" column="31" selection-start-line="285" selection-start-column="31" selection-end-line="285" selection-end-column="31" />
           <folding>
-            <marker date="1447322325021" expanded="true" signature="1436:1447" placeholder="..." />
-            <marker date="1447322325021" expanded="true" signature="1481:1505" placeholder="..." />
-            <marker date="1447322325021" expanded="true" signature="1588:1599" placeholder="..." />
-            <marker date="1447322325021" expanded="true" signature="1655:1686" placeholder="..." />
-            <marker date="1447322325021" expanded="true" signature="1817:1840" placeholder="..." />
-            <marker date="1447322325021" expanded="true" signature="1922:1933" placeholder="..." />
+            <marker date="1447323158621" expanded="true" signature="1436:1447" placeholder="..." />
+            <marker date="1447323158621" expanded="true" signature="1481:1505" placeholder="..." />
+            <marker date="1447323158621" expanded="true" signature="1588:1599" placeholder="..." />
+            <marker date="1447323158621" expanded="true" signature="1655:1686" placeholder="..." />
+            <marker date="1447323158621" expanded="true" signature="1817:1840" placeholder="..." />
+            <marker date="1447323158621" expanded="true" signature="1922:1933" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/role/RoleUserTopToolbar.js">
+    <entry file="file://$PROJECT_DIR$/app/view/tree/AuthTree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26435247">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.5046729">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding />
         </state>
       </provider>
