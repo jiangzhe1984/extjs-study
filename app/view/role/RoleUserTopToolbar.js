@@ -1,4 +1,4 @@
-Ext.define('TutorialApp.view.personnel.RoleUserTopToolbar', {
+Ext.define('TutorialApp.view.role.RoleUserTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-roleUserTopToolbar',
    // controller: 'personnel',
@@ -25,6 +25,7 @@ Ext.define('TutorialApp.view.personnel.RoleUserTopToolbar', {
                         node.parentNode.expand(true);
                         node.expand(true);
                      }
+
                 });
             }
 

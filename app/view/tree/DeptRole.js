@@ -16,7 +16,7 @@ Ext.define('TutorialApp.view.tree.DeptTree', {
     id:'deptTree',
     xtype:'app-deptTree',
     requires: [
-        'TutorialApp.view.personnel.RoleUserTopToolbar'
+        'TutorialApp.view.role.RoleUserTopToolbar'
     ],
     width: 300,
     height: 700,

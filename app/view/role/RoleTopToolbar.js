@@ -1,7 +1,7 @@
-Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
+Ext.define('TutorialApp.view.role.RoleTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
-    xtype: 'app-personnelTopToolbar',
-
+    xtype: 'app-roleTopToolbar',
+     controller: 'rolec',
     renderTo: document.body,
     width   : 500,
     items: [
@@ -10,7 +10,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
             text: '新增',
             iconCls : 'icon-plus-sign-alt',
             listeners: {
-                click: 'addPersonnelRecord'
+                click: 'addRoleRecord'
             }
         },
         {
@@ -18,7 +18,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
             text: '修改',
             iconCls : 'icon-edit',
             listeners: {
-                click: 'editPersonnelRecord'
+                click: 'editRoleRecord'
             }
         },
         {
@@ -26,7 +26,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
             text: '删除',
             iconCls : 'icon-remove',
             listeners: {
-                click: 'removePersonnelRecord'
+                click: 'removeRoleRecord'
             }
         },
         {
@@ -34,10 +34,10 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
             text: '显示',
             iconCls : 'icon-eye-open',
             listeners: {
-                click: 'viewPersonnelRecord'
+                click: 'viewRoleRecord'
             }
         },
-       /* {
+        {
             // xtype: 'button', // default for Toolbars
             text: '关联权限',
             iconCls : 'icon-key',
@@ -52,13 +52,8 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
             listeners: {
                 click: 'roleAction'
             }
-        },*/
-        /* {
-         xtype: 'splitbutton',
-         text : 'Split Button'
-         },*/
-        // begin using the right-justified button container
-        '->', // same as { xtype: 'tbfill' }
+        },
+        '->',
         {
             xtype    : 'textfield',
             name     : 'field1',

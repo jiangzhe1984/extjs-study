@@ -4,7 +4,7 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-
+/*
 function Addsel(){
     var a=document.getElementById("sel1");
     if(a.selectedIndex<0){
@@ -64,7 +64,7 @@ htmlValue += "<select name=\"res1\" id=sel1 size=30 style=\"width:200px\" multip
 htmlValue += "<div style=\"float: left;padding-top: 100px;\"><a href=\"JavaScript:Addsel()\">选择>></a><br><br><br><a href=\"JavaScript:Delsel()\"><<还原</a></div>";
 htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
 htmlValue += "<select name=\"res\" id=sel2 size=30 style=\"width:200px\"  multiple>";
-htmlValue += "</select></div></form></div></div>";
+htmlValue += "</select></div></form></div></div>";*/
 
 // The data store containing the list of states
 var states = Ext.create('Ext.data.Store', {
@@ -481,7 +481,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
             }).show(); break;
         }
 
-    },
+    }/*,
 
     authAction: function(){
         Ext.create('Ext.window.Window', {
@@ -519,7 +519,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                     layout: 'fit',
                     margin: '5 5 0 0'
                 }
-               /* {
+               /!* {
                     xtype: 'app-deptTree',
                     autoscroll : true,
                     collapsible: true   // make collapsible
@@ -528,7 +528,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                     xtype: 'panel',
                     html: htmlValue,
                     collapsible: true   // make collapsible
-            }*/],
+            }*!/],
             listeners:{
                 close : function(){
                     var deptTree = Ext.getCmp('deptTree');
@@ -549,5 +549,5 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                 }
             }
         }).show();
-    }
+    }*/
 });

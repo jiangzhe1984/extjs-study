@@ -24,7 +24,7 @@ Ext.define('TutorialApp.view.main.MainController', {
        if(!record.get('isParent')){
            var tab = tabs.add({
                title: record.get('text'),
-               html : record.get('url'),
+               xtype : record.get('url'),
                closable:true
            });
 

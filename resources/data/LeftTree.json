@@ -44,7 +44,7 @@
         id: 'role',
         text: '角色管理',
         leaf: true,
-        url:'roleList'
+        url:'rolelist'
       }
     ]
   }
