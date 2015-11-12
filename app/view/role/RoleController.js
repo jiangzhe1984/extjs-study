@@ -314,7 +314,8 @@ Ext.define('TutorialApp.view.role.RoleController', {
                         if(node.getId() != 'all'){
                             node.collapse(true);
                             var text = node.get('text');
-                            if(text.indexOf('red>') != -1){
+                            if(text.indexOf('red') != -1){
+
                                 node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
                             }
                             document.sel.res.options.length=0;
