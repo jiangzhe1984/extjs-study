@@ -39,7 +39,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
         },
         {
             // xtype: 'button', // default for Toolbars
-            text: '权限',
+            text: '关联权限',
             iconCls : 'icon-key',
             listeners: {
                 click: 'authAction'
@@ -47,7 +47,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
         },
         {
             // xtype: 'button', // default for Toolbars
-            text: '角色',
+            text: '分配角色',
             iconCls : 'icon-group',
             listeners: {
                 click: 'roleAction'

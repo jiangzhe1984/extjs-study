@@ -4,50 +4,40 @@ var store = Ext.create('Ext.data.TreeStore', {
         url: 'resources/data/DeptTree.json'
     },
     root: {
-        text: 'All',
+        text: '所有部门',
         id: 'all',
         expanded: true
     }
 });
 
 
-function findByKeyWordFiler(node, event){
-    var treepanel = Ext.getCmp('treepanel');
-    Ext.Msg.alert('message',treepanel);
-    //Ext.Msg.alert('message',event);
-  //  var node=treepanel.getNodeById('grouped-grid');
-    // treepanel.expandPath(node.getPath())
-   // treepanel.getSelectionModel().select(node);
-  //  node.fireEvent('click',node);
-}
-
 Ext.define('TutorialApp.view.tree.DeptTree', {
     extend:'Ext.tree.Panel',
-    id:'treepanel',
+    id:'deptTree',
     xtype:'app-deptTree',
     requires: [
         'TutorialApp.view.personnel.RoleUserTopToolbar'
     ],
     width: 300,
-    height: 600,
+    height: 700,
     store: store,
-    rootVisible: false,
+    rootVisible: true,
     renderTo: Ext.getBody(),
-   /* tbar:[' ',
-        new Ext.form.TextField({
-            width:150,
-            emptyText:'快速检索',
-            enableKeyEvents: true,
-            listeners:{
-                keyup:function(node, event) {
-                    findByKeyWordFiler(node, event);
-                },
-                scope: this
-            }
-        })
-    ]*!/*/
+   // collapsible: true,
     dockedItems: [{
         xtype: 'app-roleUserTopToolbar',
         dock: 'top'
-    }]
+    }],
+
+    listeners:{
+        scope:this,
+        itemclick :  function (record, node) {
+            if(node.get('leaf')){
+                document.sel.res.options.length=0;
+                document.sel.res1.options.length=0;
+                document.sel.res.options[document.sel.res.length] = new Option('aa', 1);
+                document.sel.res1.options[document.sel.res1.length] = new Option('bb',2);
+            }
+        }
+    }
 });

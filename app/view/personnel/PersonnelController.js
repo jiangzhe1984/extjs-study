@@ -56,14 +56,14 @@ function Delsel(){
     return true;
 }
 
-var htmlValue = "<div align='center'><div  style='width:500px'><form name=\"sel\"><div style=\"float:left; width:200px;\"><span>未选人员</span>";
-htmlValue += "<select name=\"res1\" id=sel1 size=20 style=\"width:200px\" multiple><option value=\"1\" >aa</option><option value=\"2\" >bb</option><option value=\"3\" >cc</option></select></div>";
-htmlValue += "<div style=\"float: left;padding-top: 100px;\"><a onclick=\"Addsel()\">选择>></a><br><br><br><a onclick=\"Delsel()\"><<还原</a></div>";
+
+
+var htmlValue = "<style> a:link {text-decoration: none;}a:visited {text-decoration: none;}a:hover {text-decoration: none;}a:active {text-decoration: none;}</style>";
+htmlValue += "<div align='center'><div  style='width:596px'><form name=\"sel\"><div style=\"float:left; width:200px;\"><span>未选人员</span>";
+htmlValue += "<select name=\"res1\" id=sel1 size=30 style=\"width:200px\" multiple></select></div>"
+htmlValue += "<div style=\"float: left;padding-top: 100px;\"><a href=\"JavaScript:Addsel()\">选择>></a><br><br><br><a href=\"JavaScript:Delsel()\"><<还原</a></div>";
 htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
-htmlValue += "<select name=\"res\" id=sel2 size=20 style=\"width:200px\"  multiple>";
-htmlValue += " <option value=\"4\" >dd</option>";
-htmlValue += " <option value=\"5\" >ee</option>";
-htmlValue += " <option value=\"6\" >ff</option>";
+htmlValue += "<select name=\"res\" id=sel2 size=30 style=\"width:200px\"  multiple>";
 htmlValue += "</select></div></form></div></div>";
 
 // The data store containing the list of states
@@ -485,7 +485,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
 
     authAction: function(){
         Ext.create('Ext.window.Window', {
-            title: '权限',
+            title: '关联权限',
             height: 600,
             width: 400,
             layout: 'fit',
@@ -500,22 +500,42 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
     roleAction: function(){
 
         Ext.create('Ext.window.Window', {
-            title: '角色',
-            height: 600,
+            title: '分配角色',
+            height: 700,
             width: 900,
             layout: 'column',
+            autoscroll : true,
             modal: true,//它背后的东西都会被遮罩
             items: [
                 {
-                    xtype: 'app-deptTree'
+                    xtype: 'app-deptTree',
+                    autoscroll : true,
+                    collapsible: true   // make collapsible
                 },
                 {
-                xtype: 'panel',
-                html: htmlValue
-            }]
+                    xtype: 'panel',
+                    html: htmlValue,
+                    collapsible: true   // make collapsible
+            }],
+            listeners:{
+                close : function(){
+                    var deptTree = Ext.getCmp('deptTree');
+                    var root = deptTree.getRootNode();
+
+                    root.cascade(function(node){
+                        if(node.getId() != 'all'){
+                            node.collapse(true);
+                            var text = node.get('text');
+                            if(text.indexOf('<font color=red>') != -1){
+                                node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
+                            }
+                            document.sel.res.options.length=0;
+                            document.sel.res1.options.length=0;
+                        }
+
+                    });
+                }
+            }
         }).show();
-    },
-
-
-
+    }
 });
