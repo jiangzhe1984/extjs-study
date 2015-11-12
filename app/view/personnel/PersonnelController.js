@@ -503,11 +503,23 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
             title: '分配角色',
             height: 700,
             width: 900,
-            layout: 'column',
+            layout: 'border',
             autoscroll : true,
             modal: true,//它背后的东西都会被遮罩
             items: [
                 {
+                    region:'west',
+                    xtype: 'app-deptTree',
+                    margin: '5 0 0 5',
+                    width: 300,
+                    layout: 'fit'
+                },{
+                    xtype: 'panel',
+                    html: htmlValue,
+                    layout: 'fit',
+                    margin: '5 5 0 0'
+                }
+               /* {
                     xtype: 'app-deptTree',
                     autoscroll : true,
                     collapsible: true   // make collapsible
@@ -516,7 +528,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelController', {
                     xtype: 'panel',
                     html: htmlValue,
                     collapsible: true   // make collapsible
-            }],
+            }*/],
             listeners:{
                 close : function(){
                     var deptTree = Ext.getCmp('deptTree');
