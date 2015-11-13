@@ -125,13 +125,27 @@ Ext.define('TutorialApp.view.role.RoleController', {
                         var saveForm = Ext.getCmp('roleSaveForm');
                         var form = this.up('form').getForm();
                         var formValues = form.getValues();
-                        var model = Ext.create(grid.getStore().model);
-                        model.set('id',3);
-                        model.set('name',formValues["name"]);
-                        model.set('displayref',formValues["displayref"]);
-                        model.set('description',formValues["description"]);
-                        grid.getStore().insert(0, model);
-                        saveForm.close();
+                        if (form.isValid()) {
+                            Ext.Ajax.request({
+                                url:'/role/save',
+                                params: {'name':formValues["name"],displayref: formValues["displayref"],'description':formValues["description"]},
+                               // async: false,
+                                method: 'post',
+                                success: function(response){
+                                    var result = Ext.decode(response.responseText);
+                                    if(result.id != null){
+                                        saveForm.close();
+                                        var current = grid.store.currentPage;
+                                        grid.store.loadPage(current);
+                                    }else{
+                                        Ext.Msg.alert('出错了');
+                                    }
+                                }
+                            });
+
+                        }
+
+
                     }
                 }]
             }
@@ -205,14 +219,27 @@ Ext.define('TutorialApp.view.role.RoleController', {
                                 var updateForm = Ext.getCmp('roleUpdateForm');
                                 var form = this.up('form').getForm();
                                 var formValues = form.getValues();
-                                selection[0].set('name',formValues["name"]);
-                                selection[0].set('displayref',formValues["displayref"]);
-                                selection[0].set('description',formValues["description"]);
 
-                                form.updateRecord(selection[0]);
+                                if (form.isValid()) {
+                                    Ext.Ajax.request({
+                                        url:'/role/update',
+                                        params: {'id':selection[0].getId(),'name':formValues["name"],displayref: formValues["displayref"],'description':formValues["description"]},
+                                        // async: false,
+                                        method: 'post',
+                                        success: function(response){
 
-                                updateForm.close();
+                                            var result = Ext.decode(response.responseText);
+                                            if(result.state = 'success'){
+                                                updateForm.close();
+                                                var current = grid.store.currentPage;
+                                                grid.store.loadPage(current);
+                                            }else{
+                                                Ext.Msg.alert('出错了');
+                                            }
+                                        }
+                                    });
 
+                                }
                             }
                         }]
                     }
@@ -224,15 +251,24 @@ Ext.define('TutorialApp.view.role.RoleController', {
 
     removeRoleRecord: function(){
         var grid = Ext.getCmp('role_list'), selection = grid
-            .getSelectionModel().getSelection(), message = '';
+            .getSelectionModel().getSelection();
+        var message = '',ids = '';
+
         if (selection.length == 1) // 如果只选择了一条
+            ids = selection[0].get('id'),
             message = ' 『' + selection[0].get('name') + '』 吗?';
+
         else if(selection.length == 0){
             Ext.Msg.alert('message','请选择角色!');
         }else { // 选择了多条记录
             message = '<ol>';
             Ext.Array.each(grid.getSelectionModel().getSelection(), function(record) {
                 message += '<li>' + record.get('name') + '</li>';
+                if(ids != ''){
+                    ids += ','+record.getId();
+                }else{
+                    ids += record.getId();
+                }
             });
             message += '</ol>';
             message = '以下 ' + selection.length + ' 条记录吗?' + message;
@@ -241,8 +277,23 @@ Ext.define('TutorialApp.view.role.RoleController', {
         if(message != ''){
             Ext.Msg.confirm('确定删除', '确定要删除 <strong>列表</strong> 中的' + message, function(btn) {
                 if (btn == 'yes') {
-                    grid.getStore().remove(grid.getSelectionModel().getSelection());
-                    // grid.getStore().sync();
+                    Ext.Ajax.request({
+                        url:'/role/remove',
+                        params: {'ids':ids},
+                        // async: false,
+                        method: 'post',
+                        success: function(response, opts){
+                            var obj = Ext.decode(response.responseText);
+                            if(obj.state == 'success'){
+                                grid.getStore().remove(grid.getSelectionModel().getSelection());
+                                // grid.getStore().sync();
+                            }else{
+                                Ext.Msg.alert('出错了');
+                            }
+
+                        }
+                    });
+
                 }
             })
         }

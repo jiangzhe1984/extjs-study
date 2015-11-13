@@ -29,12 +29,12 @@ Ext.define('TutorialApp.view.role.Role', {
         var store = Ext.create('TutorialApp.store.Role');//创建store实例
         this.store = store;
         me.columns = [
-            {
+          /*  {
                 text: 'ID',
                 flex: 1,
                 align: 'center',
                 dataIndex: 'id'
-            },
+            },*/
             {
                 text: '角色名称',
                 flex: 1,

@@ -15,7 +15,8 @@ Ext.define('TutorialApp.store.Role', {
 
     proxy: {
         type: 'ajax',//跨域交互的代理JsonP
-        url: 'resources/data/Role.json',
+        //url: 'resources/data/Role.json',
+        url: '/role/list',
         reader: {
             type: 'json',
             successProperty: 'success',
