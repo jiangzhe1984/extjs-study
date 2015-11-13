@@ -56,12 +56,36 @@ Ext.define('TutorialApp.view.role.RoleTopToolbar', {
         '->',
         {
             xtype    : 'textfield',
-            name     : 'field1',
+            id       : 'search_role_name',
             emptyText: '快速检索'
         }, {
             // xtype: 'button', // default for Toolbars
             text: '查询',
-            iconCls : 'icon-search'
+            iconCls : 'icon-search',
+            handler: function(){
+                var search_role_name = Ext.getCmp('search_role_name').getValue();
+                var role_store = Ext.getCmp('role_list').store;
+              /*  var pageSize = role_store.getPageSize();
+                var current = role_store.currentPage;
+                Ext.Ajax.request({
+                    url:'/role/list',
+                    params: {'page':current,'limit':pageSize,'name': search_role_name},
+                    method: 'post',
+                    success: function(response){
+
+                        var result = Ext.decode(response.responseText);
+                        if(result.state = 'success'){
+                            updateForm.close();
+                            var current = grid.store.currentPage;
+                            grid.store.loadPage(current);
+                        }else{
+                            Ext.Msg.alert('出错了');
+                        }
+                    }
+                });*/
+                role_store.filter('name', search_role_name);
+                role_store.load();
+            }
         }
     ]
 });

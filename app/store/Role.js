@@ -22,7 +22,11 @@ Ext.define('TutorialApp.store.Role', {
             successProperty: 'success',
             rootProperty: 'items',
             totalProperty: 'total'
-        }
+        }/*,
+        filters: [{
+            property: 'name',
+            value: 'aa'
+        }]*/
     }
 });
 
