@@ -286,6 +286,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                             var obj = Ext.decode(response.responseText);
                             if(obj.state == 'success'){
                                 grid.getStore().remove(grid.getSelectionModel().getSelection());
+                                grid.getStore().load();
                                 // grid.getStore().sync();
                             }else{
                                 Ext.Msg.alert('出错了');
