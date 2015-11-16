@@ -1,0 +1,7 @@
+{ success: true,
+  total:2,
+  items: [
+    {id:1, username: "aa", password: "aa",expiredDate: "aa",fullName:"aa",org:{id:1,orgName:"全渠道"}, mobile: "aa",userMgrType:"aa",description:"aa" },
+    {id:2, username: "aa", password: "aa", expiredDate: "aa",fullName:"aa",org:{id:1,orgName:"全渠道"}, mobile: "aa",userMgrType:"aa",description:"aa" }
+  ]
+}

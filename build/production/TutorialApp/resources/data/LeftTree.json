@@ -32,13 +32,13 @@
         id: 'department',
         text: '部门管理',
         leaf: true,
-        url:'orglist'
+        url:'deptList'
       },
       {
         id: 'user',
         text: '人员管理',
         leaf: true,
-        url:'userlist'
+        url:'userList'
       },
       {
         id: 'role',

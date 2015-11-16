@@ -1,14 +1,14 @@
 /**
- * 角色列表
+ * 用户列表
  */
 
-Ext.define('TutorialApp.view.role.Role', {
+Ext.define('TutorialApp.view.user.User', {
     extend: 'Ext.grid.Panel',
-    xtype: 'rolelist',
-    id: 'role_list',
+    xtype: 'userlist',
+    id: 'user_list',
     requires: [
-        'TutorialApp.store.Role',
-        'TutorialApp.view.role.RoleTopToolbar'
+        'TutorialApp.store.User',
+        'TutorialApp.view.user.UserTopToolbar'
     ],
 
     columnLines: true,
@@ -26,31 +26,45 @@ Ext.define('TutorialApp.view.role.Role', {
 
     initComponent:function(){
         var me = this;
-        var store = Ext.create('TutorialApp.store.Role');//创建store实例
+        var store = Ext.create('TutorialApp.store.User');//创建store实例
         this.store = store;
         me.columns = [
-          /*  {
-                text: 'ID',
-                flex: 1,
-                align: 'center',
-                dataIndex: 'id'
-            },*/
             {
-                text: '角色名称',
+                text: '用户名',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'name'
+                dataIndex: 'username'
             }, {
-                text: '显示名称',
+                text: '密码',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'displayref'
+                dataIndex: 'password'
             }, {
+                text: '全名',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'fullName'
+            }, {
+                text: '所属部门',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'org'
+            }, {
+                text: '过期时间',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'expiredDate'
+            }, {
+                text: '手机号',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'mobile'
+            }/*, {
                 text: '描述',
                 flex: 1,
                 align: 'center',
                 dataIndex: 'description'
-            }
+            }*/
         ];
         me.dockedItems = [{
             xtype: 'pagingtoolbar',
@@ -58,7 +72,7 @@ Ext.define('TutorialApp.view.role.Role', {
             store:store,
             displayInfo: true
         },{
-            xtype: 'app-roleTopToolbar',
+            xtype: 'app-userTopToolbar',
             dock: 'top'
         }];
         me.callParent();

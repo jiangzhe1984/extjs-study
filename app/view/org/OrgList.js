@@ -1,14 +1,14 @@
 /**
- * 角色列表
+ * 部门列表
  */
 
-Ext.define('TutorialApp.view.role.Role', {
+Ext.define('TutorialApp.view.org.Org', {
     extend: 'Ext.grid.Panel',
-    xtype: 'rolelist',
-    id: 'role_list',
+    xtype: 'orglist',
+    id: 'org_list',
     requires: [
-        'TutorialApp.store.Role',
-        'TutorialApp.view.role.RoleTopToolbar'
+        'TutorialApp.store.Org',
+        'TutorialApp.view.org.OrgTopToolbar'
     ],
 
     columnLines: true,
@@ -26,25 +26,29 @@ Ext.define('TutorialApp.view.role.Role', {
 
     initComponent:function(){
         var me = this;
-        var store = Ext.create('TutorialApp.store.Role');//创建store实例
+        var store = Ext.create('TutorialApp.store.Org');//创建store实例
         this.store = store;
         me.columns = [
-          /*  {
-                text: 'ID',
-                flex: 1,
-                align: 'center',
-                dataIndex: 'id'
-            },*/
             {
-                text: '角色名称',
+                text: '部门名称',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'name'
+                dataIndex: 'orgName'
             }, {
-                text: '显示名称',
+                text: '部门编号',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'displayref'
+                dataIndex: 'orgNum'
+            }, {
+                text: '部门管理员',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'manager'
+            }, {
+                text: '父部门',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'parentOrg'
             }, {
                 text: '描述',
                 flex: 1,
@@ -58,7 +62,7 @@ Ext.define('TutorialApp.view.role.Role', {
             store:store,
             displayInfo: true
         },{
-            xtype: 'app-roleTopToolbar',
+            xtype: 'app-orgTopToolbar',
             dock: 'top'
         }];
         me.callParent();
