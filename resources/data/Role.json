@@ -1,0 +1,7 @@
+{ success: true,
+  total:2,
+  items: [
+    {id:1, name: 'system_administrator', displayref: "系统管理员", description: "系统管理员" },
+    {id:2, name: 'normal',displayref: "普通用户",  description: "普通用户" }
+  ]
+}

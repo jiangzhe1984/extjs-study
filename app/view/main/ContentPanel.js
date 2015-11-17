@@ -13,7 +13,7 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
             xtype: 'app-personnelMain'
         }],
         closable:true
-    }, {
+    }/*, {
         title: 'Users',
         html: 'Users',
         itemId: 'users',
@@ -24,6 +24,6 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
         html: 'Tickets',
         itemId: 'tickets',
         closable:true
-    }]
+    }*/]
 });
 

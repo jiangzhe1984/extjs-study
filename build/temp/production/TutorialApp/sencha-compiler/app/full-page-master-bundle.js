@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /home/jiangzhe/Downloads/myApp/app.js
+// @require /home/jiangzhe/sjes/sjes-app-admin/app.js

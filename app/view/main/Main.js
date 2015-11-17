@@ -15,9 +15,6 @@ Ext.define('TutorialApp.view.main.Main', {
         'TutorialApp.view.main.MainModel',
         'TutorialApp.view.tree.LeftTree', //tree
         'TutorialApp.view.main.ContentPanel'//centercontent
-
-
-
     ],
     controller: 'main',
     viewModel: 'main',

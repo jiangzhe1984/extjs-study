@@ -23,8 +23,8 @@ Ext.define('TutorialApp.view.main.MainController', {
 
        if(!record.get('isParent')){
            var tab = tabs.add({
-               title: record.getId(),
-               html : 'Another one',
+               title: record.get('text'),
+               xtype : record.get('url'),
                closable:true
            });
 

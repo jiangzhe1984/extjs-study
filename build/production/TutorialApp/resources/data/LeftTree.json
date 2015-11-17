@@ -1,0 +1,51 @@
+[
+  {
+    text: 'Panels',
+    id: 'panels',
+    isParent:true,
+    expanded: false,
+    children: [
+      {
+        id: 'basic-panels',
+        text: 'Basic Panel',
+        leaf: true
+      },
+      {
+        id: 'framed-panels',
+        text: 'Framed Panel',
+        leaf: true
+      },
+      {
+        id: 'panel-header-position',
+        text: 'Header Positioning',
+        leaf: true
+      }
+    ]
+  },
+  {
+    text: '系统设置',
+    id: 'system',
+    expanded: false,
+    isParent:true,
+    children: [
+      {
+        id: 'department',
+        text: '部门管理',
+        leaf: true,
+        url:'deptList'
+      },
+      {
+        id: 'user',
+        text: '人员管理',
+        leaf: true,
+        url:'userList'
+      },
+      {
+        id: 'role',
+        text: '角色管理',
+        leaf: true,
+        url:'rolelist'
+      }
+    ]
+  }
+]

@@ -3,6 +3,6 @@ Ext.define('TutorialApp.Config', {
     singleton: true,
 
     api: {
-        host: 'http://localhost:8080/'
+        host: 'http://gateway.sj.com'
     }
 });//外部 数据 路径

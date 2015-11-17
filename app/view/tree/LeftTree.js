@@ -6,7 +6,7 @@ var store = Ext.create('Ext.data.TreeStore', {
     root: {
         text: 'All',
         id: 'all',
-        expanded: true
+        expanded: false
     }
 });
 

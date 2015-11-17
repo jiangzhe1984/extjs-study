@@ -37,6 +37,22 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
                 click: 'viewPersonnelRecord'
             }
         },
+       /* {
+            // xtype: 'button', // default for Toolbars
+            text: '关联权限',
+            iconCls : 'icon-key',
+            listeners: {
+                click: 'authAction'
+            }
+        },
+        {
+            // xtype: 'button', // default for Toolbars
+            text: '分配角色',
+            iconCls : 'icon-group',
+            listeners: {
+                click: 'roleAction'
+            }
+        },*/
         /* {
          xtype: 'splitbutton',
          text : 'Split Button'
@@ -46,7 +62,7 @@ Ext.define('TutorialApp.view.personnel.PersonnelTopToolbar', {
         {
             xtype    : 'textfield',
             name     : 'field1',
-            emptyText: 'enter search term'
+            emptyText: '快速检索'
         }, {
             // xtype: 'button', // default for Toolbars
             text: '查询',
