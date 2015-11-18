@@ -72,9 +72,13 @@ Ext.define('TutorialApp.view.user.User', {
             store:store,
             displayInfo: true
         },{
+            xtype : Ext.create('TutorialApp.view.user.UserTopToolbar',{//工具栏
+                url : '/role/toolbar'
+            })
+        }/*{
             xtype: 'app-userTopToolbar',
             dock: 'top'
-        }];
+        }*/];
         me.callParent();
     }
 });

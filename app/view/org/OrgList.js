@@ -62,9 +62,13 @@ Ext.define('TutorialApp.view.org.Org', {
             store:store,
             displayInfo: true
         },{
+            xtype : Ext.create('TutorialApp.view.org.OrgTopToolbar',{//工具栏
+                url : '/role/toolbar'
+            })
+        }/*{
             xtype: 'app-orgTopToolbar',
             dock: 'top'
-        }];
+        }*/];
         me.callParent();
     }
 });

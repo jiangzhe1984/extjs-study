@@ -36,7 +36,7 @@ Ext.define('TutorialApp.view.role.Role', {
                 dataIndex: 'id'
             },*/
             {
-                text: '角色名称',
+                text: '角色名称',//角色列表
                 flex: 1,
                 align: 'center',
                 dataIndex: 'name'
@@ -58,9 +58,14 @@ Ext.define('TutorialApp.view.role.Role', {
             store:store,
             displayInfo: true
         },{
+            xtype : Ext.create('TutorialApp.view.role.RoleTopToolbar',{//工具栏
+                url : '/role/toolbar'
+            })
+        }
+            /*{
             xtype: 'app-roleTopToolbar',
             dock: 'top'
-        }];
+        }*/];
         me.callParent();
     }
 });

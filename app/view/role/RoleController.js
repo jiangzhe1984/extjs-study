@@ -389,5 +389,17 @@ Ext.define('TutorialApp.view.role.RoleController', {
                 }
             }
         }).show();break;}
+    },
+
+    searchRole: function(){
+        var search_role_name = Ext.getCmp('search_role_name').getValue();
+        var role_store = Ext.getCmp('role_list').store;
+
+        role_store.on('beforeload', function (store, options) {
+            var new_params = { name: search_role_name};
+            Ext.apply(role_store.proxy.extraParams, new_params);
+        });
+        //  role_store.filter('name', search_role_name);
+        role_store.load();
     }
 });

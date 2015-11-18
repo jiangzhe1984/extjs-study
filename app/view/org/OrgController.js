@@ -273,7 +273,6 @@ Ext.define('TutorialApp.view.org.OrgController', {
             default:
                 //创建panel
                 var panel = new Ext.Panel({
-                    title: 'Ajax与数据显示',
                     width: 200,
                     height: 200,
                     frame: true
@@ -318,5 +317,19 @@ Ext.define('TutorialApp.view.org.OrgController', {
             }).show(); break;
         }
 
+    },
+
+    searchOrg: function(){
+        var search_org_name = Ext.getCmp('search_org_name').getValue();
+        var org_store = Ext.getCmp('org_list').store;
+
+        org_store.on('beforeload', function (store, options) {
+            var new_params = { orgName: search_org_name};
+            Ext.apply(org_store.proxy.extraParams, new_params);
+        });
+        //  role_store.filter('name', search_org_name);
+        org_store.load();
     }
+
+
 });

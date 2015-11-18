@@ -322,10 +322,10 @@ Ext.define('TutorialApp.view.user.UserController', {
     },
 
     viewUserRecord: function(){
-        var grid = Ext.getCmp('org_list'), selection = grid
+        var grid = Ext.getCmp('user_list'), selection = grid
             .getSelectionModel().getSelection();
         switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择部门!'); break;
+            case 0 :Ext.Msg.alert('message','请选择用户!'); break;
             default: Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
@@ -333,11 +333,23 @@ Ext.define('TutorialApp.view.user.UserController', {
                 layout: 'fit',
                 items: {
                     xtype: 'panel',
-                    html: '<table><tr><td>部门名称</td><td>'+selection[0].get('orgName') +'</td></tr><tr><td>部门编号</td><td>'+selection[0].get('orgNum') +'</td></tr><tr><td>部门管理员</td><td>'+selection[0].get('manager') +'</td></tr><tr><td>父部门</td><td>'+selection[0].get('parentOrg') +'</td></tr><tr><td>描述</td><td>'+selection[0].get('description') +'</td></tr></table>'
+                    html: '<table><tr><td>用户名</td><td>'+selection[0].get('username') +'</td></tr><tr><td>密码</td><td>'+selection[0].get('password') +'</td></tr><tr><td>全名</td><td>'+selection[0].get('fullName') +'</td></tr><tr><td>所属部门</td><td>'+selection[0].get('org') +'</td></tr><tr><td>过期时间</td><td>'+selection[0].get('expiredDate') +'</td></tr><tr><td>手机号</td><td>'+selection[0].get('mobile') +'</td></tr></table>'
 
                 }
             }).show(); break;
         }
 
+    },
+
+    searchUser: function(){
+        var search_user_name = Ext.getCmp('search_user_name').getValue();
+        var user_store = Ext.getCmp('user_list').store;
+
+        user_store.on('beforeload', function (store, options) {
+            var new_params = { username: search_user_name};
+            Ext.apply(user_store.proxy.extraParams, new_params);
+        });
+        //  role_store.filter('name', search_org_name);
+        user_store.load();
     }
 });

@@ -13,13 +13,15 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
             xtype: 'app-personnelMain'
         }],
         closable:true
-    }/*, {
-        title: 'Users',
-        html: 'Users',
-        itemId: 'users',
-       // hidden: true,
-        closable:true
     }, {
+        title: 'Logout',
+        xtype: 'button',
+        text: 'Logout',
+        margin: '10 0',
+        handler: function(){
+            window.location.href= '/logout';
+        }
+    }/*, {
         title: 'Tickets',
         html: 'Tickets',
         itemId: 'tickets',
