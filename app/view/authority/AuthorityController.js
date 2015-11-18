@@ -1,41 +1,13 @@
-// The data store containing the list of states
-var states = Ext.create('Ext.data.Store', {
-    fields: ['userMgrType', 'name'],
-    data : [
-        {"userMgrType":"1400", "name":"超级管理员"},
-        {"userMgrType":"1401", "name":"普通管理员"},
-        {"userMgrType":"1402", "name":"普通用户"}
-    ]
-});
 
-
-// Create the combo box, attached to the states data store
-Ext.define('Ext.ux.ComboBox', {
-    extend:'Ext.form.ComboBox',
-    alias: 'widget.userMgrType',
-    fieldLabel: '用户类型',
-    store: states,
-    queryMode: 'local',
-    displayField: 'name',
-    valueField: 'userMgrType',
-
-    listeners:{
-        //scope: yourScope,
-        'select': function(obj){
-            //alert(obj.getValue());
-        }
-    }
-});
-
-Ext.define('TutorialApp.view.user.UserController', {
+Ext.define('TutorialApp.view.authority.AuthorityController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.userc',
+    alias: 'controller.authorityc',
 
-    addUserRecord: function(){
-        var grid = Ext.getCmp('user_list');
+    addAuthorityRecord: function(){
+        var grid = Ext.getCmp('authority_list');
         Ext.create('Ext.window.Window', {
-            id: 'userSaveForm',
+            id: 'authoritySaveForm',
 
             requires: [
                 'Ext.form.Panel',
@@ -65,42 +37,21 @@ Ext.define('TutorialApp.view.user.UserController', {
                     labelWidth: 40
                 },
                 items: [{
-                    fieldLabel: '用户名',
-                    name: 'username',
-                    itemId: 'username',
+                    fieldLabel: '权限名称',
+                    name: 'authorityname',
+                    itemId: 'authorityname',
                     allowBlank: false,
-                    emptyText: '请输入用户名'
+                    emptyText: '请输入权限名称'
                 }, {
-                    fieldLabel: '密码',
-                    name: 'password',
+                    fieldLabel: '权限类型',
+                    name: 'authoritytype',
                     allowBlank: false,
-                    emptyText: '请输入密码'
+                    emptyText: '请输入权限类型'
                 }, {
-                    fieldLabel: '全名',
-                    name: 'fullName',
-                     allowBlank: false,
-                     emptyText: '请输入全名'
-                }, {
-                    fieldLabel: '所属部门',
-                    name: 'org',
+                    fieldLabel: '显示名称',
+                    name: 'displayref',
                     allowBlank: false,
-                    emptyText: '请输入所属部门'
-                }, {
-                    fieldLabel: '手机号',
-                    name: 'mobile',
-                    allowBlank: false,
-                    emptyText: '请输入手机号'
-                }, {
-                    xtype: 'userMgrType',
-                    name: 'userMgrType'
-                }, {
-                    xtype: 'datefield',
-                    anchor: '100%',
-                    fieldLabel: '过期时间',
-                    name: 'expiredDate',
-                    allowBlank: false,
-                    emptyText: '请输入过期时间',
-                    value: new Date()
+                    emptyText: '请输入显示名称'
                 }, {
                     fieldLabel: '描述',
                     name: 'description',
@@ -116,13 +67,13 @@ Ext.define('TutorialApp.view.user.UserController', {
                 }, '->', {
                     text: '保存',
                     handler: function(){
-                        var saveForm = Ext.getCmp('userSaveForm');
+                        var saveForm = Ext.getCmp('authoritySaveForm');
                         var form = this.up('form').getForm();
                         var formValues = form.getValues();
                         if (form.isValid()) {
                             Ext.Ajax.request({
-                                url:'/user/save',
-                                params: {'username':formValues["username"],password: formValues["password"],expiredDate: formValues["expiredDate"],fullName: formValues["fullName"],mobile: formValues["mobile"],userMgrType: formValues["userMgrType"],org: formValues["org"],'description':formValues["description"]},
+                                url:'/authority/save',
+                                params: {'authorityname':formValues["authorityname"],authoritytype: formValues["authoritytype"],displayref: formValues["displayref"],'description':formValues["description"]},
                                 // async: false,
                                 method: 'post',
                                 success: function(response){
@@ -146,15 +97,15 @@ Ext.define('TutorialApp.view.user.UserController', {
         });
     },
 //不能为空
-    editUserRecord: function(){
-        var grid = Ext.getCmp('user_list');
+    editAuthorityRecord: function(){
+        var grid = Ext.getCmp('authority_list');
 
         var selection = grid.getSelectionModel().getSelection();
         switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择用户!'); break;
+            case 0: Ext.Msg.alert('message','请选择权限!'); break;
             default:
                 Ext.create('Ext.window.Window', {
-                    id: 'userUpdateForm',
+                    id: 'authorityUpdateForm',
 
                     requires: [
                         'Ext.form.Panel',
@@ -183,50 +134,30 @@ Ext.define('TutorialApp.view.user.UserController', {
                             labelWidth: 40
                         },
                         items: [{
-                            fieldLabel: '用户名',
-                            name: 'username',
-                            itemId: 'username',
+                            fieldLabel: '权限名称',
+                            name: 'authorityname',
+                            itemId: 'authorityname',
                             allowBlank: false,
-                            bind: selection[0].get('username')
+                            bind: selection[0].get('authorityname')
                         }, {
-                            fieldLabel: '密码',
-                            name: 'password',
+                            fieldLabel: '权限类型',
+                            name: 'authoritytype',
+                            inputType: 'authoritytype',
                             allowBlank: false,
-                            bind: selection[0].get('password')
+                            bind: selection[0].get('authoritytype')
                         }, {
-                            fieldLabel: '全名',
-                            name: 'fullName',
+                            fieldLabel: '显示名称',
+                            name: 'displayref',
+                            inputType: 'displayref',
                             allowBlank: false,
-                            bind: selection[0].get('fullName')
-                        }, {
-                            fieldLabel: '所属部门',
-                            name: 'org',
-                            allowBlank: false,
-                            bind: selection[0].get('org')
-                        }, {
-                            fieldLabel: '手机号',
-                            name: 'mobile',
-                            allowBlank: false,
-                            bind: selection[0].get('mobile')
-                        }, {
-                            xtype: 'userMgrType',
-                            name: 'userMgrType'
-                        }, {
-                            xtype: 'datefield',
-                            anchor: '100%',
-                            fieldLabel: '过期时间',
-                            name: 'expiredDate',
-                            allowBlank: false,
-                            emptyText: '请输入过期时间',
-                            bind: selection[0].get('expiredDate')
+                            bind: selection[0].get('displayref')
                         }, {
                             fieldLabel: '描述',
                             name: 'description',
+                            inputType: 'description',
                             allowBlank: false,
                             bind: selection[0].get('description')
-                        }
-                        ],
-
+                        }],
                         buttons: [{
                             xtype: 'tbtext',
                             html: '错误',
@@ -236,14 +167,14 @@ Ext.define('TutorialApp.view.user.UserController', {
                             text: '修改',
                             handler: function(){
 
-                                var updateForm = Ext.getCmp('orgUpdateForm');
+                                var updateForm = Ext.getCmp('authorityUpdateForm');
                                 var form = this.up('form').getForm();
                                 var formValues = form.getValues();
 
                                 if (form.isValid()) {
                                     Ext.Ajax.request({
-                                        url:'/user/update',
-                                        params: {'id':selection[0].getId(),'orgName':formValues["orgName"],orgNum: formValues["orgNum"],manager: formValues["manager"],parentOrg: formValues["parentOrg"],'description':formValues["description"]},
+                                        url:'/authority/update',
+                                        params: {'id':selection[0].getId(),'authorityname':formValues["authorityname"],authoritytype: formValues["authoritytype"],displayref: formValues["displayref"],'description':formValues["description"]},
                                         // async: false,
                                         method: 'post',
                                         success: function(response){
@@ -269,21 +200,21 @@ Ext.define('TutorialApp.view.user.UserController', {
 
     },
 
-    removeUserRecord: function(){
-        var grid = Ext.getCmp('user_list'), selection = grid
+    removeAuthorityRecord: function(){
+        var grid = Ext.getCmp('authority_list'), selection = grid
             .getSelectionModel().getSelection();
         var message = '',ids = '';
 
         if (selection.length == 1) // 如果只选择了一条
             ids = selection[0].get('id'),
-                message = ' 『' + selection[0].get('username') + '』 吗?';
+                message = ' 『' + selection[0].get('authorityname') + '』 吗?';
 
         else if(selection.length == 0){
-            Ext.Msg.alert('message','请选择部门!');
+            Ext.Msg.alert('message','请选择权限!');
         }else { // 选择了多条记录
             message = '<ol>';
             Ext.Array.each(grid.getSelectionModel().getSelection(), function(record) {
-                message += '<li>' + record.get('username') + '</li>';
+                message += '<li>' + record.get('authorityname') + '</li>';
                 if(ids != ''){
                     ids += ','+record.getId();
                 }else{
@@ -298,7 +229,7 @@ Ext.define('TutorialApp.view.user.UserController', {
             Ext.Msg.confirm('确定删除', '确定要删除 <strong>列表</strong> 中的' + message, function(btn) {
                 if (btn == 'yes') {
                     Ext.Ajax.request({
-                        url:'/user/remove',
+                        url:'/authority/remove',
                         params: {'ids':ids},
                         // async: false,
                         method: 'post',
@@ -321,11 +252,11 @@ Ext.define('TutorialApp.view.user.UserController', {
 
     },
 
-    viewUserRecord: function(){
-        var grid = Ext.getCmp('user_list'), selection = grid
+    viewAuthorityRecord: function(){
+        var grid = Ext.getCmp('authority_list'), selection = grid
             .getSelectionModel().getSelection();
         switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择用户!'); break;
+            case 0 :Ext.Msg.alert('message','请选择权限!'); break;
             default: Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
@@ -333,7 +264,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                 layout: 'fit',
                 items: {
                     xtype: 'panel',
-                    html: '<table><tr><td>用户名</td><td>'+selection[0].get('username') +'</td></tr><tr><td>密码</td><td>'+selection[0].get('password') +'</td></tr><tr><td>全名</td><td>'+selection[0].get('fullName') +'</td></tr><tr><td>所属部门</td><td>'+selection[0].get('org') +'</td></tr><tr><td>过期时间</td><td>'+selection[0].get('expiredDate') +'</td></tr><tr><td>手机号</td><td>'+selection[0].get('mobile') +'</td></tr></table>'
+                    html: '<table><tr><td>权限名称</td><td>'+selection[0].get('authorityname') +'</td></tr><tr><td>显示名称</td><td>'+selection[0].get('displayref') +'</td></tr><tr><tr><td>权限类型</td><td>'+selection[0].get('authoritytype') +'</td></tr><tr><td>描述</td><td>'+selection[0].get('description') +'</td></tr></table>'
 
                 }
             }).show(); break;
@@ -341,15 +272,17 @@ Ext.define('TutorialApp.view.user.UserController', {
 
     },
 
-    searchUser: function(){
-        var search_user_name = Ext.getCmp('search_user_name').getValue();
-        var user_store = Ext.getCmp('user_list').store;
 
-        user_store.on('beforeload', function (store, options) {
-            var new_params = { username: search_user_name};
-            Ext.apply(user_store.proxy.extraParams, new_params);
+
+    searchAuthority: function(){
+        var search_authority_name = Ext.getCmp('search_authority_name').getValue();
+        var authority_store = Ext.getCmp('authority_list').store;
+
+        authority_store.on('beforeload', function (store, options) {
+            var new_params = { authorityname: search_authority_name};
+            Ext.apply(authority_store.proxy.extraParams, new_params);
         });
-        //  role_store.filter('name', search_org_name);
-        user_store.load();
+        //  role_store.filter('name', search_role_name);
+        authority_store.load();
     }
 });

@@ -1,0 +1,7 @@
+{ success: true,
+  total:2,
+  items: [
+    {id:1, authorityname: 'normal', authoritytype: 1,displayref:'aa', description: "系统管理员" },
+    {id:2, authorityname: 'normal',authoritytype: 2,displayref:'aa',  description: "普通用户" }
+  ]
+}

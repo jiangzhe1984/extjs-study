@@ -7,6 +7,7 @@ Ext.define('TutorialApp.model.Authority', {
         {name: 'id', type: 'int'},
         {name: 'authorityname', type: 'string'},
         {name: 'authoritytype',  type: 'int'},
-        {name: 'displayref',  type: 'string'}
+        {name: 'displayref',  type: 'string'},
+        {name: 'description', type: 'string'}
     ]
 });

@@ -5,6 +5,8 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
+
+
 Ext.define('TutorialApp.view.main.Main', {
     extend: 'Ext.panel.Panel',
     xtype: 'app-main',
@@ -22,9 +24,16 @@ Ext.define('TutorialApp.view.main.Main', {
 
     width: 1600,
     height: 900,
-    title: '三江网购管理平台',
+   // title: '三江网购管理平台',
     layout: 'border',
-    items: [{
+    items: [
+        {
+            title: '三江网购管理平台',
+            region: 'north',
+            xtype: "panel",
+            split: true
+        },
+        {
         title: 'South Region is resizable',
         region: 'south',     // position for region
         xtype: 'panel',

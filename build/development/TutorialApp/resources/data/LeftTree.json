@@ -32,7 +32,7 @@
     isParent:true,
     children: [
       {
-        id: 'department',
+        id: 'org',
         text: '部门管理',
         leaf: true,
         url:'orglist'
