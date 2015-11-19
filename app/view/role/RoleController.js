@@ -59,6 +59,24 @@ htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
 htmlValue += "<select name=\"res\" id=sel2 size=30 style=\"width:200px\"  multiple>";
 htmlValue += "</select></div></form></div></div>";
 
+function relation(checked,roleId,authorityId){
+    Ext.Ajax.request({
+        url:'/roleauthority/relation',
+        params: {'checked':checked,'roleId':roleId,'authorityId':authorityId},
+        // async: false,
+        method: 'post',
+        success: function(response, opts){
+            var obj = Ext.decode(response.responseText);
+            if(obj.state == 'success'){
+
+            }else{
+                Ext.Msg.alert('出错了');
+            }
+
+        }
+    });
+}
+
 Ext.define('TutorialApp.view.role.RoleController', {
     extend: 'Ext.app.ViewController',
 
@@ -323,11 +341,71 @@ Ext.define('TutorialApp.view.role.RoleController', {
 
     authAction: function(){
         var grid = Ext.getCmp('role_list');
-
         var selection = grid.getSelectionModel().getSelection();
+
         switch(selection.length){
             case 0: Ext.Msg.alert('message','请选择角色!'); break;
             default:
+      /* authTreeId.store.proxy = new Ext.data.proxy.Proxy({ type: 'ajax',url:authUrl});*/
+
+                var store = Ext.create('Ext.data.TreeStore', {
+                    proxy: {
+                        type: 'ajax',
+                        url: '/authority/authTreeForRole?role='+selection[0].getId()
+                    },
+                    root: {
+                        text: 'All',
+                        id: 'all',
+                        expanded: true
+                    }
+                });
+
+                Ext.create('Ext.tree.Panel',{
+                    id: 'authTree_id',
+                    width: 200,
+                    height: 200,
+                    store: store,
+                    rootVisible: false,
+                    renderTo: Ext.getBody(),
+                    listeners:{
+                        scope:this,
+                        checkchange : function (node, checked) {
+
+                            //当该节点有子节点时，将所有子节点选中
+                            if (!node.get("leaf") && !node.get("parent") ){
+
+                                if(checked){
+                                    node.cascade(function(node){
+                                        node.set('checked', true);
+                                    });
+                                }else{
+                                    node.cascade(function(node){
+                                        node.set('checked', false);
+                                    });
+                                }
+
+                                node.cascade(function(node){
+                                    if(node.get("leaf")){
+                                        relation(checked,selection[0].getId(),node.getId().split('&')[1]);
+
+                                    }
+
+                                });
+
+                            }else{
+                                //获得父节点
+                                var pNode = node.parentNode;
+                                for (; pNode != null; pNode = pNode.parentNode) {
+                                    pNode.set("checked", true);
+                                }
+                                relation(checked,selection[0].getId(),node.getId().split('&')[1]);
+
+                            }
+
+                        }
+                    }
+                });
+
         Ext.create('Ext.window.Window', {
             title: '关联权限',
             height: 600,
@@ -335,10 +413,11 @@ Ext.define('TutorialApp.view.role.RoleController', {
             layout: 'fit',
             modal: true,//它背后的东西都会被遮罩
             items: {
-                xtype: 'app-authTree'
-
+                xtype: Ext.getCmp('authTree_id')
             }
-        }).show(); break;}
+        }).show();
+          break;
+        }
     },
 
     roleAction: function(){

@@ -58,7 +58,7 @@ Ext.define('TutorialApp.view.authority.Authority', {
             displayInfo: true
         },{
             xtype : Ext.create('TutorialApp.view.authority.AuthorityTopToolbar',{//工具栏
-                url : '/role/toolbar'
+                url : '/toolbar'
             })
         }/*{
          xtype: 'app-orgTopToolbar',

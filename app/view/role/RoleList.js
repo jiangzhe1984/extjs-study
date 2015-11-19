@@ -59,7 +59,8 @@ Ext.define('TutorialApp.view.role.Role', {
             displayInfo: true
         },{
             xtype : Ext.create('TutorialApp.view.role.RoleTopToolbar',{//工具栏
-                url : '/role/toolbar'
+                url : '/toolbar',
+
             })
         }
             /*{

@@ -6,7 +6,7 @@ var store = Ext.create('Ext.data.TreeStore', {
     root: {
         text: '所有部门',
         id: 'all',
-        expanded: true
+        expanded: false
     }
 });
 
@@ -21,7 +21,7 @@ Ext.define('TutorialApp.view.tree.DeptTree', {
     width: 300,
     height: 700,
     store: store,
-    rootVisible: true,
+    rootVisible: false,
     renderTo: Ext.getBody(),
    // collapsible: true,
     dockedItems: [{
