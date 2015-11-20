@@ -27,6 +27,20 @@ Ext.define('Ext.ux.ComboBox', {
     }
 });
 
+
+
+var store = Ext.create('Ext.data.TreeStore', {
+    proxy: {
+        type: 'ajax',
+        url: '/org/orgTree'
+    },
+    root: {
+        text: '所有部门',
+        id: 'all',
+        expanded: false
+    }
+});
+
 Ext.define('TutorialApp.view.user.UserController', {
     extend: 'Ext.app.ViewController',
 
@@ -82,9 +96,120 @@ Ext.define('TutorialApp.view.user.UserController', {
                      emptyText: '请输入全名'
                 }, {
                     fieldLabel: '所属部门',
-                    name: 'org',
+                    id: 'addOrgName',
                     allowBlank: false,
-                    emptyText: '请输入所属部门'
+                    emptyText: '请输入所属部门',
+                    disabled:true
+
+                },{
+                    xtype: 'hiddenfield', //hiddenfield
+                    name: 'org',
+                    id: 'addOrg',
+                    value: ''
+                },{
+                    xtype: 'button',
+                    text: '查找部门',
+                    handler: function(){
+
+                        var toolbar = Ext.create('Ext.toolbar.Toolbar', {
+                            renderTo: document.body,
+                            width   : 500,
+                            items: [
+                                {
+                                    xtype    : 'textfield',
+                                    id       : 'search_userdeptTree',
+                                    emptyText: '快速检索'
+                                }, {
+                                    // xtype: 'button', // default for Toolbars
+                                    text: '查询',
+                                    iconCls : 'icon-search',
+                                    handler: function(){
+                                        var search_deptTree = Ext.getCmp('search_userdeptTree').getValue();
+                                        var deptTree = Ext.getCmp('userDeptTree_id');
+                                        var root = deptTree.getRootNode();
+
+                                        root.cascade(function(node){
+
+                                            if( node.get('text').indexOf('red') != -1){
+                                                node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
+                                            }
+
+                                            if(node.get('leaf') && node.get('text').indexOf(search_deptTree) >= 0){
+                                                node.set('text',"<font color=red>"+node.get('text')+"</font>");
+                                                node.parentNode.expand(true);
+                                                node.expand(true);
+                                            }
+
+                                        });
+                                    }
+
+                                }
+                            ]
+                        });
+
+
+                        Ext.create('Ext.tree.Panel',{
+                            id: 'userDeptTree_id',
+                            width: 200,
+                            height: 200,
+                            store: store,
+                            rootVisible: false,
+                            renderTo: Ext.getBody(),
+                            dockedItems: [{
+                                xtype: toolbar,
+                                dock: 'top'
+                            }],
+                            listeners:{
+                                scope:this,
+                                itemclick :  function (record, node) {
+
+                                    if(node.get('leaf')){
+                                        var deptName = node.get('text');
+                                        if( deptName.indexOf('red') != -1){
+                                            deptName = deptName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
+                                        }
+
+                                        Ext.getCmp('addOrg').setValue(node.getId());
+                                        Ext.getCmp('addOrgName').setValue(deptName);
+
+                                        Ext.getCmp('userDept_searchWindow').close();
+
+                                    }
+                                }
+                            }
+                        });
+
+                        Ext.create('Ext.window.Window', {
+                            id:'userDept_searchWindow',
+                            title: '查找部门',
+                            height: 600,
+                            width: 400,
+                            layout: 'fit',
+                            modal: true,//它背后的东西都会被遮罩
+                            items: {
+                                xtype: Ext.getCmp('userDeptTree_id')
+                            },
+                            listeners:{
+                                close : function(){
+                                    var deptTree = Ext.getCmp('userDeptTree_id');
+                                    var root = deptTree.getRootNode();
+
+                                    root.cascade(function(node){
+                                        if(node.getId() != 'all'){
+                                            node.collapse(true);
+                                            var text = node.get('text');
+                                            if(text.indexOf('red') != -1){
+
+                                                node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
+                                            }
+
+                                        }
+
+                                    });
+                                }
+                            }
+                        }).show();
+                    }
                 }, {
                     fieldLabel: '手机号',
                     name: 'mobile',
@@ -201,9 +326,118 @@ Ext.define('TutorialApp.view.user.UserController', {
                             bind: selection[0].get('fullName')
                         }, {
                             fieldLabel: '所属部门',
-                            name: 'org',
+                            id: 'editOrgName',
                             allowBlank: false,
-                            bind: selection[0].get('org')
+                            bind: selection[0].get('org'),
+                            disabled:true
+                        }, {
+                            xtype: 'hiddenfield', //hiddenfield
+                            name: 'org',
+                            id: 'editOrg',
+                            value: ''
+                        }, {
+                            xtype: 'button',
+                            text: '查找部门',
+                            handler: function(){
+
+                                var editToolbar = Ext.create('Ext.toolbar.Toolbar', {
+                                    renderTo: document.body,
+                                    width   : 500,
+                                    items: [
+                                        {
+                                            xtype    : 'textfield',
+                                            id       : 'search_editUserdeptTree',
+                                            emptyText: '快速检索'
+                                        }, {
+                                            // xtype: 'button', // default for Toolbars
+                                            text: '查询',
+                                            iconCls : 'icon-search',
+                                            handler: function(){
+                                                var search_editUserdeptTree = Ext.getCmp('search_editUserdeptTree').getValue();
+                                                var deptTree = Ext.getCmp('userDeptTreeEdit_id');
+                                                var root = deptTree.getRootNode();
+
+                                                root.cascade(function(node){
+
+                                                    if( node.get('text').indexOf('red') != -1){
+                                                        node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
+                                                    }
+
+                                                    if(node.get('leaf') && node.get('text').indexOf(search_editUserdeptTree) >= 0){
+                                                        node.set('text',"<font color=red>"+node.get('text')+"</font>");
+                                                        node.parentNode.expand(true);
+                                                        node.expand(true);
+                                                    }
+
+                                                });
+                                            }
+
+                                        }
+                                    ]
+                                });
+
+                                Ext.create('Ext.tree.Panel',{
+                                    id: 'userDeptTreeEdit_id',
+                                    width: 200,
+                                    height: 200,
+                                    store: store,
+                                    rootVisible: false,
+                                    renderTo: Ext.getBody(),
+                                    dockedItems: [{
+                                        xtype: editToolbar,
+                                        dock: 'top'
+                                    }],
+                                    listeners:{
+                                        scope:this,
+                                        itemclick :  function (record, node) {
+
+                                            if(node.get('leaf')){
+                                                var deptName = node.get('text');
+
+                                                if( deptName.indexOf('red') != -1){
+                                                    deptName = deptName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
+                                                }
+
+                                                Ext.getCmp('editOrg').setValue(node.getId());
+                                                Ext.getCmp('editOrgName').setValue(deptName);
+
+                                                Ext.getCmp('userDeptEdit_searchWindow').close();
+
+                                            }
+                                        }
+                                    }
+                                });
+
+                                Ext.create('Ext.window.Window', {
+                                    id:'userDeptEdit_searchWindow',
+                                    title: '查找部门',
+                                    height: 600,
+                                    width: 400,
+                                    layout: 'fit',
+                                    modal: true,//它背后的东西都会被遮罩
+                                    items: {
+                                        xtype: Ext.getCmp('userDeptTreeEdit_id')
+                                    },
+                                    listeners:{
+                                        close : function(){
+                                            var deptTree = Ext.getCmp('userDeptTreeEdit_id');
+                                            var root = deptTree.getRootNode();
+
+                                            root.cascade(function(node){
+                                                if(node.getId() != 'all'){
+                                                    node.collapse(true);
+                                                    var text = node.get('text');
+                                                    if(text.indexOf('red') != -1){
+
+                                                        node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
+                                                    }
+                                                }
+
+                                            });
+                                        }
+                                    }
+                                }).show();
+                            }
                         }, {
                             fieldLabel: '手机号',
                             name: 'mobile',
@@ -211,7 +445,8 @@ Ext.define('TutorialApp.view.user.UserController', {
                             bind: selection[0].get('mobile')
                         }, {
                             xtype: 'userMgrType',
-                            name: 'userMgrType'
+                            name: 'userMgrType',
+                            bind: selection[0].get('userMgrType')
                         }, {
                             xtype: 'datefield',
                             anchor: '100%',
@@ -219,7 +454,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                             name: 'expiredDate',
                             allowBlank: false,
                             emptyText: '请输入过期时间',
-                            bind: selection[0].get('expiredDate')
+                            value: selection[0].get('expiredDate')
                         }, {
                             fieldLabel: '描述',
                             name: 'description',
@@ -280,7 +515,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                 message = ' 『' + selection[0].get('username') + '』 吗?';
 
         else if(selection.length == 0){
-            Ext.Msg.alert('message','请选择部门!');
+            Ext.Msg.alert('message','请选择用户!');
         }else { // 选择了多条记录
             message = '<ol>';
             Ext.Array.each(grid.getSelectionModel().getSelection(), function(record) {
