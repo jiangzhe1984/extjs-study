@@ -1,3 +1,15 @@
+var store = Ext.create('Ext.data.TreeStore', {
+    proxy: {
+        type: 'ajax',
+        url: '/menu/loadTree'
+    },
+    root: {
+        text: '所有菜单',
+        id: 'all',
+        expanded: false
+    }
+});
+
 
 Ext.define('TutorialApp.view.authority.AuthorityController', {
     extend: 'Ext.app.ViewController',
@@ -110,17 +122,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                             ]
                         });
 
-                        var store = Ext.create('Ext.data.TreeStore', {
-                            proxy: {
-                                type: 'ajax',
-                                url: '/menu/loadTree'
-                            },
-                            root: {
-                                text: '所有菜单',
-                                id: 'all',
-                                expanded: false
-                            }
-                        });
+
 
 
                         Ext.create('Ext.tree.Panel',{
@@ -287,6 +289,124 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                             inputType: 'description',
                             allowBlank: false,
                             bind: selection[0].get('description')
+                        },{
+                            fieldLabel: '所属菜单',
+                            id: 'editMenuName',
+                            allowBlank: false,
+                            emptyText: '请选择所属菜单',
+                            disabled:true
+
+                        },{
+                            xtype: 'hiddenfield',
+                            name: 'menu',
+                            id: 'editMenu',
+                            value: ''
+                        },{
+                            xtype: 'button',
+                            text: '查找菜单',
+                            handler: function(){
+
+                                var editToolbar = Ext.create('Ext.toolbar.Toolbar', {
+                                    renderTo: document.body,
+                                    width   : 500,
+                                    items: [
+                                        {
+                                            xtype    : 'textfield',
+                                            id       : 'search_menuTree',
+                                            emptyText: '快速检索'
+                                        }, {
+                                            // xtype: 'button', // default for Toolbars
+                                            text: '查询',
+                                            iconCls : 'icon-search',
+                                            handler: function(){
+                                                var searchEdit_menuTree = Ext.getCmp('searchEdit_menuTree').getValue();
+                                                var menuTree = Ext.getCmp('menuTreeEdit_id');
+                                                var root = menuTree.getRootNode();
+
+                                                root.cascade(function(node){
+
+                                                    if( node.get('text').indexOf('red') != -1){
+                                                        node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
+                                                    }
+
+                                                    if(node.get('leaf') && node.get('text').indexOf(searchEdit_menuTree) >= 0){
+                                                        node.set('text',"<font color=red>"+node.get('text')+"</font>");
+                                                        node.parentNode.expand(true);
+                                                        node.expand(true);
+                                                    }
+
+                                                });
+                                            }
+
+                                        }
+                                    ]
+                                });
+
+
+
+
+                                Ext.create('Ext.tree.Panel',{
+                                    id: 'menuTreeEdit_id',
+                                    width: 200,
+                                    height: 200,
+                                    store: store,
+                                    rootVisible: false,
+                                    renderTo: Ext.getBody(),
+                                    dockedItems: [{
+                                        xtype: editToolbar,
+                                        dock: 'top'
+                                    }],
+                                    listeners:{
+                                        scope:this,
+                                        itemclick :  function (record, node) {
+
+                                            if(node.get('leaf')){
+                                                var menuName = node.get('text');
+                                                if( menuName.indexOf('red') != -1){
+                                                    menuName = menuName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
+                                                }
+
+                                                Ext.getCmp('editMenu').setValue(node.getId());
+                                                Ext.getCmp('editMenuName').setValue(menuName);
+
+                                                Ext.getCmp('menuEdit_searchWindow').close();
+
+                                            }
+                                        }
+                                    }
+                                });
+
+                                Ext.create('Ext.window.Window', {
+                                    id:'menuEdit_searchWindow',
+                                    title: '查找菜单',
+                                    height: 600,
+                                    width: 400,
+                                    layout: 'fit',
+                                    modal: true,//它背后的东西都会被遮罩
+                                    items: {
+                                        xtype: Ext.getCmp('menuTreeEdit_id')
+                                    },
+                                    listeners:{
+                                        close : function(){
+                                            var menuTree = Ext.getCmp('menuTreeEdit_id');
+                                            var root = menuTree.getRootNode();
+
+                                            root.cascade(function(node){
+                                                if(node.getId() != 'all'){
+                                                    node.collapse(true);
+                                                    var text = node.get('text');
+                                                    if(text.indexOf('red') != -1){
+
+                                                        node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
+                                                    }
+
+                                                }
+
+                                            });
+                                        }
+                                    }
+                                }).show();
+                            }
                         }],
                         buttons: [{
                             xtype: 'tbtext',
@@ -304,7 +424,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                                 if (form.isValid()) {
                                     Ext.Ajax.request({
                                         url:'/authority/update',
-                                        params: {'id':selection[0].getId(),'authorityname':formValues["authorityname"],authoritytype: formValues["authoritytype"],displayref: formValues["displayref"],'description':formValues["description"]},
+                                        params: {'id':selection[0].getId(),'authorityname':formValues["authorityname"],authoritytype: formValues["authoritytype"],displayref: formValues["displayref"],'description':formValues["description"],'menu':formValues["menu"]},
                                         // async: false,
                                         method: 'post',
                                         success: function(response){
