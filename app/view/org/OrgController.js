@@ -108,9 +108,11 @@ Ext.define('TutorialApp.view.org.OrgController', {
         var grid = Ext.getCmp('org_list');
 
         var selection = grid.getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择部门!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择部门!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
                 Ext.create('Ext.window.Window', {
                     id: 'orgUpdateForm',
 
@@ -208,7 +210,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                         }]
                     }
                 });
-                break;
+
         }
 
     },
@@ -268,9 +270,11 @@ Ext.define('TutorialApp.view.org.OrgController', {
     viewOrgRecord: function(){
         var grid = Ext.getCmp('org_list'), selection = grid
             .getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择部门!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择部门!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
                 //创建panel
                 var panel = new Ext.Panel({
                     width: 200,
@@ -314,7 +318,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                     //html: '<table><tr><td>部门名称</td><td>'+selection[0].get('orgName') +'</td></tr><tr><td>部门编号</td><td>'+selection[0].get('orgNum') +'</td></tr><tr><td>部门管理员</td><td>'+selection[0].get('manager') +'</td></tr><tr><td>父部门</td><td>'+selection[0].get('parentOrg') +'</td></tr><tr><td>描述</td><td>'+selection[0].get('description') +'</td></tr></table>'
 
                 }
-            }).show(); break;
+            }).show();
         }
 
     },

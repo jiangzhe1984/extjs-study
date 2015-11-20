@@ -2,8 +2,8 @@
 var states = Ext.create('Ext.data.Store', {
     fields: ['userMgrType', 'name'],
     data : [
-        {"userMgrType":"1400", "name":"超级管理员"},
-        {"userMgrType":"1401", "name":"普通管理员"},
+       // {"userMgrType":"1400", "name":"超级管理员"},
+        {"userMgrType":"1401", "name":"系统管理员"},
         {"userMgrType":"1402", "name":"普通用户"}
     ]
 });
@@ -127,10 +127,9 @@ Ext.define('TutorialApp.view.user.UserController', {
                                 method: 'post',
                                 success: function(response){
                                     var result = Ext.decode(response.responseText);
-                                    if(result.id != null){
+                                    if(result.state == 'success'){
                                         saveForm.close();
-                                        var current = grid.store.currentPage;
-                                        grid.store.loadPage(current);
+                                        grid.getStore().load();
                                     }else{
                                         Ext.Msg.alert('出错了');
                                     }
@@ -150,9 +149,11 @@ Ext.define('TutorialApp.view.user.UserController', {
         var grid = Ext.getCmp('user_list');
 
         var selection = grid.getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择用户!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择用户!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
                 Ext.create('Ext.window.Window', {
                     id: 'userUpdateForm',
 
@@ -236,14 +237,14 @@ Ext.define('TutorialApp.view.user.UserController', {
                             text: '修改',
                             handler: function(){
 
-                                var updateForm = Ext.getCmp('orgUpdateForm');
+                                var updateForm = Ext.getCmp('userUpdateForm');
                                 var form = this.up('form').getForm();
                                 var formValues = form.getValues();
 
                                 if (form.isValid()) {
                                     Ext.Ajax.request({
                                         url:'/user/update',
-                                        params: {'id':selection[0].getId(),'orgName':formValues["orgName"],orgNum: formValues["orgNum"],manager: formValues["manager"],parentOrg: formValues["parentOrg"],'description':formValues["description"]},
+                                        params: {'id':selection[0].getId(),'username':formValues["username"],password: formValues["password"],expiredDate: formValues["expiredDate"],fullName: formValues["fullName"],mobile: formValues["mobile"],userMgrType: formValues["userMgrType"],org: formValues["org"],'description':formValues["description"]},
                                         // async: false,
                                         method: 'post',
                                         success: function(response){
@@ -264,7 +265,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                         }]
                     }
                 });
-                break;
+
         }
 
     },
@@ -324,9 +325,11 @@ Ext.define('TutorialApp.view.user.UserController', {
     viewUserRecord: function(){
         var grid = Ext.getCmp('user_list'), selection = grid
             .getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择用户!'); break;
-            default: Ext.create('Ext.window.Window', {
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择用户!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{ Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
                 width: 400,
@@ -336,7 +339,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                     html: '<table><tr><td>用户名</td><td>'+selection[0].get('username') +'</td></tr><tr><td>密码</td><td>'+selection[0].get('password') +'</td></tr><tr><td>全名</td><td>'+selection[0].get('fullName') +'</td></tr><tr><td>所属部门</td><td>'+selection[0].get('org') +'</td></tr><tr><td>过期时间</td><td>'+selection[0].get('expiredDate') +'</td></tr><tr><td>手机号</td><td>'+selection[0].get('mobile') +'</td></tr></table>'
 
                 }
-            }).show(); break;
+            }).show();
         }
 
     },

@@ -101,9 +101,11 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
         var grid = Ext.getCmp('authority_list');
 
         var selection = grid.getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择权限!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择权限!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
                 Ext.create('Ext.window.Window', {
                     id: 'authorityUpdateForm',
 
@@ -195,7 +197,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                         }]
                     }
                 });
-                break;
+
         }
 
     },
@@ -255,9 +257,12 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
     viewAuthorityRecord: function(){
         var grid = Ext.getCmp('authority_list'), selection = grid
             .getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择权限!'); break;
-            default: Ext.create('Ext.window.Window', {
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择权限!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
+              Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
                 width: 400,
@@ -267,7 +272,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                     html: '<table><tr><td>权限名称</td><td>'+selection[0].get('authorityname') +'</td></tr><tr><td>显示名称</td><td>'+selection[0].get('displayref') +'</td></tr><tr><tr><td>权限类型</td><td>'+selection[0].get('authoritytype') +'</td></tr><tr><td>描述</td><td>'+selection[0].get('description') +'</td></tr></table>'
 
                 }
-            }).show(); break;
+            }).show();
         }
 
     },

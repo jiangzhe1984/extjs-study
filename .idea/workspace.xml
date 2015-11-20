@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e4900631-2fe9-40df-9754-817d6b7b9bce" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/authority/AuthorityList.js" afterPath="$PROJECT_DIR$/app/view/authority/AuthorityList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/org/OrgList.js" afterPath="$PROJECT_DIR$/app/view/org/OrgList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/authority/AuthorityController.js" afterPath="$PROJECT_DIR$/app/view/authority/AuthorityController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/authority/AuthorityTopToolbar.js" afterPath="$PROJECT_DIR$/app/view/authority/AuthorityTopToolbar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/org/OrgController.js" afterPath="$PROJECT_DIR$/app/view/org/OrgController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/role/RoleController.js" afterPath="$PROJECT_DIR$/app/view/role/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/role/RoleList.js" afterPath="$PROJECT_DIR$/app/view/role/RoleList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/tree/DeptRole.js" afterPath="$PROJECT_DIR$/app/view/tree/DeptRole.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/user/UserList.js" afterPath="$PROJECT_DIR$/app/view/user/UserList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/data/AuthTree.json" afterPath="$PROJECT_DIR$/resources/data/AuthTree.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/data/DeptTree.json" afterPath="$PROJECT_DIR$/resources/data/DeptTree.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/user/UserController.js" afterPath="$PROJECT_DIR$/app/view/user/UserController.js" />
     </list>
     <ignored path="myApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,15 +74,15 @@
       <file leaf-file-name="RoleController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/view/role/RoleController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.2977303">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.024032043">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding>
-                <marker date="1447926198152" expanded="true" signature="1436:1447" placeholder="..." />
-                <marker date="1447926198152" expanded="true" signature="1481:1505" placeholder="..." />
-                <marker date="1447926198152" expanded="true" signature="1588:1599" placeholder="..." />
-                <marker date="1447926198152" expanded="true" signature="1655:1686" placeholder="..." />
-                <marker date="1447926198152" expanded="true" signature="1817:1840" placeholder="..." />
-                <marker date="1447926198152" expanded="true" signature="1922:1933" placeholder="..." />
+                <marker date="1448004327206" expanded="true" signature="1824:1835" placeholder="..." />
+                <marker date="1448004327206" expanded="true" signature="1869:1893" placeholder="..." />
+                <marker date="1448004327206" expanded="true" signature="1976:1987" placeholder="..." />
+                <marker date="1448004327206" expanded="true" signature="2043:2074" placeholder="..." />
+                <marker date="1448004327206" expanded="true" signature="2205:2228" placeholder="..." />
+                <marker date="1448004327206" expanded="true" signature="2310:2321" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -182,6 +180,7 @@
         <option value="$PROJECT_DIR$/app/model/Personnel.js" />
         <option value="$PROJECT_DIR$/app/view/personnel/PersonnelList.js" />
         <option value="$PROJECT_DIR$/app/store/Personnel.js" />
+        <option value="$PROJECT_DIR$/app/view/role/RoleController.js" />
       </list>
     </option>
   </component>
@@ -221,8 +220,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -669,7 +668,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447847332225</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="20151118">
+      <created>1447930168271</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1447930168271</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -790,7 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,7 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,15 +1125,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/role/RoleController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2977303">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.024032043">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <marker date="1447926198152" expanded="true" signature="1436:1447" placeholder="..." />
-            <marker date="1447926198152" expanded="true" signature="1481:1505" placeholder="..." />
-            <marker date="1447926198152" expanded="true" signature="1588:1599" placeholder="..." />
-            <marker date="1447926198152" expanded="true" signature="1655:1686" placeholder="..." />
-            <marker date="1447926198152" expanded="true" signature="1817:1840" placeholder="..." />
-            <marker date="1447926198152" expanded="true" signature="1922:1933" placeholder="..." />
+            <marker date="1448004327206" expanded="true" signature="1824:1835" placeholder="..." />
+            <marker date="1448004327206" expanded="true" signature="1869:1893" placeholder="..." />
+            <marker date="1448004327206" expanded="true" signature="1976:1987" placeholder="..." />
+            <marker date="1448004327206" expanded="true" signature="2043:2074" placeholder="..." />
+            <marker date="1448004327206" expanded="true" signature="2205:2228" placeholder="..." />
+            <marker date="1448004327206" expanded="true" signature="2310:2321" placeholder="..." />
           </folding>
         </state>
       </provider>

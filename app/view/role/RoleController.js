@@ -1,4 +1,9 @@
+
+
 function Addsel(){
+    var grid = Ext.getCmp('role_list');
+    var selection = grid.getSelectionModel().getSelection();
+
     var a=document.getElementById("sel1");
     if(a.selectedIndex<0){
         Ext.Msg.alert("message","请选择人员");
@@ -8,12 +13,16 @@ function Addsel(){
     var removeCount = 0;
     for(var i=0;i<a.length;i++){
         if(a.options[i-removeCount].selected){
+
+            userRoleRelation(true,selection[0].getId(),a.options[i-removeCount].value);
+
             var pOption = document.createElement("OPTION");
             document.sel.res.options.add(pOption);
             pOption.innerText =a.options[i-removeCount].text;
             pOption.value ==a.options[i-removeCount].value;
             a.options.remove(i-removeCount);
             removeCount++;
+
         }
 
     }
@@ -26,6 +35,9 @@ function Addsel(){
 
 function Delsel(){
 
+    var grid = Ext.getCmp('role_list');
+    var selection = grid.getSelectionModel().getSelection();
+
     var b=document.getElementById("sel2");
     if(b.selectedIndex<0){
         Ext.Msg.alert("message","请选择人员");
@@ -36,6 +48,9 @@ function Delsel(){
 
     for(var i=0;i<b.length;i++){
         if(b.options[i-removeCount].selected){
+
+            userRoleRelation(false,selection[0].getId(),b.options[i-removeCount].value);
+
             var pOption = document.createElement("OPTION");
             document.sel.res1.options.add(pOption);
             pOption.innerText =b.options[i-removeCount].text;
@@ -58,6 +73,25 @@ htmlValue += "<div style=\"float: left;padding-top: 100px;\"><a href=\"JavaScrip
 htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
 htmlValue += "<select name=\"res\" id=sel2 size=30 style=\"width:200px\"  multiple>";
 htmlValue += "</select></div></form></div></div>";
+
+
+function userRoleRelation(isAdd,roleId,aclUserId){
+    Ext.Ajax.request({
+        url:'/roleUser/relation',
+        params: {'isAdd':isAdd,'roleId':roleId,'aclUserId':aclUserId},
+        // async: false,
+        method: 'post',
+        success: function(response, opts){
+            var obj = Ext.decode(response.responseText);
+            if(obj.state == 'success'){
+
+            }else{
+                Ext.Msg.alert('出错了');
+            }
+
+        }
+    });
+}
 
 function relation(checked,roleId,authorityId){
     Ext.Ajax.request({
@@ -174,9 +208,11 @@ Ext.define('TutorialApp.view.role.RoleController', {
         var grid = Ext.getCmp('role_list');
 
         var selection = grid.getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择角色!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择角色!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
                 Ext.create('Ext.window.Window', {
                     id: 'roleUpdateForm',
 
@@ -262,7 +298,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                         }]
                     }
                 });
-                break;
+
         }
 
     },
@@ -322,9 +358,11 @@ Ext.define('TutorialApp.view.role.RoleController', {
     viewRoleRecord: function(){
         var grid = Ext.getCmp('role_list'), selection = grid
             .getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择角色!'); break;
-            default: Ext.create('Ext.window.Window', {
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择角色!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{ Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
                 width: 400,
@@ -334,7 +372,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                     html: '<table><tr><td>角色名称</td><td>'+selection[0].get('name') +'</td></tr><tr><td>显示名称</td><td>'+selection[0].get('displayref') +'</td></tr><tr><td>描述</td><td>'+selection[0].get('description') +'</td></tr></table>'
 
                 }
-            }).show(); break;
+            }).show();
         }
 
     },
@@ -343,15 +381,18 @@ Ext.define('TutorialApp.view.role.RoleController', {
         var grid = Ext.getCmp('role_list');
         var selection = grid.getSelectionModel().getSelection();
 
-        switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择角色!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择角色!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
+
       /* authTreeId.store.proxy = new Ext.data.proxy.Proxy({ type: 'ajax',url:authUrl});*/
 
                 var store = Ext.create('Ext.data.TreeStore', {
                     proxy: {
                         type: 'ajax',
-                        url: '/authority/authTreeForRole?role='+selection[0].getId()
+                        url: '/role/authTreeForRole?role='+selection[0].getId()
                     },
                     root: {
                         text: 'All',
@@ -416,7 +457,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                 xtype: Ext.getCmp('authTree_id')
             }
         }).show();
-          break;
+
         }
     },
 
@@ -424,9 +465,11 @@ Ext.define('TutorialApp.view.role.RoleController', {
         var grid = Ext.getCmp('role_list');
 
         var selection = grid.getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0: Ext.Msg.alert('message','请选择角色!'); break;
-            default:
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择角色!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{
         Ext.create('Ext.window.Window', {
             title: '分配角色',
             height: 700,
@@ -467,7 +510,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                     });
                 }
             }
-        }).show();break;}
+        }).show();}
     },
 
     searchRole: function(){
