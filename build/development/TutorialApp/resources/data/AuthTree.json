@@ -1,145 +1,88 @@
 [
   {
-    text: 'Panels',
-    id: 'panels',
+    id: 1,
+    text: '系统设置',
     isParent:true,
     expanded: false,
     checked: false,
     children: [
       {
-        id: 'basic-panels',
-        text: 'Basic Panel',
-        leaf: true,
-        checked: false
+        id: '系统设置1',
+        text: '部门管理',
+        leaf: false,
+        checked: false,
+        children: [
+          {
+            id: '部门管理1',
+            text: '列表',
+            leaf: true,
+            checked: false
+          },
+          {
+            id: '部门管理2',
+            text: '保存',
+            leaf: true,
+            checked: false
+          },
+          {
+            id: '部门管理3',
+            text: '删除',
+            leaf: true,
+            checked: false
+          }
+        ]
       },
       {
-        id: 'framed-panels',
-        text: 'Framed Panel',
-        leaf: true,
-        checked: false
+        id: 3,
+        text: '人员管理',
+        leaf: false,
+        checked: false,
+        children: [
+          {
+            id: '人员管理1',
+            text: '列表',
+            leaf: true,
+            checked: false
+          },
+          {
+            id: '人员管理2',
+            text: '保存',
+            leaf: true,
+            checked: false
+          },
+          {
+            id: '人员管理3',
+            text: '删除',
+            leaf: true,
+            checked: false
+          }
+        ]
       },
       {
-        id: 'panel-header-position',
-        text: 'Header Positioning',
-        leaf: true,
-        checked: false
-      }
-    ]
-  },
-  {
-    text: 'Grids',
-    id: 'grids',
-    expanded: false,
-    isParent:true,
-    checked: false,
-    children: [
-      {
-        id: 'array-grid',
-        text: 'Array Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'grouped-grid',
-        text: 'Grouped Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'locking-grid',
-        text: 'Locking Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'grouped-header-grid',
-        text: 'Grouped Header Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'multi-sort-grid',
-        text: 'Multiple Sort Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'progress-bar-pager',
-        text: 'Progress Bar Pager',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'sliding-pager',
-        text: 'Sliding Pager',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'xml-grid',
-        text: 'XML Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'paging-grid',
-        text: 'Paging',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'grid-plugins',
-        text: 'Grid Plugins',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'grid-filtering',
-        text: 'Grid Filtering',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'reconfigure-grid',
-        text: 'Reconfigure Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'property-grid',
-        text: 'Property Grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'cell-editing',
-        text: 'Cell Editing',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'row-expander-grid',
-        text: 'Row Expander',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'big-data-grid',
-        text: 'Big Data',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'widget-grid',
-        text: 'Widget grid',
-        leaf: true,
-        checked: false
-      },
-      {
-        id: 'customer-grid',
-        text: 'Customer/Order grid',
-        leaf: true,
-        checked: false
+        id: 4,
+        text: '角色管理',
+        leaf: false,
+        checked: false,
+        children: [
+          {
+            id: '角色管理1',
+            text: '列表',
+            leaf: true,
+            checked: false
+          },
+          {
+            id: '角色管理2',
+            text: '保存',
+            leaf: true,
+            checked: false
+          },
+          {
+            id: '角色管理3',
+            text: '删除',
+            leaf: true,
+            checked: false
+          }
+        ]
       }
     ]
   }

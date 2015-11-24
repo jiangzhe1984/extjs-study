@@ -1,0 +1,11 @@
+{"total":5,
+  "success":true,
+  "items":
+  [
+    {"id":1,"text":"系统设置","expanded":false,"leaf":false,"parentMenu":"","url":"","children":null,"parent":true},
+    {"id":2,"text":"部门管理","expanded":false,"leaf":true,"parentMenu":"系统设置","url":"orglist","children":null,"parent":false},
+    {"id":3,"text":"人员管理","expanded":false,"leaf":true,"parentMenu":"系统设置","url":"userlist","children":null,"parent":false},
+    {"id":4,"text":"角色管理","expanded":false,"leaf":true,"parentMenu":"系统设置","url":"rolelist","children":null,"parent":false},
+    {"id":5,"text":"权限资源管理","expanded":false,"leaf":true,"parentMenu":"系统设置","url":"authoritylist","children":null,"parent":false}
+  ]
+}

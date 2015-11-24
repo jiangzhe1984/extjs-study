@@ -1,14 +1,14 @@
 /**
- * 部门列表
+ * 菜单列表
  */
 
-Ext.define('TutorialApp.view.org.Org', {
+Ext.define('TutorialApp.view.menu.Menu', {
     extend: 'Ext.grid.Panel',
-    xtype: 'orglist',
-    id: 'org_list',
+    xtype: 'menulist',
+    id: 'menu_list',
     requires: [
-        'TutorialApp.store.Org',
-        'TutorialApp.view.org.OrgTopToolbar'
+        'TutorialApp.store.Menu',
+        'TutorialApp.view.menu.MenuTopToolbar'
     ],
 
     columnLines: true,
@@ -26,34 +26,29 @@ Ext.define('TutorialApp.view.org.Org', {
 
     initComponent:function(){
         var me = this;
-        var store = Ext.create('TutorialApp.store.Org');//创建store实例
+        var store = Ext.create('TutorialApp.store.Menu');//创建store实例
         this.store = store;
         me.columns = [
             {
-                text: '部门名称',
+                text: '菜单名称',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'orgName'
+                dataIndex: 'text'
+            }/*,  {
+                text: '是否是父菜单',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'parent'
+            }*/,  {
+                text: '功能模块地址',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'url'
             }, {
-                text: '部门编号',
+                text: '父菜单',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'orgNum'
-            }, /*{
-                text: '部门管理员',
-                flex: 1,
-                align: 'center',
-                dataIndex: 'manager'
-            },*/ {
-                text: '父部门',
-                flex: 1,
-                align: 'center',
-                dataIndex: 'parentOrg'
-            }, {
-                text: '描述',
-                flex: 1,
-                align: 'center',
-                dataIndex: 'description'
+                dataIndex: 'parentMenu'
             }
         ];
         me.dockedItems = [{
@@ -62,13 +57,13 @@ Ext.define('TutorialApp.view.org.Org', {
             store:store,
             displayInfo: true
         },{
-            xtype : Ext.create('TutorialApp.view.org.OrgTopToolbar',{//工具栏
+            xtype : Ext.create('TutorialApp.view.menu.MenuTopToolbar',{//工具栏
                 url : '/toolbar'
             })
         }/*{
-            xtype: 'app-orgTopToolbar',
-            dock: 'top'
-        }*/];
+         xtype: 'app-orgTopToolbar',
+         dock: 'top'
+         }*/];
         me.callParent();
     }
 });

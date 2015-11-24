@@ -1,13 +1,13 @@
 /**
- * 权限资源Store
+ * 菜单Store
  */
 var itemsPerPage = 10;
-Ext.define('TutorialApp.store.Authority', {
+Ext.define('TutorialApp.store.Menu', {
     extend: 'Ext.data.Store',
 
-    alias: 'store.authority', //设置store别名
+    alias: 'store.menu', //设置store别名
 
-    model: 'TutorialApp.model.Authority',
+    model: 'TutorialApp.model.Menu',
 
     autoLoad: true,
 
@@ -15,8 +15,8 @@ Ext.define('TutorialApp.store.Authority', {
 
     proxy: {
         type: 'ajax',//跨域交互的代理JsonP
-        // url: 'resources/data/Authority.json',
-        url: '/authority/list',
+        // url: 'resources/data/Menu.json',
+        url: '/menu/list',
         reader: {
             type: 'json',
             successProperty: 'success',

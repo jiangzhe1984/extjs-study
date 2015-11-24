@@ -1,7 +1,7 @@
-Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
+Ext.define('TutorialApp.view.menu.MenuTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
-    xtype: 'app-authorityTopToolbar',
-    controller: 'authorityc',
+    xtype: 'app-menuToolbar',
+    controller: 'menuc',
     renderTo: document.body,
     width   : 500,
     listeners : {
@@ -14,12 +14,12 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                     var result = Ext.decode(response.responseText);
 
                     Ext.each(result, function(authority){
-                        if(authority == 'AUTHORITY_SAVE'){
+                        if(authority == 'MENU_SAVE'){
                             var add = new Object();
                             add.text = "新增";
                             add.iconCls = "icon-plus-sign-alt";
                             var addListener = new Object();
-                            addListener.click = "addAuthorityRecord";
+                            addListener.click = "addMenuRecord";
                             add.listeners = addListener;
                             view.add(add);
 
@@ -27,18 +27,18 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                             update.text = "修改";
                             update.iconCls = "icon-edit";
                             var updateListener = new Object();
-                            updateListener.click = "editAuthorityRecord";
+                            updateListener.click = "editMenuRecord";
                             update.listeners = updateListener;
                             view.add(update);
 
                         }
 
-                        if(authority == 'AUTHORITY_DELETE'){
+                        if(authority == 'MENU_DELETE'){
                             var del = new Object();
                             del.text = "删除";
                             del.iconCls = "icon-remove";
                             var delListener = new Object();
-                            delListener.click = "removeAuthorityRecord";
+                            delListener.click = "removeMenuRecord";
                             del.listeners = delListener;
                             view.add(del);
                         }
@@ -49,7 +49,7 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                     viewRole.text = "显示";
                     viewRole.iconCls = "icon-eye-open";
                     var viewListener = new Object();
-                    viewListener.click = "viewAuthorityRecord";
+                    viewListener.click = "viewMenuRecord";
                     viewRole.listeners = viewListener;
                     view.add(viewRole);
 
@@ -58,7 +58,7 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
 
                     var searchText = new Object();
                     searchText.xtype = "textfield";
-                    searchText.id = "search_authority_name";
+                    searchText.id = "search_menu_name";
                     searchText.emptyText = "快速检索";
 
                     view.add(searchText);
@@ -68,7 +68,7 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                     searchButton.text = "查询";
                     searchButton.iconCls = "icon-search";
                     var searchListener = new Object();
-                    searchListener.click = "searchAuthority";
+                    searchListener.click = "searchMenu";
                     searchButton.listeners = searchListener;
                     view.add(searchButton);
                 }

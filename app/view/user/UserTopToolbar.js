@@ -45,6 +45,7 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
 
                     });
 
+
                     var viewRole = new Object();
                     viewRole.text = "显示";
                     viewRole.iconCls = "icon-eye-open";

@@ -334,7 +334,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                             xtype: 'hiddenfield', //hiddenfield
                             name: 'org',
                             id: 'editOrg',
-                            value: ''
+                            value: selection[0].get('orgId')
                         }, {
                             xtype: 'button',
                             text: '查找部门',

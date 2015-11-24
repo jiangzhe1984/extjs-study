@@ -48,6 +48,12 @@
         text: '角色管理',
         leaf: true,
         url:'rolelist'
+      },
+      {
+        id: 'menu',
+        text: '菜单管理',
+        leaf: true,
+        url:'menulist'
       }
     ]
   }
