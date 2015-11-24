@@ -12,13 +12,14 @@ var states = Ext.create('Ext.data.Store', {
 // Create the combo box, attached to the states data store
 Ext.define('Ext.ux.ComboBox', {
     extend:'Ext.form.ComboBox',
+    id:'userMgrTypeCB',
     alias: 'widget.userMgrType',
     fieldLabel: '用户类型',
     store: states,
     queryMode: 'local',
     displayField: 'name',
     valueField: 'userMgrType',
-
+    emptyText : '请选择',  //提示信息
     listeners:{
         //scope: yourScope,
         'select': function(obj){
@@ -39,6 +40,18 @@ var store = Ext.create('Ext.data.TreeStore', {
         id: 'all',
         expanded: false
     }
+});
+
+Ext.define('Override.form.field.VTypes', {
+    override: 'Ext.form.field.VTypes',
+
+    // vtype validation function
+    mobile: function(value) {
+        return this.mobileRe.test(value);
+    },
+    // RegExp for the value to be tested against within the validation function
+    mobileRe: /^1\d{10}$/i,
+    mobileText: '请输入手机号'
 });
 
 Ext.define('TutorialApp.view.user.UserController', {
@@ -214,7 +227,8 @@ Ext.define('TutorialApp.view.user.UserController', {
                     fieldLabel: '手机号',
                     name: 'mobile',
                     allowBlank: false,
-                    emptyText: '请输入手机号'
+                    emptyText: '请输入手机号',
+                    vtype: 'mobile'
                 }, {
                     xtype: 'userMgrType',
                     name: 'userMgrType'
@@ -442,11 +456,18 @@ Ext.define('TutorialApp.view.user.UserController', {
                             fieldLabel: '手机号',
                             name: 'mobile',
                             allowBlank: false,
-                            bind: selection[0].get('mobile')
+                            bind: selection[0].get('mobile'),
+                            vtype: 'mobile'
                         }, {
                             xtype: 'userMgrType',
                             name: 'userMgrType',
-                            bind: selection[0].get('userMgrType')
+                            listeners:{
+                                beforerender:function(){
+                                  Ext.getCmp('userMgrTypeCB').setValue(selection[0].get('userMgrType')); //设置 combo 值（显示值）
+                                  //  combo.clearValue();                 //清除 combo 值
+
+                                }
+                            }
                         }, {
                             xtype: 'datefield',
                             anchor: '100%',
@@ -454,7 +475,9 @@ Ext.define('TutorialApp.view.user.UserController', {
                             name: 'expiredDate',
                             allowBlank: false,
                             emptyText: '请输入过期时间',
-                            value: selection[0].get('expiredDate')
+                            format: 'm/d/Y',
+                            //value: selection[0].get('expiredDate')
+                            value:selection[0].get('expiredDate').split(" ")[0]
                         }, {
                             fieldLabel: '描述',
                             name: 'description',

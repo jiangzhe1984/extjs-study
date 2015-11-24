@@ -59,7 +59,7 @@ Ext.define('TutorialApp.view.org.OrgTopToolbar', {
                     var searchText = new Object();
                     searchText.xtype = "textfield";
                     searchText.id = "search_org_name";
-                    searchText.emptyText = "快速检索";
+                    searchText.emptyText = "部门名称";
 
                     view.add(searchText);
 

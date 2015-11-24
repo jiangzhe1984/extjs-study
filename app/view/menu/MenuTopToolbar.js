@@ -59,7 +59,7 @@ Ext.define('TutorialApp.view.menu.MenuTopToolbar', {
                     var searchText = new Object();
                     searchText.xtype = "textfield";
                     searchText.id = "search_menu_name";
-                    searchText.emptyText = "快速检索";
+                    searchText.emptyText = "菜单名称";
 
                     view.add(searchText);
 

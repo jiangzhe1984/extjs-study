@@ -59,7 +59,7 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                     var searchText = new Object();
                     searchText.xtype = "textfield";
                     searchText.id = "search_authority_name";
-                    searchText.emptyText = "快速检索";
+                    searchText.emptyText = "权限名称";
 
                     view.add(searchText);
 
