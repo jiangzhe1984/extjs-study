@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -26,9 +22,9 @@
             </p>-->
             <p class="submit"><input type="submit" name="commit" value="登录"/></p>
         </form>
+        <font color="red" th:if="${session.SPRING_SECURITY_LAST_EXCEPTION != null}"  th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></font>
     </div>
-
 </section>
-<!--${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}-->
+
 </body>
 </html>
