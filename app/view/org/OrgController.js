@@ -53,11 +53,17 @@ Ext.define('TutorialApp.view.org.OrgController', {
                     name: 'orgName',
                     itemId: 'orgName',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入部门名称'
                 }, {
                     fieldLabel: '部门编号',
                     name: 'orgNum',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入部门编号'
                 }, /*{
                     fieldLabel: '部门管理员',
@@ -67,6 +73,9 @@ Ext.define('TutorialApp.view.org.OrgController', {
                 },*/ {
                     fieldLabel: '父部门',
                     id: 'addParentOrgName',
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     disabled:true
                 },{
                     xtype: 'hiddenfield', //hiddenfield
@@ -180,7 +189,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                 }, {
                     fieldLabel: '描述',
                     name: 'description',
-                    allowBlank: false,
+                    //allowBlank: false,
                     emptyText: '请输入描述'
                 }
                 ],
@@ -265,12 +274,18 @@ Ext.define('TutorialApp.view.org.OrgController', {
                             name: 'orgName',
                             itemId: 'orgName',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             bind: selection[0].get('orgName')
                         }, {
                             fieldLabel: '部门编号',
                             name: 'orgNum',
                             inputType: 'orgNum',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             bind: selection[0].get('orgNum')
                         }, /*{
                             fieldLabel: '部门管理员',
@@ -283,6 +298,9 @@ Ext.define('TutorialApp.view.org.OrgController', {
                             id: 'editParentOrgName',
                             inputType: 'parentOrg',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             disabled:true,
                             bind: selection[0].get('parentOrg')
                         },{
@@ -398,7 +416,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                             fieldLabel: '描述',
                             name: 'description',
                             inputType: 'description',
-                            allowBlank: false,
+                            //allowBlank: false,
                             bind: selection[0].get('description')
                         }],
                         buttons: [{

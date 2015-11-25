@@ -17,7 +17,6 @@ viewHtml += '<tr><td>更新时间</td><td></td></tr>';
 viewHtml += '</table>';
 
 
-
 Ext.define('TutorialApp.view.sjes_user.Sjes_UserController', {
     extend: 'Ext.app.ViewController',
 
@@ -27,19 +26,154 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_UserController', {
     viewSjesUserRecord: function(){
         var grid = Ext.getCmp('sjes_user_list'), selection = grid
             .getSelectionModel().getSelection();
-        switch(selection.length){
-            case 0 :Ext.Msg.alert('message','请选择用户!'); break;
-            default: Ext.create('Ext.window.Window', {
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择用户!');
+        }else if(selection.length > 1){
+            Ext.Msg.alert('message','一次操作一条!');
+        }else{Ext.create('Ext.window.Window', {
                 title: '显示',
                 height: 200,
                 width: 400,
                 layout: 'fit',
                 items: {
                     xtype: 'panel',
-                    html: '<table><tr><td>部门名称</td><td>'+selection[0].get('orgName') +'</td></tr><tr><td>部门编号</td><td>'+selection[0].get('orgNum') +'</td></tr><tr><td>部门管理员</td><td>'+selection[0].get('manager') +'</td></tr><tr><td>父部门</td><td>'+selection[0].get('parentOrg') +'</td></tr><tr><td>描述</td><td>'+selection[0].get('description') +'</td></tr></table>'
+                    html: '<table><tr><td>用户名</td><td>13958203381</td></tr><tr><td>手机号</td><td>13958203381</td></tr><tr><td>邮箱</td><td>wubin@sanjiang365.com</td></tr></table>'
 
                 }
-            }).show(); break;
+            }).show();
+        }
+    },
+
+    editSjesUserRecord: function(){
+        var grid = Ext.getCmp('sjes_user_list'), selection = grid
+            .getSelectionModel().getSelection();
+        if(selection.length == 0) {
+            Ext.Msg.alert('message','请选择用户!');
+        }else if(selection.length > 1) {
+            Ext.Msg.alert('message', '一次操作一条!');
+        }else{
+            Ext.create('Ext.window.Window', {
+                id: 'menuUpdateForm',
+
+                requires: [
+                    'Ext.form.Panel',
+                    'Ext.form.field.Text',
+                    'Ext.layout.container.Fit',
+                    'Ext.toolbar.Fill',
+                    'Ext.toolbar.TextItem'
+                ],
+
+                bodyPadding: 10,
+                title: '修改',
+                closable: true,
+                autoShow: true,
+                width: 450,
+                height:300,
+                layout: 'fit',
+                modal: true,//它背后的东西都会被遮罩
+                items: {
+                    xtype: 'form',
+                    reference: 'form',
+                    bodyPadding: 10,
+                    defaultType: 'textfield',
+
+                    fieldDefaults: {
+                        anchor: '100%',
+                        labelAlign: 'right',
+                        labelWidth: 80
+                    },
+                    items: [ {
+                        xtype: "container",
+                        layout: "hbox",
+                        items: [
+                            {
+                                xtype: "textfield",
+                                id:"mobile",
+                                name: "mobile",
+                                fieldLabel: "认证手机",
+                                allowBlank: false,
+                                emptyText: "电话或手机号码",
+                                readOnly:true,
+                                bind: selection[0].get('mobile'),
+                                vtype:'mobile',
+                                margin: '5 5 10 5'
+                            },
+                            {
+                                xtype: "button",
+                                text: '修改',
+                                margin: '5 5 5 5',
+                                handler: function () {
+                                  Ext.getCmp("mobile").setReadOnly(false);
+                                }
+                            }
+                        ]
+                    }, {
+                        xtype: "container",
+                        layout: "hbox",
+                        items: [
+                            {   xtype: "textfield",
+                                id:"email",
+                                name: "email",
+                                fieldLabel: "认证邮箱",
+                                allowBlank: false,
+                                readOnly:true,
+                                emptyText: "认证邮箱",
+                                margin: '5 5 10 5',
+                                vtype: 'email',
+                                bind: selection[0].get('email')
+                            },
+                            {
+                                xtype: "button",
+                                text: '修改',
+                                margin: '5 5 5 5',
+                                handler: function () {
+                                    Ext.getCmp("email").setReadOnly(false);
+                                }
+                            }
+                        ]
+                    }, {
+                        xtype: "container",
+                        layout: "hbox",
+                        items: [
+                            {
+                                xtype: "textfield",
+                                id:"idCard",
+                                name: "idCard",
+                                fieldLabel: "用户身份证",
+                                allowBlank: false,
+                                readOnly:true,
+                                emptyText: "用户身份证" ,
+                                vtype:'idCard',
+                                margin: '5 5 10 5',
+                                bind: '330203198012012141'
+                            },
+                            {
+                                xtype: "button",
+                                text: '修改',
+                                margin: '5 5 5 5',
+                                handler: function () {
+                                    Ext.getCmp("idCard").setReadOnly(false);
+                                }
+                            }
+                        ]
+                    },{
+                        xtype: 'panel',
+                        margin: '5 5 5 15',//上右下左
+                        html:'<font color="red">用户信息请谨慎修改！！</font>'
+                    }],
+                    buttons: [{
+                        xtype: 'tbtext',
+                        html: '错误',
+                        style: 'color:red',
+                        hidden: true
+                    }, '->', {
+                        text: '提交',
+                        handler: function(){
+
+                        }
+                    }]
+                }
+            });
         }
 
     }

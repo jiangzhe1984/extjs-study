@@ -153,16 +153,22 @@ Ext.define('TutorialApp.view.role.RoleController', {
                     name: 'name',
                     itemId: 'name',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入角色名称'
                 }, {
                     fieldLabel: '显示名称',
                     name: 'displayref',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入显示名称'
                 }, {
                     fieldLabel: '描述',
                     name: 'description',
-                    allowBlank: false,
+                    //allowBlank: false,
                     emptyText: '请输入描述'
                 }
                 ],
@@ -246,19 +252,25 @@ Ext.define('TutorialApp.view.role.RoleController', {
                             fieldLabel: '角色名称',
                             name: 'name',
                             itemId: 'name',
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             allowBlank: false,
                             bind: selection[0].get('name')
                         }, {
                             fieldLabel: '显示名称',
                             name: 'displayref',
                             inputType: 'displayref',
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             allowBlank: false,
                             bind: selection[0].get('displayref')
                         }, {
                             fieldLabel: '描述',
                             name: 'description',
                             inputType: 'description',
-                            allowBlank: false,
+                            //allowBlank: false,
                             bind: selection[0].get('description')
                         }],
                         buttons: [{

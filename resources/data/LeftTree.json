@@ -15,13 +15,18 @@
         id: 'userStatistics',
         text: '用户统计',
         leaf: true,
-        url:'sjes_userStatisticslist'
+        url:'userstatistics'
       },
       {
         id: 'integralManagement',
         text: '积分管理',
         leaf: true,
         url:'integrallist'
+      },{
+        id: 'black',
+        text: '黑名单管理',
+        leaf: true,
+        url:'sjes_blacklist'
       }
     ]
   },

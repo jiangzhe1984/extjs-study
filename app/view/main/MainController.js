@@ -21,7 +21,7 @@ Ext.define('TutorialApp.view.main.MainController', {
 
        var tabs = this.getView().down('app-contentPanel');
 
-       if(!record.get('parent')){
+       if(record.get('leaf')){
            var tab = tabs.add({
                title: record.get('text'),
                xtype : record.get('url'),

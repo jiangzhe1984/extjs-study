@@ -1,0 +1,29 @@
+{ success: true,
+  total:2,
+  items: [
+    { id:1,
+      userId: 121212,
+      username: "aa",
+      email: "s@sina.com",
+      mobile: "13905748888",
+      custNum:'6015041000',
+      createTime:"2015.6.15",
+      lastLoginIp: "61.172.201.195",
+      reason:"恶意购买",
+      limitType:"01"
+    },
+    { id:2,
+      userId: 121212,
+      username: "bb",
+      email: "s@sina.com",
+      mobile: "13905748888",
+      custNum:'6015041000',
+      createTime:"2015.6.15",
+      lastLoginIp: "61.172.201.195",
+      reason:"恶意购买",
+      limitType:"01"
+    }
+
+
+  ]
+}

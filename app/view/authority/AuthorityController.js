@@ -52,27 +52,39 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                     fieldLabel: '权限名称',
                     name: 'authorityname',
                     itemId: 'authorityname',
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     allowBlank: false,
                     emptyText: '请输入权限名称'
                 }, {
                     fieldLabel: '权限类型',
                     name: 'authoritytype',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入权限类型'
                 }, {
                     fieldLabel: '显示名称',
                     name: 'displayref',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入显示名称'
                 }, {
                     fieldLabel: '描述',
                     name: 'description',
-                    allowBlank: false,
+                    //allowBlank: false,
                     emptyText: '请输入描述'
                 },{
                     fieldLabel: '所属菜单',
                     id: 'addMenuName',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请选择所属菜单',
                     disabled:true
 
@@ -269,29 +281,41 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                             fieldLabel: '权限名称',
                             name: 'authorityname',
                             itemId: 'authorityname',
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             allowBlank: false,
                             bind: selection[0].get('authorityname')
                         }, {
                             fieldLabel: '权限类型',
                             name: 'authoritytype',
                             inputType: 'authoritytype',
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             allowBlank: false,
                             bind: selection[0].get('authoritytype')
                         }, {
                             fieldLabel: '显示名称',
                             name: 'displayref',
                             inputType: 'displayref',
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             allowBlank: false,
                             bind: selection[0].get('displayref')
                         }, {
                             fieldLabel: '描述',
                             name: 'description',
                             inputType: 'description',
-                            allowBlank: false,
+                            //allowBlank: false,
                             bind: selection[0].get('description')
                         },{
                             fieldLabel: '所属菜单',
                             id: 'editMenuName',
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             allowBlank: false,
                             emptyText: '请选择所属菜单',
                             disabled:true

@@ -53,11 +53,17 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                     name: 'text',
                     itemId: 'text',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入菜单名称'
                 },{
                     xtype: 'radiogroup',
                     fieldLabel: '是否默认打开',
                     columns: 2,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     vertical: true,
                     items: [
                         { boxLabel: '是', name: 'expanded', inputValue: '1' },
@@ -67,6 +73,9 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                     xtype: 'radiogroup',
                     fieldLabel: '是否是父菜单',
                     columns: 2,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     vertical: true,
                     items: [
                         { boxLabel: '是', name: 'isParent', inputValue: '1' },
@@ -76,6 +85,9 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                     xtype: 'radiogroup',
                     fieldLabel: '是否是子菜单',
                     columns: 2,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     vertical: true,
                     items: [
                         { boxLabel: '是', name: 'leaf', inputValue: '1' },
@@ -85,11 +97,17 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                     fieldLabel: '功能模块地址',
                     name: 'url',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入地址'
                 }, {
                     fieldLabel: '父菜单',
                     id: 'addParentMenuname',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     disabled:true
                 },{
                     xtype: 'hiddenfield',
@@ -266,7 +284,7 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                 title: '修改',
                 closable: true,
                 autoShow: true,
-                width: 350,
+                width: 450,
                 layout: 'fit',
                 modal: true,//它背后的东西都会被遮罩
                 items: {
@@ -279,19 +297,25 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                     fieldDefaults: {
                         anchor: '100%',
                         labelAlign: 'right',
-                        labelWidth: 40
+                        labelWidth: 100
                     },
                     items: [{
                         fieldLabel: '菜单名称',
                         name: 'text',
                         itemId: 'text',
                         allowBlank: false,
+                        beforeLabelTextTpl: [
+                            '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                        ],
                         bind: selection[0].get('text')
                     },{
                         xtype: 'radiogroup',
                         id: 'expanded',
                         fieldLabel: '是否默认打开',
                         columns: 2,
+                        beforeLabelTextTpl: [
+                            '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                        ],
                         vertical: true,
                         items: [
                             { boxLabel: '是', name: 'expanded', inputValue: '1' },
@@ -311,6 +335,9 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                         id: 'isParent',
                         fieldLabel: '是否是父菜单',
                         columns: 2,
+                        beforeLabelTextTpl: [
+                            '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                        ],
                         vertical: true,
                         items: [
                             { boxLabel: '是', name: 'isParent', inputValue: '1' },
@@ -330,6 +357,9 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                         id: 'leaf',
                         fieldLabel: '是否是子菜单',
                         columns: 2,
+                        beforeLabelTextTpl: [
+                            '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                        ],
                         vertical: true,
                         items: [
                             { boxLabel: '是', name: 'leaf', inputValue: '1' },
@@ -349,12 +379,18 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                         name: 'url',
                         inputType: 'url',
                         allowBlank: false,
+                        beforeLabelTextTpl: [
+                            '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                        ],
                         bind: selection[0].get('url')
                     }, {
                         fieldLabel: '父菜单',
                         allowBlank: false,
                         id: 'editParentMenuName',
                         disabled:true,
+                        beforeLabelTextTpl: [
+                            '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                        ],
                         bind: selection[0].get('parentMenu')
                     },{
                         xtype: 'hiddenfield',

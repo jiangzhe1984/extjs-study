@@ -1,13 +1,12 @@
 /**
- * 用户列表
+ * 黑名单列表
  */
-Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
+Ext.define('TutorialApp.view.sjes_user.Sjes_Black', {
     extend: 'Ext.grid.Panel',
-    xtype: 'sjes_userlist',
-    id: 'sjes_user_list',
+    xtype: 'sjes_blacklist',
+    id: 'sjes_black_list',
     requires: [
-        'TutorialApp.store.sjes_user.Sjes_User',
-        'TutorialApp.view.sjes_user.Sjes_UserTopToolbar'
+        'TutorialApp.store.sjes_user.Sjes_Black'
     ],
 
     columnLines: true,
@@ -25,57 +24,51 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
 
     initComponent:function(){
         var me = this;
-        var store = Ext.create('TutorialApp.store.sjes_user.Sjes_User');//创建store实例
+        var store = Ext.create('TutorialApp.store.sjes_user.Sjes_Black');//创建store实例
         this.store = store;
         me.columns = [
-            {xtype: 'rownumberer'},
+           // {xtype: 'rownumberer'},
             {
                 text: '用户名',
                 flex: 1,
                 align: 'center',
                 dataIndex: 'username'
-            }, {
-                text: '昵称',
+            },{
+                text: '手机',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'nickname'
+                dataIndex: 'mobile'
             }, {
                 text: '邮箱',
                 flex: 1,
                 align: 'center',
                 dataIndex: 'email'
             }, {
-                text: '密码',
+                text: '会员卡（惠用户）',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'password'
+                dataIndex: 'custNum'
+            },  {
+                text: '最近访问IP地址',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'lastLoginIp'
             }, {
-                text: '手机号',
+                text: '黑名单时间',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'mobile'
+                dataIndex: 'createTime'
             }, {
-                text: '性别',
+                text: '黑名单理由',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'sex',
-                renderer: function(value){
-                    return value == 1 ? '男' : '女';
-                }
+                dataIndex: 'reason'
             }, {
-             text: '会员卡号',
-             flex: 1,
-             align: 'center',
-             dataIndex: 'cardNum'
-             }, {
-                text: '是否激活',
+                text: '限制类型',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'enable',
-                renderer: function(value){
-                    return value  ? '是' : '否';
-                }
-            },{
+                dataIndex: 'limitType'
+            }/*,{
                 text:"操作",
                 width:130,
                 align:"center",
@@ -86,10 +79,10 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
                     tooltip: 'Edit',
                     handler: function(grid, rowIndex, colIndex) {
                         var rec = grid.getStore().getAt(rowIndex);
-                        alert("mobile " + rec.get('mobile'));
+                        alert(rec.get('username'));
                     }
                 }]
-            }
+            }*/
         ];
         me.dockedItems = [{
             xtype: 'pagingtoolbar',
@@ -97,7 +90,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
             store:store,
             displayInfo: true
         },{
-            xtype : Ext.create('TutorialApp.view.sjes_user.Sjes_UserTopToolbar',{//工具栏
+            xtype : Ext.create('TutorialApp.view.sjes_user.Sjes_BlackTopToolbar',{//工具栏
                 url : '/toolbar'
 
             })
