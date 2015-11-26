@@ -289,7 +289,6 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                         }, {
                             fieldLabel: '权限类型',
                             name: 'authoritytype',
-                            inputType: 'authoritytype',
                             beforeLabelTextTpl: [
                                 '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
                             ],

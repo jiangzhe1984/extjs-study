@@ -1,7 +1,7 @@
 var store = Ext.create('Ext.data.TreeStore', {
     proxy: {
         type: 'ajax',
-       //url: 'resources/data/LeftTree.json'
+        // url: 'resources/data/LeftTree.json'
         url: '/leftTree'
     },
     root: {

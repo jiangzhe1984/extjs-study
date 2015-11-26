@@ -38,7 +38,10 @@ Ext.define('TutorialApp.view.authority.Authority', {
                 text: '权限类型',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'authoritytype'
+                dataIndex: 'authoritytype',
+                renderer: function(value){
+                    return value == 1 ? '列表' : value == 2 ? '保存' : '删除';
+                }
             }, {
                 text: '显示名称',
                 flex: 1,

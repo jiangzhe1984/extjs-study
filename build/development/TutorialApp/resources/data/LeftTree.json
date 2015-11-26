@@ -21,15 +21,28 @@
         id: 'integralManagement',
         text: '积分管理',
         leaf: true,
-        url:'integrallist'
+        url:'sjes_integallist'
       },{
         id: 'black',
         text: '黑名单管理',
         leaf: true,
-        url:'blacklist'
+        url:'sjes_blacklist'
       }
     ]
-  },
+  }, {
+  text: '订单管理',
+  id: 'orderManagement',
+  expanded: false,
+  isParent:true,
+  children: [
+    {
+      id: 'autoAudit',
+      text: '自动审核机制',
+      leaf: true,
+      url:'autoauditmechanism'
+    }
+  ]
+},
   {
     text: '系统设置',
     id: 'system',

@@ -1,20 +1,18 @@
 
 
-Ext.define('TutorialApp.view.main.NorthPanel', {
+Ext.define('TutorialApp.view.main.SouthPanel', {
     extend: 'Ext.panel.Panel',
-    xtype: 'app-northPanel',
+    xtype: 'app-southPanel',
     bodyPadding: 5,  // Don't want content to crunch against the borders
     width: 300,
     //title: '三江网购管理平台',
     //bodyStyle:'background:red;padding:10px;',
-    dockedItems:[
-
+    dockedItems : [
         {
-            xtype : Ext.create('TutorialApp.view.main.NorthTopToolbar',{//工具栏
-                url : '/currentUser'
+        xtype : Ext.create('TutorialApp.view.main.SouthToolbar',{//工具栏
+            //url : '/currentUser'
 
-            })
-        }
-    ],
+        })
+    }],
     renderTo: Ext.getBody()
 });

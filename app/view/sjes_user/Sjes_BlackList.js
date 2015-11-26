@@ -53,11 +53,11 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_Black', {
                 flex: 1,
                 align: 'center',
                 dataIndex: 'lastLoginIp'
-            }, {
-                text: '黑名单时间',
+            },{
+                text: '最近访问时间',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'createTime'
+                dataIndex: 'lastLoginTime'
             }, {
                 text: '黑名单理由',
                 flex: 1,

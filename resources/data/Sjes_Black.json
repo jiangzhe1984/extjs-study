@@ -9,6 +9,7 @@
       custNum:'6015041000',
       createTime:"2015.6.15",
       lastLoginIp: "61.172.201.195",
+      lastLoginTime:"2015-11-25",
       reason:"恶意购买",
       limitType:"01"
     },
@@ -20,6 +21,7 @@
       custNum:'6015041000',
       createTime:"2015.6.15",
       lastLoginIp: "61.172.201.195",
+      lastLoginTime:"2015-11-25",
       reason:"恶意购买",
       limitType:"01"
     }

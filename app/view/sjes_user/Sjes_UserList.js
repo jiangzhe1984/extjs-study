@@ -82,8 +82,8 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
                 xtype:'actioncolumn',//这里就是放置按钮的地方
                 width:50,
                 items: [{
-                    icon: 'extjs-build/examples/shared/icons/fam/cog_edit.png',  // Use a URL in the icon config
-                    tooltip: 'Edit',
+                    iconCls : 'icon-eye-open',
+                    tooltip: '显示',
                     handler: function(grid, rowIndex, colIndex) {
                         var rec = grid.getStore().getAt(rowIndex);
                         alert("mobile " + rec.get('mobile'));
