@@ -16,7 +16,8 @@ Ext.define('TutorialApp.view.main.Main', {
         'TutorialApp.view.main.MainController',
         'TutorialApp.view.main.MainModel',
         'TutorialApp.view.tree.LeftTree', //tree
-        'TutorialApp.view.main.ContentPanel'//centercontent
+        'TutorialApp.view.main.ContentPanel',//centercontent
+        'TutorialApp.view.main.SouthPanel'
     ],
     controller: 'main',
     viewModel: 'main',
@@ -28,34 +29,35 @@ Ext.define('TutorialApp.view.main.Main', {
     layout: 'border',
     items: [
         {
-            title: '三江网购管理平台',
+           // title: '三江网购管理平台',
             region: 'north',
-            xtype: "panel",
-            split: true
+            xtype: "app-northPanel",
+            split: true,
+            margin: '0 0 0 0'
         },
         {
-        title: 'South Region is resizable',
-        region: 'south',     // position for region
-        xtype: 'panel',
-        height: 100,
-        split: true,         // enable resizing
-        margin: '0 5 5 5'
+           // title: 'South Region is resizable',
+            region: 'south',     // position for region
+            xtype: 'app-southPanel',
+            height: 100,
+            split: true,         // enable resizing
+            margin: '0 0 0 0'
     },{
-        // xtype: 'panel' implied by default
-        title: 'West',
-        region:'west',
-        xtype: 'app-leftTree',
-        margin: '5 0 0 5',
-        width: 200,
-        collapsible: true,   // make collapsible
-        id: 'west-region-container',
-        layout: 'fit'
+            // xtype: 'panel' implied by default
+            title: 'West',
+            region:'west',
+            xtype: 'app-leftTree',
+            margin: '0 0 0 0',
+            width: 200,
+            collapsible: true,   // make collapsible
+            id: 'west-region-container',
+            layout: 'fit'
     },{
-        title: 'Center Region',
-        region: 'center',     // center region is required, no width/height specified
-        xtype: 'app-contentPanel',
-        layout: 'fit',
-        margin: '5 5 0 0'
+            title: 'Center Region',
+            region: 'center',     // center region is required, no width/height specified
+            xtype: 'app-contentPanel',
+            layout: 'fit',
+            margin: '0 0 0 0'
     }],
     renderTo: Ext.getBody()
 });

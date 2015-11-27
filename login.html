@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="css/login_style.css"/>
+    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body  onload="document.f.username.focus();">
+
+<section class="container">
+    <div class="login">
+        <h1>用户登录</h1>
+        <form name="f" method="post" action="/j_spring_security_check">
+            <p><input type="text" name="username" value="" placeholder="用户名"/></p>
+            <p><input type="password" name="password" value="" placeholder="密码"/></p>
+          <!--  <p class="remember_me">
+                <label>
+                    <input type="checkbox" name="remember_me" id="remember_me"/>
+                    记住密码
+                </label>
+            </p>-->
+            <p class="submit"><input type="submit" name="commit" value="登录"/></p>
+        </form>
+        <font color="red" th:if="${session.SPRING_SECURITY_LAST_EXCEPTION != null}"  th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></font>
+    </div>
+</section>
+
+</body>
+</html>

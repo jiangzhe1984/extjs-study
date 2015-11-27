@@ -15,7 +15,7 @@ Ext.define('TutorialApp.store.Authority', {
 
     proxy: {
         type: 'ajax',//跨域交互的代理JsonP
-       //  url: 'resources/data/Authority.json',
+        // url: 'resources/data/Authority.json',
         url: '/authority/list',
         reader: {
             type: 'json',

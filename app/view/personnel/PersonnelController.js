@@ -7,7 +7,7 @@
 
 
 // The data store containing the list of states
-var states = Ext.create('Ext.data.Store', {
+/*var states = Ext.create('Ext.data.Store', {
     fields: ['abbr', 'name'],
     data : [
         {"abbr":"AL", "name":"Alabama"},
@@ -34,7 +34,7 @@ Ext.define('Ext.ux.ComboBox', {
              alert(obj.getValue());
         }
     }
-});
+});*/
 
 Ext.define('Ext.ux.CustomSpinner', {
     extend: 'Ext.form.field.Spinner',

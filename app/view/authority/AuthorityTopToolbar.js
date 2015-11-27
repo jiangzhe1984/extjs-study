@@ -23,13 +23,13 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                             add.listeners = addListener;
                             view.add(add);
 
-                         /*   var update = new Object();
+                            var update = new Object();
                             update.text = "修改";
                             update.iconCls = "icon-edit";
                             var updateListener = new Object();
                             updateListener.click = "editAuthorityRecord";
                             update.listeners = updateListener;
-                            view.add(update);*/
+                            view.add(update);
 
                         }
 
@@ -59,7 +59,7 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
                     var searchText = new Object();
                     searchText.xtype = "textfield";
                     searchText.id = "search_authority_name";
-                    searchText.emptyText = "快速检索";
+                    searchText.emptyText = "权限名称";
 
                     view.add(searchText);
 

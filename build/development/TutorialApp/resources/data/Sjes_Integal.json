@@ -1,0 +1,26 @@
+{ success: true,
+  total:3,
+  items: [
+    { id:1,
+      integalTime:'2015-05-19',
+      integalNum: 20,
+      integalType: "活动积分",
+      integalSource: "三江购物微商城",
+      remarks:'asdfsdfaa'
+    },
+    { id:2,
+      integalTime:'2015-05-16',
+      integalNum: 200,
+      integalType: "普通消费积分",
+      integalSource: "来福士店",
+      remarks:'asdfsdfaa'
+    },
+    { id:3,
+      integalTime:'2015-05-15',
+      integalNum: 500,
+      integalType: "网购消费积分",
+      integalSource: "三江购物网",
+      remarks:'asdfsdfaa'
+    }
+  ]
+}

@@ -13,7 +13,7 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
             xtype: 'app-personnelMain'
         }],
         closable:true
-    }, {
+    }/*, {
         title: 'Logout',
         xtype: 'button',
         text: 'Logout',
@@ -21,7 +21,7 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
         handler: function(){
             window.location.href= '/logout';
         }
-    }/*, {
+    }, {
         title: 'Tickets',
         html: 'Tickets',
         itemId: 'tickets',

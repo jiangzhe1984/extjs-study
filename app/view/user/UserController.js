@@ -12,13 +12,14 @@ var states = Ext.create('Ext.data.Store', {
 // Create the combo box, attached to the states data store
 Ext.define('Ext.ux.ComboBox', {
     extend:'Ext.form.ComboBox',
+    id:'userMgrTypeCB',
     alias: 'widget.userMgrType',
     fieldLabel: '用户类型',
     store: states,
     queryMode: 'local',
     displayField: 'name',
     valueField: 'userMgrType',
-
+    emptyText : '请选择',  //提示信息
     listeners:{
         //scope: yourScope,
         'select': function(obj){
@@ -39,6 +40,23 @@ var store = Ext.create('Ext.data.TreeStore', {
         id: 'all',
         expanded: false
     }
+});
+
+Ext.define('Override.form.field.VTypes', {
+    override: 'Ext.form.field.VTypes',
+
+    // vtype validation function
+    mobile: function(value) {
+        return this.mobileRe.test(value);
+    },
+    idCard: function(value) {
+        return this.idCardRe.test(value);
+    },
+    // RegExp for the value to be tested against within the validation function
+    mobileRe: /^1\d{10}$/i,
+    mobileText: '请输入手机号',
+    idCardRe:/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/,
+    idCardText: '身份证号码不符合规定'
 });
 
 Ext.define('TutorialApp.view.user.UserController', {
@@ -83,21 +101,33 @@ Ext.define('TutorialApp.view.user.UserController', {
                     name: 'username',
                     itemId: 'username',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入用户名'
                 }, {
                     fieldLabel: '密码',
                     name: 'password',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入密码'
                 }, {
                     fieldLabel: '全名',
                     name: 'fullName',
                      allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                      emptyText: '请输入全名'
                 }, {
                     fieldLabel: '所属部门',
                     id: 'addOrgName',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入所属部门',
                     disabled:true
 
@@ -214,22 +244,33 @@ Ext.define('TutorialApp.view.user.UserController', {
                     fieldLabel: '手机号',
                     name: 'mobile',
                     allowBlank: false,
-                    emptyText: '请输入手机号'
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
+                    emptyText: '请输入手机号',
+                    vtype: 'mobile'
                 }, {
                     xtype: 'userMgrType',
-                    name: 'userMgrType'
+                    name: 'userMgrType',
+                    allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ]
                 }, {
                     xtype: 'datefield',
                     anchor: '100%',
                     fieldLabel: '过期时间',
                     name: 'expiredDate',
                     allowBlank: false,
+                    beforeLabelTextTpl: [
+                        '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                    ],
                     emptyText: '请输入过期时间',
                     value: new Date()
                 }, {
                     fieldLabel: '描述',
                     name: 'description',
-                    allowBlank: false,
+                    //allowBlank: false,
                     emptyText: '请输入描述'
                 }
                 ],
@@ -313,28 +354,40 @@ Ext.define('TutorialApp.view.user.UserController', {
                             name: 'username',
                             itemId: 'username',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             bind: selection[0].get('username')
                         }, {
                             fieldLabel: '密码',
                             name: 'password',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             bind: selection[0].get('password')
                         }, {
                             fieldLabel: '全名',
                             name: 'fullName',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             bind: selection[0].get('fullName')
                         }, {
                             fieldLabel: '所属部门',
                             id: 'editOrgName',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             bind: selection[0].get('org'),
                             disabled:true
                         }, {
                             xtype: 'hiddenfield', //hiddenfield
                             name: 'org',
                             id: 'editOrg',
-                            value: ''
+                            value: selection[0].get('orgId')
                         }, {
                             xtype: 'button',
                             text: '查找部门',
@@ -442,23 +495,42 @@ Ext.define('TutorialApp.view.user.UserController', {
                             fieldLabel: '手机号',
                             name: 'mobile',
                             allowBlank: false,
-                            bind: selection[0].get('mobile')
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
+                            bind: selection[0].get('mobile'),
+                            vtype: 'mobile'
                         }, {
                             xtype: 'userMgrType',
                             name: 'userMgrType',
-                            bind: selection[0].get('userMgrType')
+                            allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
+                            listeners:{
+                                beforerender:function(){
+                                  Ext.getCmp('userMgrTypeCB').setValue(selection[0].get('userMgrType')); //设置 combo 值（显示值）
+                                  //  combo.clearValue();                 //清除 combo 值
+
+                                }
+                            }
                         }, {
                             xtype: 'datefield',
                             anchor: '100%',
                             fieldLabel: '过期时间',
                             name: 'expiredDate',
                             allowBlank: false,
+                            beforeLabelTextTpl: [
+                                '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
+                            ],
                             emptyText: '请输入过期时间',
-                            value: selection[0].get('expiredDate')
+                            format: 'm/d/Y',
+                            //value: selection[0].get('expiredDate')
+                            value:selection[0].get('expiredDate').split(" ")[0]
                         }, {
                             fieldLabel: '描述',
                             name: 'description',
-                            allowBlank: false,
+                           // allowBlank: false,
                             bind: selection[0].get('description')
                         }
                         ],

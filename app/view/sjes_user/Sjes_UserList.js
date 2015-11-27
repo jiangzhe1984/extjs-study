@@ -75,6 +75,20 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
                 renderer: function(value){
                     return value  ? '是' : '否';
                 }
+            },{
+                text:"操作",
+                width:130,
+                align:"center",
+                xtype:'actioncolumn',//这里就是放置按钮的地方
+                width:50,
+                items: [{
+                    iconCls : 'icon-eye-open',
+                    tooltip: '显示',
+                    handler: function(grid, rowIndex, colIndex) {
+                        var rec = grid.getStore().getAt(rowIndex);
+                        alert("mobile " + rec.get('mobile'));
+                    }
+                }]
             }
         ];
         me.dockedItems = [{
@@ -83,8 +97,10 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
             store:store,
             displayInfo: true
         },{
-            xtype: 'app-sjesuserTopToolbar',
-            dock: 'top'
+            xtype : Ext.create('TutorialApp.view.sjes_user.Sjes_UserTopToolbar',{//工具栏
+                url : '/toolbar'
+
+            })
         }];
         me.callParent();
     }

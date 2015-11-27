@@ -1,124 +1,24 @@
 [
   {
-    text: '部门1',
-    id: 'panels',
+    id: 1,
+    text: '三江购物',
     isParent:true,
     expanded: false,
     children: [
       {
-        id: 'basic-panels',
+        id: '三江购物1',
         text: '市场部',
-        leaf: true,
-        expanded: false
+        leaf: true
+
       },
       {
-        id: 'framed-panels',
-        text: '子部门2',
-        leaf: true,
-        expanded: false
-      },
-      {
-        id: 'panel-header-position',
-        text: '子部门3',
-        leaf: true,
-        expanded: false
-      }
-    ]
-  },
-  {
-    text: '部门2',
-    id: 'grids',
-    expanded: false,
-    isParent:true,
-    children: [
-      {
-        id: 'array-grid',
-        text: '子部门1',
+        id: '三江购物2',
+        text: '全渠道',
         leaf: true
       },
       {
-        id: 'grouped-grid',
-        text: '子部门2',
-        leaf: true
-      },
-      {
-        id: 'locking-grid',
-        text: '子部门3',
-        leaf: true
-      },
-      {
-        id: 'grouped-header-grid',
-        text: '子部门4',
-        leaf: true
-      },
-      {
-        id: 'multi-sort-grid',
-        text: '子部门5',
-        leaf: true
-      },
-      {
-        id: 'progress-bar-pager',
-        text: '子部门6',
-        leaf: true
-      },
-      {
-        id: 'sliding-pager',
-        text: '子部门7',
-        leaf: true
-      },
-      {
-        id: 'xml-grid',
-        text: '子部门8',
-        leaf: true
-      },
-      {
-        id: 'paging-grid',
-        text: '子部门9',
-        leaf: true
-      },
-      {
-        id: 'grid-plugins',
-        text: '子部门10',
-        leaf: true
-      },
-      {
-        id: 'grid-filtering',
-        text: '子部门11',
-        leaf: true
-      },
-      {
-        id: 'reconfigure-grid',
-        text: '子部门12',
-        leaf: true
-      },
-      {
-        id: 'property-grid',
-        text: '子部门13',
-        leaf: true
-      },
-      {
-        id: 'cell-editing',
-        text: '子部门14',
-        leaf: true
-      },
-      {
-        id: 'row-expander-grid',
-        text: '子部门15',
-        leaf: true
-      },
-      {
-        id: 'big-data-grid',
-        text: '子部门16',
-        leaf: true
-      },
-      {
-        id: 'widget-grid',
-        text: '子部门17',
-        leaf: true
-      },
-      {
-        id: 'customer-grid',
-        text: '子部门18',
+        id: '三江购物3',
+        text: '人事部',
         leaf: true
       }
     ]

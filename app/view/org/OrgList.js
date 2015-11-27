@@ -39,12 +39,12 @@ Ext.define('TutorialApp.view.org.Org', {
                 flex: 1,
                 align: 'center',
                 dataIndex: 'orgNum'
-            }, {
+            }, /*{
                 text: '部门管理员',
                 flex: 1,
                 align: 'center',
                 dataIndex: 'manager'
-            }, {
+            },*/ {
                 text: '父部门',
                 flex: 1,
                 align: 'center',

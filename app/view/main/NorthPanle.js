@@ -5,13 +5,16 @@ Ext.define('TutorialApp.view.main.NorthPanel', {
     xtype: 'app-northPanel',
     bodyPadding: 5,  // Don't want content to crunch against the borders
     width: 300,
-    title: 'Filters',
-    items: [{
-        xtype: 'datefield',
-        fieldLabel: 'Start date'
-    }, {
-        xtype: 'datefield',
-        fieldLabel: 'End date'
-    }],
+    //title: '三江网购管理平台',
+    //bodyStyle:'background:red;padding:10px;',
+    dockedItems:[
+
+        {
+            xtype : Ext.create('TutorialApp.view.main.NorthTopToolbar',{//工具栏
+                url : '/currentUser'
+
+            })
+        }
+    ],
     renderTo: Ext.getBody()
 });

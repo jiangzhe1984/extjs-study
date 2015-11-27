@@ -46,6 +46,7 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
 
                     });
 
+
                     var viewRole = new Object();
                     viewRole.text = "显示";
                     viewRole.iconCls = "icon-eye-open";
@@ -60,7 +61,7 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
                     var searchText = new Object();
                     searchText.xtype = "textfield";
                     searchText.id = "search_user_name";
-                    searchText.emptyText = "快速检索";
+                    searchText.emptyText = "用户名";
 
                     view.add(searchText);
 
