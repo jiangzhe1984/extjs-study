@@ -33,6 +33,7 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
 
                         }
 
+
                         if(authority == 'USER_DELETE'){
                             var del = new Object();
                             del.text = "删除";
