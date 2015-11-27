@@ -17,15 +17,16 @@ Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
         margin: '5 5 5 5',
         // Arrange radio buttons into two columns, distributed vertically
         columns: 2,
+        name:'rule',
         vertical: true,
         items: [
-            { boxLabel: '先审后发', name: 'rb', inputValue: '1' },
-            { boxLabel: '先发后审', name: 'rb', inputValue: '2', checked: true}
+            { boxLabel: '先审后发', name: 'rule', inputValue: '1' },
+            { boxLabel: '先发后审', name: 'rule', inputValue: '2', checked: true}
         ],
         listeners:{
             //通过change触发
             change: function(g , newValue , oldValue){
-                alert(newValue.rb);
+                alert(newValue.rule);
             }
         }
     },{
@@ -44,7 +45,7 @@ Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
             },
             {
                 xtype:'textfield',
-                name: 'last',
+                name: 'itemNum',
                 width:50,
                 height:30,
                 allowBlank: false,
@@ -67,7 +68,7 @@ Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
             },
             {
                 xtype:'textfield',
-                name: 'last',
+                name: 'itemTotalNum',
                 width:50,
                 height:30,
                 allowBlank: false,
@@ -90,7 +91,7 @@ Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
             },
             {
                 xtype:'textfield',
-                name: 'last',
+                name: 'itemTotalAmount',
                 width:50,
                 height:30,
                 allowBlank: false,
@@ -113,7 +114,7 @@ Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
             },
             {
                 xtype:'textfield',
-                name: 'last',
+                name: 'orderTotalAmount',
                 width:50,
                 height:30,
                 allowBlank: false,
@@ -136,7 +137,7 @@ Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
             },
             {
                 xtype:'textfield',
-                name: 'last',
+                name: 'orderTotalNum',
                 width:50,
                 height:30,
                 allowBlank: false,

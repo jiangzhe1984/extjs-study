@@ -10,6 +10,38 @@ var store = Ext.create('Ext.data.TreeStore', {
     }
 });
 
+var authorityTypestates = Ext.create('Ext.data.Store', {
+    fields: ['authoritytype', 'description'],
+    data : [
+        {"authoritytype":"1", "description":"列表"},
+        {"authoritytype":"2", "description":"保存"},
+        {"authoritytype":"3", "description":"删除"},
+        {"authoritytype":"4", "description":"配置"},
+        {"authoritytype":"5", "description":"导出"}
+        //...
+    ]
+});
+
+
+// Create the combo box, attached to the states data store
+Ext.define('Ext.ux.authority.ComboBox', {
+    extend:'Ext.form.ComboBox',
+    alias: 'widget.authority_combobox',
+    id:'authorityTypeCB',
+    fieldLabel: '权限类型',
+    store: authorityTypestates,
+    queryMode: 'local',
+    displayField: 'description',
+    valueField: 'authoritytype',
+    // all of your config options
+    emptyText : '请选择',  //提示信息
+    listeners:{
+        //scope: yourScope,
+        'select': function(obj){
+        }
+    }
+});
+
 
 Ext.define('TutorialApp.view.authority.AuthorityController', {
     extend: 'Ext.app.ViewController',
@@ -58,13 +90,13 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                     allowBlank: false,
                     emptyText: '请输入权限名称'
                 }, {
-                    fieldLabel: '权限类型',
+                    xtype:'authority_combobox',
                     name: 'authoritytype',
                     allowBlank: false,
                     beforeLabelTextTpl: [
                         '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
                     ],
-                    emptyText: '请输入权限类型'
+                    emptyText: '请选择权限类型'
                 }, {
                     fieldLabel: '显示名称',
                     name: 'displayref',
@@ -287,13 +319,19 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                             allowBlank: false,
                             bind: selection[0].get('authorityname')
                         }, {
-                            fieldLabel: '权限类型',
+                            xtype: 'authority_combobox',
                             name: 'authoritytype',
                             beforeLabelTextTpl: [
                                 '<span style="color:#ff0000;font-weight:bold" data-qtip="必填选项">*</span>'
                             ],
                             allowBlank: false,
-                            bind: selection[0].get('authoritytype')
+                            listeners:{
+                                beforerender:function(){
+                                    Ext.getCmp('authorityTypeCB').setValue(selection[0].get('authoritytype')); //设置 combo 值（显示值）
+                                    //  combo.clearValue();                 //清除 combo 值
+
+                                }
+                            }
                         }, {
                             fieldLabel: '显示名称',
                             name: 'displayref',

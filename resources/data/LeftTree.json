@@ -40,6 +40,12 @@
       text: '自动审核机制',
       leaf: true,
       url:'autoauditmechanism'
+    },
+    {
+      id: 'orderSearch',
+      text: '订单查询',
+      leaf: true,
+      url:'orderSearch_list'
     }
   ]
 },
