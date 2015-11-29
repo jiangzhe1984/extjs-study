@@ -1,6 +1,4 @@
-//版权所有
-
-
+//南的工具栏
 Ext.define('TutorialApp.view.main.SouthToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-southToolbar',

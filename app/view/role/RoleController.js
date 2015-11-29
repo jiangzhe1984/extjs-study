@@ -1,7 +1,7 @@
 
-
+//人员关联当前角色
 function Addsel(){
-    var grid = Ext.getCmp('role_list');
+    var grid = Ext.getCmp('role_list');//获取角色列表
     var selection = grid.getSelectionModel().getSelection();
 
     var a=document.getElementById("sel1");
@@ -14,7 +14,7 @@ function Addsel(){
     for(var i=0;i<a.length;i++){
         if(a.options[i-removeCount].selected){
 
-            userRoleRelation(true,selection[0].getId(),a.options[i-removeCount].value);
+            userRoleRelation(true,selection[0].getId(),a.options[i-removeCount].value);//用户与角色关联
 
             var pOption = document.createElement("OPTION");
             document.sel.res.options.add(pOption);
@@ -32,7 +32,7 @@ function Addsel(){
 
 
 
-
+//取消人员和角色的关联
 function Delsel(){
 
     var grid = Ext.getCmp('role_list');
@@ -49,7 +49,7 @@ function Delsel(){
     for(var i=0;i<b.length;i++){
         if(b.options[i-removeCount].selected){
 
-            userRoleRelation(false,selection[0].getId(),b.options[i-removeCount].value);
+            userRoleRelation(false,selection[0].getId(),b.options[i-removeCount].value);//取消关联
 
             var pOption = document.createElement("OPTION");
             document.sel.res1.options.add(pOption);
@@ -74,7 +74,7 @@ htmlValue += "<div style=\"float:left;width:200px;\"><span>已选人员</span>";
 htmlValue += "<select name=\"res\" id=sel2 size=30 style=\"width:200px\"  multiple>";
 htmlValue += "</select></div></form></div></div>";
 
-
+//关联
 function userRoleRelation(isAdd,roleId,aclUserId){
     Ext.Ajax.request({
         url:'/roleUser/relation',
@@ -92,7 +92,7 @@ function userRoleRelation(isAdd,roleId,aclUserId){
         }
     });
 }
-
+//取消关联
 function relation(checked,roleId,authorityId){
     Ext.Ajax.request({
         url:'/roleauthority/relation',
@@ -110,14 +110,14 @@ function relation(checked,roleId,authorityId){
         }
     });
 }
-
+//角色控制器
 Ext.define('TutorialApp.view.role.RoleController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.rolec',
-
+    //添加
     addRoleRecord: function(){
-        var grid = Ext.getCmp('role_list');
+        var grid = Ext.getCmp('role_list');//角色列表
         Ext.create('Ext.window.Window', {
             id: 'roleSaveForm',
 
@@ -183,7 +183,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                         var saveForm = Ext.getCmp('roleSaveForm');
                         var form = this.up('form').getForm();
                         var formValues = form.getValues();
-                        if (form.isValid()) {
+                        if (form.isValid()) {//表单符合条件才能提交
                             Ext.Ajax.request({
                                 url:'/role/save',
                                 params: {'name':formValues["name"],displayref: formValues["displayref"],'description':formValues["description"]},
@@ -209,12 +209,12 @@ Ext.define('TutorialApp.view.role.RoleController', {
             }
         });
     },
-//不能为空
+//修改
     editRoleRecord: function(){
-        var grid = Ext.getCmp('role_list');
+        var grid = Ext.getCmp('role_list');//角色列表
 
-        var selection = grid.getSelectionModel().getSelection();
-        if(selection.length == 0) {
+        var selection = grid.getSelectionModel().getSelection();//选中对象
+        if(selection.length == 0) {//必须选中
             Ext.Msg.alert('message','请选择角色!');
         }else if(selection.length > 1){
             Ext.Msg.alert('message','一次操作一条!');
@@ -314,7 +314,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
         }
 
     },
-
+//删除
     removeRoleRecord: function(){
         var grid = Ext.getCmp('role_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -366,7 +366,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
         }
 
     },
-
+//查看
     viewRoleRecord: function(){
         var grid = Ext.getCmp('role_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -388,7 +388,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
         }
 
     },
-
+//关联与权限关联
     authAction: function(){
         var grid = Ext.getCmp('role_list');
         var selection = grid.getSelectionModel().getSelection();
@@ -400,7 +400,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
         }else{
 
       /* authTreeId.store.proxy = new Ext.data.proxy.Proxy({ type: 'ajax',url:authUrl});*/
-
+               //加载权限树
                 var store = Ext.create('Ext.data.TreeStore', {
                     proxy: {
                         type: 'ajax',
@@ -422,7 +422,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
                     renderTo: Ext.getBody(),
                     listeners:{
                         scope:this,
-                        checkchange : function (node, checked) {
+                        checkchange : function (node, checked) {//监听勾选事件
 
                             //当该节点有子节点时，将所有子节点选中
                             if (!node.get("leaf") && !node.get("parent") ){
@@ -472,7 +472,7 @@ Ext.define('TutorialApp.view.role.RoleController', {
 
         }
     },
-
+//用户与角色关联
     roleAction: function(){
         var grid = Ext.getCmp('role_list');
 
@@ -503,15 +503,15 @@ Ext.define('TutorialApp.view.role.RoleController', {
                     margin: '5 5 0 0'
                 }],
             listeners:{
-                close : function(){
-                    var deptTree = Ext.getCmp('deptTree');
-                    var root = deptTree.getRootNode();
+                close : function(){//监听窗口关闭事件
+                    var deptTree = Ext.getCmp('deptTree');//获取权限树
+                    var root = deptTree.getRootNode();//获取根节点
 
                     root.cascade(function(node){
                         if(node.getId() != 'all'){
                             node.collapse(true);
                             var text = node.get('text');
-                            if(text.indexOf('red') != -1){
+                            if(text.indexOf('red') != -1){//标红内容恢复原样
 
                                 node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
                             }
@@ -524,12 +524,12 @@ Ext.define('TutorialApp.view.role.RoleController', {
             }
         }).show();}
     },
-
+//查询
     searchRole: function(){
         var search_role_name = Ext.getCmp('search_role_name').getValue();
         var role_store = Ext.getCmp('role_list').store;
 
-        role_store.on('beforeload', function (store, options) {
+        role_store.on('beforeload', function (store, options) {//向后台提交前添加查询条件
             var new_params = { name: search_role_name};
             Ext.apply(role_store.proxy.extraParams, new_params);
         });

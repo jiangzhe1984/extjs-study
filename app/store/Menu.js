@@ -1,7 +1,7 @@
 /**
  * 菜单Store
  */
-var itemsPerPage = 10;
+var itemsPerPage = 10;//每页显示多少条
 Ext.define('TutorialApp.store.Menu', {
     extend: 'Ext.data.Store',
 

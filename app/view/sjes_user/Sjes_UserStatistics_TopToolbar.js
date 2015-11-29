@@ -2,7 +2,6 @@
 var sjesUser_states = Ext.create('Ext.data.Store', {
     fields: ['userType', 'name'],
     data : [
-        // {"userMgrType":"1400", "name":"超级管理员"},
         {"userType":"1401", "name":"三江会员"},
         {"userType":"1402", "name":"三江惠用户"}
     ]
@@ -11,7 +10,6 @@ var sjesUser_states = Ext.create('Ext.data.Store', {
 var sjesUser_sexStates = Ext.create('Ext.data.Store', {
     fields: ['sex', 'name'],
     data : [
-        // {"userMgrType":"1400", "name":"超级管理员"},
         {"sex":"1", "name":"男"},
         {"sex":"2", "name":"女"}
     ]
@@ -54,7 +52,9 @@ Ext.define('Ext.ux.userSex.ComboBox', {
         }
     }
 });
-
+/**
+ * 用户统计页面查询工具栏，第一行
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_UserStatistics_TopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-SjesUserStatisticsTopToolbar',

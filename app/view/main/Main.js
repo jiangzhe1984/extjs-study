@@ -28,21 +28,21 @@ Ext.define('TutorialApp.view.main.Main', {
    // title: '三江网购管理平台',
     layout: 'border',
     items: [
-        {
+        {  //北
            // title: '三江网购管理平台',
             region: 'north',
             xtype: "app-northPanel",
             split: true,
             margin: '0 0 0 0'
         },
-        {
+        {//南
            // title: 'South Region is resizable',
             region: 'south',     // position for region
             xtype: 'app-southPanel',
             height: 100,
             split: true,         // enable resizing
             margin: '0 0 0 0'
-    },{
+    },{ //西
             // xtype: 'panel' implied by default
             title: 'West',
             region:'west',
@@ -52,7 +52,7 @@ Ext.define('TutorialApp.view.main.Main', {
             collapsible: true,   // make collapsible
             id: 'west-region-container',
             layout: 'fit'
-    },{
+    },{//中间
             title: 'Center Region',
             region: 'center',     // center region is required, no width/height specified
             xtype: 'app-contentPanel',

@@ -1,11 +1,12 @@
 
 
-
+//黑名单控制器
 Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.sjesblack',
 
+    //添加
     addBlackRecord: function(){
 
         var sjesBlack_states = Ext.create('Ext.data.Store', {
@@ -88,7 +89,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                             text: '查找用户',
                             margin: '5 5 5 5',
                             handler: function () {
-
+                                //弹出商城用户列表供选择
                                 Ext.create('Ext.data.Store', {
                                     storeId: 'simpsonsStore',
                                     fields:['id', 'username','email','cardNum' ,'mobile'],
@@ -110,7 +111,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                         }
                                     }
                                 });
-
+                                //查询条件工具栏
                                 Ext.define('SjesBlack.UserBackToolbar', {
                                     extend:'Ext.toolbar.Toolbar',
                                     xtype: 'sjes_blackToolbar',
@@ -128,12 +129,12 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                             text:'查询',
                                             iconCls : 'icon-search',
                                             handler:function(){
-                                                var search_blackUser_name = Ext.getCmp('search_blackUser_name').getValue();
+                                                var search_blackUser_name = Ext.getCmp('search_blackUser_name').getValue();//查询条件
                                                 var simpsonsStore = Ext.data.StoreManager.lookup('simpsonsStore');
 
 
-                                                simpsonsStore.filter('username', search_blackUser_name);
-                                                simpsonsStore.load();
+                                                simpsonsStore.filter('username', search_blackUser_name);//过滤条件
+                                                simpsonsStore.load();//列表刷新
                                             }
                                         }
                                     ]
@@ -176,14 +177,14 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                                 iconCls : 'icon-ok',
                                                // icon: 'extjs-build/examples/shared/icons/fam/cog_edit.png',  // Use a URL in the icon config
                                                 tooltip: '带回',
-                                                handler: function(grid, rowIndex, colIndex) {
+                                                handler: function(grid, rowIndex, colIndex) {//用户带回到黑名单添加表单中
                                                     var rec = grid.getStore().getAt(rowIndex);
                                                     Ext.getCmp('email').setValue(rec.get('email'));
                                                     Ext.getCmp('custNum').setValue(rec.get('cardNum'));
                                                     Ext.getCmp('username').setValue(rec.get('username'));
                                                     Ext.getCmp('mobile').setValue(rec.get('mobile'));
 
-                                                    Ext.getCmp('blackUser_searchWindow').close();
+                                                    Ext.getCmp('blackUser_searchWindow').close();//关闭窗口
                                                 }
                                             }]
                                         }
@@ -295,7 +296,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
             }
         });
     },
-
+//修改
     editBlackRecord: function(){
         var grid = Ext.getCmp('sjes_black_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -385,7 +386,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                 text: '查找用户',
                                 margin: '5 5 5 5',
                                 handler: function () {
-
+                                    //打开商城用户供选择
                                     Ext.create('Ext.data.Store', {
                                         storeId: 'simpsonsStore',
                                         fields:['id', 'username','email','cardNum' ,'mobile'],
@@ -407,7 +408,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                             }
                                         }
                                     });
-
+                                    //查询条件工具栏
                                     Ext.define('SjesBlack.UserBackToolbar', {
                                         extend:'Ext.toolbar.Toolbar',
                                         xtype: 'sjes_blackToolbar',
@@ -425,12 +426,12 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                                 text:'查询',
                                                 iconCls : 'icon-search',
                                                 handler:function(){
-                                                    var search_blackUser_name = Ext.getCmp('search_blackUser_name').getValue();
+                                                    var search_blackUser_name = Ext.getCmp('search_blackUser_name').getValue();//查询条件
                                                     var simpsonsStore = Ext.data.StoreManager.lookup('simpsonsStore');
 
 
-                                                    simpsonsStore.filter('username', search_blackUser_name);
-                                                    simpsonsStore.load();
+                                                    simpsonsStore.filter('username', search_blackUser_name);//过滤条件
+                                                    simpsonsStore.load();//列表刷新
                                                 }
                                             }
                                         ]
@@ -473,7 +474,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
                                                     iconCls : 'icon-ok',
                                                     // icon: 'extjs-build/examples/shared/icons/fam/cog_edit.png',  // Use a URL in the icon config
                                                     tooltip: '带回',
-                                                    handler: function(grid, rowIndex, colIndex) {
+                                                    handler: function(grid, rowIndex, colIndex) {//商城用户带回到黑名单表单中
                                                         var rec = grid.getStore().getAt(rowIndex);
                                                         Ext.getCmp('email').setValue(rec.get('email'));
                                                         Ext.getCmp('custNum').setValue(rec.get('cardNum'));
@@ -607,7 +608,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
         }
 
     },
-
+    //删除
     removeBlackRecord: function(){
         var grid = Ext.getCmp('sjes_black_list'), selection = grid
             .getSelectionModel().getSelection(), message = '';
@@ -633,7 +634,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
             })
         }
     },
-
+    //查看
     viewBlackRecord: function(){
         var grid = Ext.getCmp('sjes_black_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -654,7 +655,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackController', {
         }).show();
         }
     },
-
+    //查询
     searchBlack: function(){
         Ext.Msg.alert('message','search');
     }

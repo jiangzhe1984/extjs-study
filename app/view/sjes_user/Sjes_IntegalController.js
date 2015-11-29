@@ -1,4 +1,6 @@
-
+/**
+ * 积分控制器
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_IntegalController', {
     extend: 'Ext.app.ViewController',
 

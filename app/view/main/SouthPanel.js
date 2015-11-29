@@ -1,5 +1,4 @@
-
-
+//南
 Ext.define('TutorialApp.view.main.SouthPanel', {
     extend: 'Ext.panel.Panel',
     xtype: 'app-southPanel',

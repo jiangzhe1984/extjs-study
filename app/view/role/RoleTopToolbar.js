@@ -1,3 +1,4 @@
+//角色工具栏
 Ext.define('TutorialApp.view.role.RoleTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-roleTopToolbar',
@@ -12,7 +13,7 @@ Ext.define('TutorialApp.view.role.RoleTopToolbar', {
                 success : function(response, options){
 
                     var result = Ext.decode(response.responseText);
-
+                    //循环当前用户的所有权限
                     Ext.each(result, function(authority){
                        if(authority == 'ROLE_SAVE'){
                            var add = new Object();

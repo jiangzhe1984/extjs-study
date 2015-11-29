@@ -13,6 +13,7 @@ Ext.define('TutorialApp.view.authority.AuthorityTopToolbar', {
 
                     var result = Ext.decode(response.responseText);
 
+                    //循环用户所拥有的权限，加载相关按钮
                     Ext.each(result, function(authority){
                         if(authority == 'AUTHORITY_SAVE'){
                             var add = new Object();

@@ -1,3 +1,4 @@
+//部门工具栏
 Ext.define('TutorialApp.view.org.OrgTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-orgTopToolbar',
@@ -12,7 +13,7 @@ Ext.define('TutorialApp.view.org.OrgTopToolbar', {
                 success : function(response, options){
 
                     var result = Ext.decode(response.responseText);
-
+                  //循环当前用户的权限，组合按钮
                     Ext.each(result, function(authority){
                         if(authority == 'ORG_SAVE'){
                             var add = new Object();

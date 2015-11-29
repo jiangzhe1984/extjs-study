@@ -1,7 +1,7 @@
 /**
- * Store
+ * 用户统计Store
  */
-var itemsPerPage = 50;
+var itemsPerPage = 50;//每页显示多少条
 Ext.define('TutorialApp.store.sjes_user.Sjes_UserStatistics', {
     extend: 'Ext.data.Store',
 
