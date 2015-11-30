@@ -351,6 +351,15 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                 flex: 1,
                 align: 'center',
                 dataIndex: 'sendAddress'
+
+                /*,
+
+                   beforeshow:function updateTipBody(tip){
+                       var rowIndex = m.getView().findRowIndex(tip.triggerElement);
+                       alert(rowIndex);
+
+                   }*/
+
             }, {
                 text: '所属商场',
                 flex: 1,
@@ -470,6 +479,31 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
             })
         }];
         me.callParent();
+    },
+    listeners : {
+        scope : this,
+        render: function (grid){
+            //var store = grid.getStore();  // Capture the Store.
+            var view = grid.getView();    // Capture the GridView.
+            var tip = Ext.create('Ext.tip.ToolTip', {
+                // The overall target element.
+                target: view.el,
+                // Each grid row causes its own separate show and hide.
+                delegate: view.itemSelector,
+                // Moving within the row should not hide the tip.
+                trackMouse: true,
+                // Render immediately so that tip.body can be referenced prior to the first show.
+                renderTo: Ext.getBody(),
+                listeners: {
+                    // Change content dynamically depending on which element triggered the show.
+                    beforeshow: function updateTipBody(tip) {
+
+                        tip.update('Over company "' + view.getRecord(tip.triggerElement).get('sendAddress') + '"');
+                    }
+                }
+            });
+        }
     }
+
 
 });
