@@ -1,0 +1,39 @@
+{ success: true,
+  total:2,
+  items: [
+    { id:1,
+      parentId: "",
+      ownMarket: "翠柏商场",
+      memberId: 2205026158,
+      consignee:'小灰灰',
+      telphone:"18651669651",
+      orderSource: "网页",
+      saleAmount:336.00,
+      benefitAmount:10.00,
+      transportAmount:0.0,
+      payAmount:326.00,
+      payDate:"2015/6/15 8:55:30",
+      payType:"货到付款",
+      orderStatus:1,
+      logisticStatus:1
+    },
+    { id:2,
+      parentId: "",
+      ownMarket: "翠柏商场",
+      memberId: 2205026158,
+      consignee:'小灰灰',
+      telphone:"18651669651",
+      orderSource: "网页",
+      saleAmount:336.00,
+      benefitAmount:10.00,
+      transportAmount:0.0,
+      payAmount:326.00,
+      payDate:"2015/6/15 8:55:30",
+      payType:"货到付款",
+      orderStatus:1,
+      logisticStatus:1
+    }
+
+
+  ]
+}
