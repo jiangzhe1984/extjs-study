@@ -17,13 +17,13 @@ Ext.define('TutorialApp.view.main.MainController', {
 
 
     onTreeNavSelectionChange:function(selModel, records){
-        var record = records[0];
+        var record = records[0];//获取点击的菜单节点对象
 
-       var tabs = this.getView().down('app-contentPanel');
+       var tabs = this.getView().down('app-contentPanel');//获取tabPanel
 
-       if(record.get('leaf')){
+       if(record.get('leaf')){ //是否是子菜单
            var resourceTab = null;
-           for(var i=0;i<tabs.items.length;i++){
+           for(var i=0;i<tabs.items.length;i++){ //循环tabPanel，如果已经该菜单已存在就再次打开
              if(record.get('text') == tabs.items.get(i).title){
                  resourceTab = tabs.items.get(i);
                  break;
@@ -33,6 +33,7 @@ Ext.define('TutorialApp.view.main.MainController', {
            if(resourceTab != null){
                tabs.setActiveTab(resourceTab);
            }else{
+               //新打开页面
                var tab = tabs.add({
                    title: record.get('text'),
                    xtype : record.get('url'),

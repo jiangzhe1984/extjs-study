@@ -9,7 +9,9 @@ var store = Ext.create('Ext.data.TreeStore', {
         expanded: true
     }
 });
-
+/**
+ * 权限树
+ */
 Ext.define('TutorialApp.view.tree.AuthTree',{
     extend:'Ext.tree.Panel',
     xtype:'app-authTree',

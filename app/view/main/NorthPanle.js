@@ -1,5 +1,7 @@
 
-
+/**
+ * 北页面，显示抬头和用户信息，退出、修改密码按钮
+ */
 Ext.define('TutorialApp.view.main.NorthPanel', {
     extend: 'Ext.panel.Panel',
     xtype: 'app-northPanel',

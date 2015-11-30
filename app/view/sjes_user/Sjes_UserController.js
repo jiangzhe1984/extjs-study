@@ -16,13 +16,15 @@ viewHtml += '<tr><td>生成时间</td><td></td></tr>';
 viewHtml += '<tr><td>更新时间</td><td></td></tr>';
 viewHtml += '</table>';
 
-
+/**
+ * 商城用户控制器
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_UserController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.sjes_userc',
 
-
+    //查看用户
     viewSjesUserRecord: function(){
         var grid = Ext.getCmp('sjes_user_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -43,7 +45,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_UserController', {
             }).show();
         }
     },
-
+    //修改
     editSjesUserRecord: function(){
         var grid = Ext.getCmp('sjes_user_list'), selection = grid
             .getSelectionModel().getSelection();

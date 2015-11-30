@@ -1,4 +1,4 @@
-
+//部门树store
 var orgStore = Ext.create('Ext.data.TreeStore', {
     proxy: {
         type: 'ajax',
@@ -11,13 +11,15 @@ var orgStore = Ext.create('Ext.data.TreeStore', {
     }
 });
 
+//部门控制器
 Ext.define('TutorialApp.view.org.OrgController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.orgc',
 
+    //添加部门
     addOrgRecord: function(){
-        var grid = Ext.getCmp('org_list');
+        var grid = Ext.getCmp('org_list');//获取部门列表
         Ext.create('Ext.window.Window', {
             id: 'orgSaveForm',
 
@@ -100,17 +102,17 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                     text: '查询',
                                     iconCls : 'icon-search',
                                     handler: function(){
-                                        var search_orgTree = Ext.getCmp('search_orgTree').getValue();
+                                        var search_orgTree = Ext.getCmp('search_orgTree').getValue();//查询条件
                                         var deptTree = Ext.getCmp('orgTree_id');
-                                        var root = deptTree.getRootNode();
+                                        var root = deptTree.getRootNode();//获取根节点
 
-                                        root.cascade(function(node){
+                                        root.cascade(function(node){//循环节点
 
-                                            if( node.get('text').indexOf('red') != -1){
+                                            if( node.get('text').indexOf('red') != -1){//去除标红，恢复原样
                                                 node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
                                             }
 
-                                            if(node.get('leaf') && node.get('text').indexOf(search_orgTree) >= 0){
+                                            if(node.get('leaf') && node.get('text').indexOf(search_orgTree) >= 0){//符合查询条件打开
                                                 node.set('text',"<font color=red>"+node.get('text')+"</font>");
                                                 node.parentNode.expand(true);
                                                 node.expand(true);
@@ -144,11 +146,11 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                         if( deptName.indexOf('red') != -1){
                                             deptName = deptName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                         }
-
+                                        //带回内容
                                         Ext.getCmp('addParentOrg').setValue(node.getId());
                                         Ext.getCmp('addParentOrgName').setValue(deptName);
 
-                                        Ext.getCmp('userDept_searchWindow').close();
+                                        Ext.getCmp('userDept_searchWindow').close();//关闭窗口
 
                                    // }
                                 }
@@ -166,7 +168,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                 xtype: Ext.getCmp('orgTree_id')
                             },
                             listeners:{
-                                close : function(){
+                                close : function(){//监听窗口关闭事件
                                     var deptTree = Ext.getCmp('orgTree_id');
                                     var root = deptTree.getRootNode();
 
@@ -174,7 +176,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                         if(node.getId() != 'all'){
                                             node.collapse(true);
                                             var text = node.get('text');
-                                            if(text.indexOf('red') != -1){
+                                            if(text.indexOf('red') != -1){//去除标红，恢复原样
 
                                                 node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
                                             }
@@ -215,7 +217,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                     if(result.state == "success"){
                                         saveForm.close();
                                         var current = grid.store.currentPage;
-                                        grid.store.loadPage(current);
+                                        grid.store.loadPage(current);//页面刷新
                                     }else{
                                         Ext.Msg.alert('出错了');
                                     }
@@ -230,12 +232,12 @@ Ext.define('TutorialApp.view.org.OrgController', {
             }
         });
     },
-//不能为空
+//修改
     editOrgRecord: function(){
-        var grid = Ext.getCmp('org_list');
+        var grid = Ext.getCmp('org_list');//部门列表
 
-        var selection = grid.getSelectionModel().getSelection();
-        if(selection.length == 0) {
+        var selection = grid.getSelectionModel().getSelection();//选中对象
+        if(selection.length == 0) {//必须选中
             Ext.Msg.alert('message','请选择部门!');
         }else if(selection.length > 1){
             Ext.Msg.alert('message','一次操作一条!');
@@ -326,17 +328,17 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                             text: '查询',
                                             iconCls : 'icon-search',
                                             handler: function(){
-                                                var search_editOrgTree = Ext.getCmp('search_editOrgTree').getValue();
+                                                var search_editOrgTree = Ext.getCmp('search_editOrgTree').getValue();//查询条件
                                                 var deptTree = Ext.getCmp('orgTreeEdit_id');
-                                                var root = deptTree.getRootNode();
+                                                var root = deptTree.getRootNode();//获取根节点
 
-                                                root.cascade(function(node){
+                                                root.cascade(function(node){//循环节点
 
-                                                    if( node.get('text').indexOf('red') != -1){
+                                                    if( node.get('text').indexOf('red') != -1){//去除标红，恢复原样
                                                         node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
                                                     }
 
-                                                    if(node.get('leaf') && node.get('text').indexOf(search_editOrgTree) >= 0){
+                                                    if(node.get('leaf') && node.get('text').indexOf(search_editOrgTree) >= 0){//符合查询条件打开节点
                                                         node.set('text',"<font color=red>"+node.get('text')+"</font>");
                                                         node.parentNode.expand(true);
                                                         node.expand(true);
@@ -367,10 +369,10 @@ Ext.define('TutorialApp.view.org.OrgController', {
 
                                             // if(node.get('leaf')){
                                             var deptName = node.get('text');
-                                            if( deptName.indexOf('red') != -1){
+                                            if( deptName.indexOf('red') != -1){//去除标红，恢复原样
                                                 deptName = deptName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                             }
-
+                                            //带回内容
                                             Ext.getCmp('editParentOrg').setValue(node.getId());
                                             Ext.getCmp('editParentOrgName').setValue(deptName);
 
@@ -392,15 +394,15 @@ Ext.define('TutorialApp.view.org.OrgController', {
                                         xtype: Ext.getCmp('orgTreeEdit_id')
                                     },
                                     listeners:{
-                                        close : function(){
+                                        close : function(){//监听窗口关闭事件
                                             var deptTree = Ext.getCmp('orgTreeEdit_id');
-                                            var root = deptTree.getRootNode();
+                                            var root = deptTree.getRootNode(); //获取根节点
 
-                                            root.cascade(function(node){
+                                            root.cascade(function(node){//循环节点
                                                 if(node.getId() != 'all'){
                                                     node.collapse(true);
                                                     var text = node.get('text');
-                                                    if(text.indexOf('red') != -1){
+                                                    if(text.indexOf('red') != -1){//去除标红，恢复原样
 
                                                         node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
                                                     }
@@ -460,7 +462,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
         }
 
     },
-
+ //删除操作
     removeOrgRecord: function(){
         var grid = Ext.getCmp('org_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -512,7 +514,7 @@ Ext.define('TutorialApp.view.org.OrgController', {
         }
 
     },
-
+ //查看操作
     viewOrgRecord: function(){
         var grid = Ext.getCmp('org_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -568,12 +570,12 @@ Ext.define('TutorialApp.view.org.OrgController', {
         }
 
     },
-
+//查询部门
     searchOrg: function(){
-        var search_org_name = Ext.getCmp('search_org_name').getValue();
-        var org_store = Ext.getCmp('org_list').store;
+        var search_org_name = Ext.getCmp('search_org_name').getValue();//查询条件
+        var org_store = Ext.getCmp('org_list').store;//部门列表的store
 
-        org_store.on('beforeload', function (store, options) {
+        org_store.on('beforeload', function (store, options) {//在提交后台前添加查询条件
             var new_params = { orgName: search_org_name};
             Ext.apply(org_store.proxy.extraParams, new_params);
         });

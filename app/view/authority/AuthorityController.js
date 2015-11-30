@@ -1,3 +1,6 @@
+
+
+    //加载菜单和权限树的store
 var store = Ext.create('Ext.data.TreeStore', {
     proxy: {
         type: 'ajax',
@@ -10,6 +13,7 @@ var store = Ext.create('Ext.data.TreeStore', {
     }
 });
 
+//权限状态下拉列表
 var authorityTypestates = Ext.create('Ext.data.Store', {
     fields: ['authoritytype', 'description'],
     data : [
@@ -42,15 +46,18 @@ Ext.define('Ext.ux.authority.ComboBox', {
     }
 });
 
-
+    /**
+     * 权限资源控制类
+     */
 Ext.define('TutorialApp.view.authority.AuthorityController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.authorityc',
 
+    //点击添加后处理的函数
     addAuthorityRecord: function(){
-        var grid = Ext.getCmp('authority_list');
-        Ext.create('Ext.window.Window', {
+        var grid = Ext.getCmp('authority_list');//获取权限资源列表
+        Ext.create('Ext.window.Window', { //弹出添加窗口
             id: 'authoritySaveForm',
 
             requires: [
@@ -143,20 +150,20 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                                     text: '查询',
                                     iconCls : 'icon-search',
                                     handler: function(){
-                                        var search_menuTree = Ext.getCmp('search_menuTree').getValue();
-                                        var menuTree = Ext.getCmp('menuTree_id');
-                                        var root = menuTree.getRootNode();
+                                        var search_menuTree = Ext.getCmp('search_menuTree').getValue();//查询条件
+                                        var menuTree = Ext.getCmp('menuTree_id');//获取菜单树
+                                        var root = menuTree.getRootNode();//树的根节点
 
-                                        root.cascade(function(node){
+                                        root.cascade(function(node){//循环节点
 
-                                            if( node.get('text').indexOf('red') != -1){
+                                            if( node.get('text').indexOf('red') != -1){//先把节点的内容被标红的，去除标红
                                                 node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
                                             }
 
-                                            if(node.get('leaf') && node.get('text').indexOf(search_menuTree) >= 0){
+                                            if(node.get('leaf') && node.get('text').indexOf(search_menuTree) >= 0){//符合查询条件的内容标红
                                                 node.set('text',"<font color=red>"+node.get('text')+"</font>");
-                                                node.parentNode.expand(true);
-                                                node.expand(true);
+                                                node.parentNode.expand(true); //父节点打开
+                                                node.expand(true); //节点打开
                                             }
 
                                         });
@@ -168,7 +175,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
 
 
-
+                        //加载菜单树
                         Ext.create('Ext.tree.Panel',{
                             id: 'menuTree_id',
                             width: 200,
@@ -186,14 +193,15 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
                                     if(node.get('leaf')){
                                         var menuName = node.get('text');
-                                        if( menuName.indexOf('red') != -1){
+                                        if( menuName.indexOf('red') != -1){//因为查询出来的内容是标红的所以带回时候必须去除标红
                                             menuName = menuName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                         }
 
+                                        //带回内容
                                         Ext.getCmp('addMenu').setValue(node.getId());
                                         Ext.getCmp('addMenuName').setValue(menuName);
 
-                                        Ext.getCmp('menu_searchWindow').close();
+                                        Ext.getCmp('menu_searchWindow').close();//关闭窗口
 
                                     }
                                 }
@@ -211,16 +219,16 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                                 xtype: Ext.getCmp('menuTree_id')
                             },
                             listeners:{
-                                close : function(){
+                                close : function(){ //监听窗口关闭事件
                                     var menuTree = Ext.getCmp('menuTree_id');
                                     var root = menuTree.getRootNode();
 
+                                    //把有标红的内容恢复原状态
                                     root.cascade(function(node){
                                         if(node.getId() != 'all'){
                                             node.collapse(true);
                                             var text = node.get('text');
                                             if(text.indexOf('red') != -1){
-
                                                 node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
                                             }
 
@@ -244,7 +252,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                         var saveForm = Ext.getCmp('authoritySaveForm');
                         var form = this.up('form').getForm();
                         var formValues = form.getValues();
-                        if (form.isValid()) {
+                        if (form.isValid()) { //表单内容符合要求才能提交
                             Ext.Ajax.request({
                                 url:'/authority/save',
                                 params: {'authorityname':formValues["authorityname"],authoritytype: formValues["authoritytype"],displayref: formValues["displayref"],'description':formValues["description"],'menu':formValues["menu"]},
@@ -255,7 +263,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                                     if(result.state == "success"){
                                         saveForm.close();
                                         var current = grid.store.currentPage;
-                                        grid.store.loadPage(current);
+                                        grid.store.loadPage(current); //刷新页面
                                     }else{
                                         Ext.Msg.alert('出错了');
                                     }
@@ -270,16 +278,17 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
             }
         });
     },
-//不能为空
+//修改
     editAuthorityRecord: function(){
-        var grid = Ext.getCmp('authority_list');
+        var grid = Ext.getCmp('authority_list'); //获取列表对象
 
-        var selection = grid.getSelectionModel().getSelection();
-        if(selection.length == 0) {
+        var selection = grid.getSelectionModel().getSelection(); //获取选中的对象
+        if(selection.length == 0) { //必须选中
             Ext.Msg.alert('message','请选择权限!');
         }else if(selection.length > 1){
             Ext.Msg.alert('message','一次操作一条!');
         }else{
+                //打开修改窗口
                 Ext.create('Ext.window.Window', {
                     id: 'authorityUpdateForm',
 
@@ -380,11 +389,11 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                                             text: '查询',
                                             iconCls : 'icon-search',
                                             handler: function(){
-                                                var searchEdit_menuTree = Ext.getCmp('searchEdit_menuTree').getValue();
+                                                var searchEdit_menuTree = Ext.getCmp('searchEdit_menuTree').getValue(); //查询条件
                                                 var menuTree = Ext.getCmp('menuTreeEdit_id');
                                                 var root = menuTree.getRootNode();
 
-                                                root.cascade(function(node){
+                                                root.cascade(function(node){ //循环节点
 
                                                     if( node.get('text').indexOf('red') != -1){
                                                         node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
@@ -392,8 +401,8 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
                                                     if(node.get('leaf') && node.get('text').indexOf(searchEdit_menuTree) >= 0){
                                                         node.set('text',"<font color=red>"+node.get('text')+"</font>");
-                                                        node.parentNode.expand(true);
-                                                        node.expand(true);
+                                                        node.parentNode.expand(true); //父节点打开
+                                                        node.expand(true);  //节点自己打开
                                                     }
 
                                                 });
@@ -405,7 +414,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
 
 
-
+                                //菜单树
                                 Ext.create('Ext.tree.Panel',{
                                     id: 'menuTreeEdit_id',
                                     width: 200,
@@ -423,13 +432,15 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
                                             if(node.get('leaf')){
                                                 var menuName = node.get('text');
-                                                if( menuName.indexOf('red') != -1){
+                                                if( menuName.indexOf('red') != -1){//有标红的内容先恢复原样
                                                     menuName = menuName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                                 }
 
+                                                //内容带回
                                                 Ext.getCmp('editMenu').setValue(node.getId());
                                                 Ext.getCmp('editMenuName').setValue(menuName);
 
+                                                //关闭窗口
                                                 Ext.getCmp('menuEdit_searchWindow').close();
 
                                             }
@@ -448,10 +459,11 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                                         xtype: Ext.getCmp('menuTreeEdit_id')
                                     },
                                     listeners:{
-                                        close : function(){
+                                        close : function(){ //监听窗口关闭事件
                                             var menuTree = Ext.getCmp('menuTreeEdit_id');
                                             var root = menuTree.getRootNode();
 
+                                            //把树中的内容恢复原样
                                             root.cascade(function(node){
                                                 if(node.getId() != 'all'){
                                                     node.collapse(true);
@@ -476,7 +488,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                             hidden: true
                         }, '->', {
                             text: '修改',
-                            handler: function(){
+                            handler: function(){ //修改操作
 
                                 var updateForm = Ext.getCmp('authorityUpdateForm');
                                 var form = this.up('form').getForm();
@@ -511,6 +523,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
     },
 
+    //删除
     removeAuthorityRecord: function(){
         var grid = Ext.getCmp('authority_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -548,7 +561,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
                             var obj = Ext.decode(response.responseText);
                             if(obj.state == 'success'){
                                 grid.getStore().remove(grid.getSelectionModel().getSelection());
-                                grid.getStore().load();
+                                grid.getStore().load(); //列表刷新
                                 // grid.getStore().sync();
                             }else{
                                 Ext.Msg.alert('出错了');
@@ -563,6 +576,7 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
 
     },
 
+    //查看
     viewAuthorityRecord: function(){
         var grid = Ext.getCmp('authority_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -587,11 +601,12 @@ Ext.define('TutorialApp.view.authority.AuthorityController', {
     },
 
 
-
+//查询
     searchAuthority: function(){
         var search_authority_name = Ext.getCmp('search_authority_name').getValue();
         var authority_store = Ext.getCmp('authority_list').store;
 
+        //在向后台提交之前添加查询条件
         authority_store.on('beforeload', function (store, options) {
             var new_params = { authorityname: search_authority_name};
             Ext.apply(authority_store.proxy.extraParams, new_params);

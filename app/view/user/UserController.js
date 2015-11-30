@@ -29,7 +29,7 @@ Ext.define('Ext.ux.ComboBox', {
 });
 
 
-
+//部门树store
 var store = Ext.create('Ext.data.TreeStore', {
     proxy: {
         type: 'ajax',
@@ -42,6 +42,7 @@ var store = Ext.create('Ext.data.TreeStore', {
     }
 });
 
+//自定义正则表达式
 Ext.define('Override.form.field.VTypes', {
     override: 'Ext.form.field.VTypes',
 
@@ -58,7 +59,9 @@ Ext.define('Override.form.field.VTypes', {
     idCardRe:/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/,
     idCardText: '身份证号码不符合规定'
 });
-
+/**
+ * 系统用户控制器
+ */
 Ext.define('TutorialApp.view.user.UserController', {
     extend: 'Ext.app.ViewController',
 
@@ -156,15 +159,15 @@ Ext.define('TutorialApp.view.user.UserController', {
                                     handler: function(){
                                         var search_deptTree = Ext.getCmp('search_userdeptTree').getValue();
                                         var deptTree = Ext.getCmp('userDeptTree_id');
-                                        var root = deptTree.getRootNode();
+                                        var root = deptTree.getRootNode();//获取根节点
 
-                                        root.cascade(function(node){
+                                        root.cascade(function(node){//循环节点
 
                                             if( node.get('text').indexOf('red') != -1){
                                                 node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
                                             }
 
-                                            if(node.get('leaf') && node.get('text').indexOf(search_deptTree) >= 0){
+                                            if(node.get('leaf') && node.get('text').indexOf(search_deptTree) >= 0){//符合查询条件打开节点
                                                 node.set('text',"<font color=red>"+node.get('text')+"</font>");
                                                 node.parentNode.expand(true);
                                                 node.expand(true);
@@ -198,7 +201,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                                         if( deptName.indexOf('red') != -1){
                                             deptName = deptName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                         }
-
+                                        //内容带回
                                         Ext.getCmp('addOrg').setValue(node.getId());
                                         Ext.getCmp('addOrgName').setValue(deptName);
 
@@ -310,7 +313,7 @@ Ext.define('TutorialApp.view.user.UserController', {
             }
         });
     },
-//不能为空
+//修改
     editUserRecord: function(){
         var grid = Ext.getCmp('user_list');
 
@@ -450,7 +453,7 @@ Ext.define('TutorialApp.view.user.UserController', {
                                                 if( deptName.indexOf('red') != -1){
                                                     deptName = deptName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                                 }
-
+                                                //内容带回
                                                 Ext.getCmp('editOrg').setValue(node.getId());
                                                 Ext.getCmp('editOrgName').setValue(deptName);
 
@@ -576,7 +579,7 @@ Ext.define('TutorialApp.view.user.UserController', {
         }
 
     },
-
+    //删除
     removeUserRecord: function(){
         var grid = Ext.getCmp('user_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -628,7 +631,7 @@ Ext.define('TutorialApp.view.user.UserController', {
         }
 
     },
-
+    //查看
     viewUserRecord: function(){
         var grid = Ext.getCmp('user_list'), selection = grid
             .getSelectionModel().getSelection();
@@ -650,12 +653,12 @@ Ext.define('TutorialApp.view.user.UserController', {
         }
 
     },
-
+    //查询
     searchUser: function(){
         var search_user_name = Ext.getCmp('search_user_name').getValue();
         var user_store = Ext.getCmp('user_list').store;
 
-        user_store.on('beforeload', function (store, options) {
+        user_store.on('beforeload', function (store, options) { //提交到后台前添加查询条件
             var new_params = { username: search_user_name};
             Ext.apply(user_store.proxy.extraParams, new_params);
         });

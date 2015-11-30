@@ -1,4 +1,6 @@
-
+/**
+ * 用户统计页面查询工具栏，第三行
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_UserStatistics_ThreeToolbar', {
     extend:'Ext.toolbar.Toolbar',
     renderTo: document.body,

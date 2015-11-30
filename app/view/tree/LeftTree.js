@@ -10,7 +10,9 @@ var store = Ext.create('Ext.data.TreeStore', {
         expanded: false
     }
 });
-
+/**
+ * 主页面左侧菜单栏加载
+ */
 Ext.define('TutorialApp.view.tree.LeftTree',{
         extend:'Ext.tree.Panel',
         xtype:'app-leftTree',

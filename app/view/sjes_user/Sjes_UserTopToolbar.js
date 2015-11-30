@@ -1,3 +1,6 @@
+/**
+ * 商城用户查询工具栏
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_UserTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-sjesuserTopToolbar',
@@ -12,7 +15,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_UserTopToolbar', {
                 success : function(response, options){
 
                     var result = Ext.decode(response.responseText);
-
+                    //循环当前用户的所有权限加载按钮
                     Ext.each(result, function(authority){
                         if(authority == 'SJESUSER_SAVE'){
                            /* var add = new Object();

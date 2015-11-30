@@ -1,3 +1,6 @@
+/**
+ * 积分工具栏
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_IntegalTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-sjesIntegalTopToolbar',

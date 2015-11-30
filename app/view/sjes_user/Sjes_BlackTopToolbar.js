@@ -1,3 +1,4 @@
+//黑名单工具栏
 Ext.define('TutorialApp.view.sjes_user.Sjes_BlackTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-sjesblackTopToolbar',
@@ -12,7 +13,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_BlackTopToolbar', {
                 success : function(response, options){
 
                     var result = Ext.decode(response.responseText);
-
+                    //循环当前用户的权限，加载按钮
                     Ext.each(result, function(authority){
                         if(authority == 'BLACK_SAVE'){
                              var add = new Object();

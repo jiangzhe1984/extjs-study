@@ -11,7 +11,9 @@ var store = Ext.create('Ext.data.TreeStore', {
     }
 });
 
-
+/**
+ * 加载角色与用户关联窗口中部门树
+ */
 Ext.define('TutorialApp.view.tree.DeptTree', {
     extend:'Ext.tree.Panel',
     id:'deptTree',
@@ -51,10 +53,10 @@ Ext.define('TutorialApp.view.tree.DeptTree', {
                             document.sel.res.options.length=0;
                             document.sel.res1.options.length=0;
 
-                             for(var i=0;i<obj.in.length;i++){
+                             for(var i=0;i<obj.in.length;i++){//加载未关联用户
                                  document.sel.res.options[document.sel.res.length] = new Option(obj.in[i].username, obj.in[i].id);
                              }
-                            for(var i=0;i<obj.notIn.length;i++){
+                            for(var i=0;i<obj.notIn.length;i++){//加载已关联用户
                                 document.sel.res1.options[document.sel.res1.length] = new Option(obj.notIn[i].username, obj.notIn[i].id);
                             }
                         }else{

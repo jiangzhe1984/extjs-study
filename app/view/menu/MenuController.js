@@ -1,4 +1,4 @@
-
+//加载菜单树
 var menuStore = Ext.create('Ext.data.TreeStore', {
     proxy: {
         type: 'ajax',
@@ -10,14 +10,14 @@ var menuStore = Ext.create('Ext.data.TreeStore', {
         expanded: false
     }
 });
-
+//菜单控制器
 Ext.define('TutorialApp.view.menu.MenuController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.menuc',
 
     addMenuRecord: function(){
-        var grid = Ext.getCmp('menu_list');
+        var grid = Ext.getCmp('menu_list');//获取菜单列表
         Ext.create('Ext.window.Window', {
             id: 'menuSaveForm',
 
@@ -132,20 +132,20 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                     text: '查询',
                                     iconCls : 'icon-search',
                                     handler: function(){
-                                        var search_menuTree = Ext.getCmp('search_menuTree').getValue();
+                                        var search_menuTree = Ext.getCmp('search_menuTree').getValue();//查询条件
                                         var menuTree = Ext.getCmp('menuTreeAdd_id');
                                         var root = menuTree.getRootNode();
 
-                                        root.cascade(function(node){
+                                        root.cascade(function(node){//循环节点
 
-                                            if( node.get('text').indexOf('red') != -1){
+                                            if( node.get('text').indexOf('red') != -1){//先把有标红的内容恢复原样
                                                 node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
                                             }
 
-                                            if(node.get('leaf') && node.get('text').indexOf(search_menuTree) >= 0){
+                                            if(node.get('leaf') && node.get('text').indexOf(search_menuTree) >= 0){ //符合查询条件
                                                 node.set('text',"<font color=red>"+node.get('text')+"</font>");
-                                                node.parentNode.expand(true);
-                                                node.expand(true);
+                                                node.parentNode.expand(true);//父节点打开
+                                                node.expand(true);//节点打开
                                             }
 
                                         });
@@ -178,11 +178,11 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                         if( menuName.indexOf('red') != -1){
                                             menuName = menuName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                         }
-
+                                    //内容带回
                                         Ext.getCmp('addParentMenu').setValue(node.getId());
                                         Ext.getCmp('addParentMenuname').setValue(menuName);
 
-                                        Ext.getCmp('menuAdd_searchWindow').close();
+                                        Ext.getCmp('menuAdd_searchWindow').close();//关闭窗口
 
                                   //  }
                                 }
@@ -200,7 +200,7 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                 xtype: Ext.getCmp('menuTreeAdd_id')
                             },
                             listeners:{
-                                close : function(){
+                                close : function(){//监听窗口关闭事件
                                     var menuTree = Ext.getCmp('menuTreeAdd_id');
                                     var root = menuTree.getRootNode();
 
@@ -244,7 +244,7 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                     if(result.state == "success"){
                                         saveForm.close();
                                         var current = grid.store.currentPage;
-                                        grid.store.loadPage(current);
+                                        grid.store.loadPage(current);//刷新页面
                                     }else{
                                         Ext.Msg.alert('出错了');
                                     }
@@ -259,12 +259,12 @@ Ext.define('TutorialApp.view.menu.MenuController', {
             }
         });
     },
-//不能为空
+//修改
     editMenuRecord: function(){
-        var grid = Ext.getCmp('menu_list');
+        var grid = Ext.getCmp('menu_list');//菜单列表
 
-        var selection = grid.getSelectionModel().getSelection();
-        if(selection.length == 0) {
+        var selection = grid.getSelectionModel().getSelection();//选中的对象
+        if(selection.length == 0) {//必须选中
             Ext.Msg.alert('message','请选择菜单!');
         }else if(selection.length > 1){
             Ext.Msg.alert('message','一次操作一条!');
@@ -322,7 +322,7 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                             { boxLabel: '否', name: 'expanded', inputValue: '0'}
                         ],
                         listeners:{
-                            beforerender:function(){
+                            beforerender:function(){//根据修改内容加载选中
                                 if(true == selection[0].get('expanded')){
                                     Ext.getCmp('expanded').items.get(0).setValue(true);
                                 }else{
@@ -344,7 +344,7 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                             { boxLabel: '否', name: 'isParent', inputValue: '0' }
                         ],
                         listeners:{
-                            beforerender:function(){
+                            beforerender:function(){//根据修改内容加载选中
                                 if(true == selection[0].get('parent')){
                                     Ext.getCmp('isParent').items.get(0).setValue(true);
                                 }else{
@@ -366,7 +366,7 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                             { boxLabel: '否', name: 'leaf', inputValue: '0' }
                         ],
                         listeners:{
-                            beforerender:function(){
+                            beforerender:function(){//根据修改内容加载选中
                                 if(true == selection[0].get('leaf')){
                                     Ext.getCmp('leaf').items.get(0).setValue(true);
                                 }else{
@@ -415,20 +415,20 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                         text: '查询',
                                         iconCls : 'icon-search',
                                         handler: function(){
-                                            var search_edit_menuTree = Ext.getCmp('search_edit_menuTree').getValue();
+                                            var search_edit_menuTree = Ext.getCmp('search_edit_menuTree').getValue();//查询条件
                                             var menuTree = Ext.getCmp('menuTreeEdit_id');
                                             var root = menuTree.getRootNode();
 
-                                            root.cascade(function(node){
+                                            root.cascade(function(node){//循环节点
 
-                                                if( node.get('text').indexOf('red') != -1){
+                                                if( node.get('text').indexOf('red') != -1){//先把有标红的内容恢复原样
                                                     node.set('text',node.get('text').substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<')));
                                                 }
 
-                                                if(node.get('leaf') && node.get('text').indexOf(search_edit_menuTree) >= 0){
+                                                if(node.get('leaf') && node.get('text').indexOf(search_edit_menuTree) >= 0){//符合查询条件
                                                     node.set('text',"<font color=red>"+node.get('text')+"</font>");
-                                                    node.parentNode.expand(true);
-                                                    node.expand(true);
+                                                    node.parentNode.expand(true); //父节点打开
+                                                    node.expand(true); //节点打开
                                                 }
 
                                             });
@@ -461,11 +461,11 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                         if( menuName.indexOf('red') != -1){
                                             menuName = menuName.substring(node.get('text').indexOf('>')+1,node.get('text').lastIndexOf('<'));
                                         }
-
+                                        //带回内容
                                         Ext.getCmp('editParentMenu').setValue(node.getId());
                                         Ext.getCmp('editParentMenuName').setValue(menuName);
 
-                                        Ext.getCmp('menuEdit_searchWindow').close();
+                                        Ext.getCmp('menuEdit_searchWindow').close();//关闭窗口
 
                                         //  }
                                     }
@@ -487,11 +487,11 @@ Ext.define('TutorialApp.view.menu.MenuController', {
                                         var menuTree = Ext.getCmp('menuTreeEdit_id');
                                         var root = menuTree.getRootNode();
 
-                                        root.cascade(function(node){
+                                        root.cascade(function(node){ //循环节点
                                             if(node.getId() != 'all'){
                                                 node.collapse(true);
                                                 var text = node.get('text');
-                                                if(text.indexOf('red') != -1){
+                                                if(text.indexOf('red') != -1){//去除标红，恢复原样
 
                                                     node.set('text',text.substring(text.indexOf('>')+1,text.lastIndexOf('<')));
                                                 }
@@ -653,12 +653,12 @@ Ext.define('TutorialApp.view.menu.MenuController', {
         }
 
     },
-
+//查询菜单
     searchMenu: function(){
         var search_menu_name = Ext.getCmp('search_menu_name').getValue();
         var menu_store = Ext.getCmp('menu_list').store;
 
-        menu_store.on('beforeload', function (store, options) {
+        menu_store.on('beforeload', function (store, options) { //提交后台前添加查询条件
             var new_params = { text: search_menu_name};
             Ext.apply(menu_store.proxy.extraParams, new_params);
         });

@@ -1,7 +1,9 @@
+//退出操作
 function logout(){
     window.location.href= '/logout';
 }
 
+//修改密码操作
 function updatePwd(){
     Ext.create('Ext.window.Window', {
         id: 'pwdUpdateForm',
@@ -68,7 +70,7 @@ function updatePwd(){
                                     Ext.Msg.alert('message','修改成功');
                                     saveForm.close();
                                 }else if(result.state == "atypism"){
-                                    Ext.Msg.alert('message','旧密码错误');
+                                    Ext.Msg.alert('message','输入的旧密码错误');
                                 }else{
                                     Ext.Msg.alert('message','出错了');
                                 }
@@ -83,14 +85,14 @@ function updatePwd(){
         }
     });
 }
-
+//工具栏
 Ext.define('TutorialApp.view.main.NorthTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     renderTo: document.body,
     width   : 500,
-    style: 'background-color:#46A3FF;',
+    style: 'background-color:#46A3FF;',//背景色
     listeners : {
-        render : function(view, eOpts){
+        render : function(view, eOpts){ //加载事件
             var url = view.url;
             Ext.Ajax.request({
                 url : url,

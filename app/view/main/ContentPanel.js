@@ -10,7 +10,7 @@ Ext.define('TutorialApp.view.main.ContentPanel', {
         title: 'Home',
         itemId: 'home',
         items: [{
-            xtype: 'app-personnelMain'
+            xtype: 'app-personnelMain'//主页
         }],
         closable:true
     }/*, {

@@ -1,3 +1,4 @@
+//菜单工具栏
 Ext.define('TutorialApp.view.menu.MenuTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-menuToolbar',
@@ -12,7 +13,7 @@ Ext.define('TutorialApp.view.menu.MenuTopToolbar', {
                 success : function(response, options){
 
                     var result = Ext.decode(response.responseText);
-
+                    //循环当前用户权限，组合按钮
                     Ext.each(result, function(authority){
                         if(authority == 'MENU_SAVE'){
                             var add = new Object();

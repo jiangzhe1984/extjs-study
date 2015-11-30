@@ -1,3 +1,4 @@
+//自动审核页面
 Ext.define('TutorialApp.view.orderManagement.AutoAudit',{
     extend:'Ext.form.Panel',
     xtype: 'autoauditmechanism',

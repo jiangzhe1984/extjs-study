@@ -1,7 +1,7 @@
 /**
- * Store
+ * 黑名单Store
  */
-var itemsPerPage = 10;
+var itemsPerPage = 10;//每页显示多少条
 Ext.define('TutorialApp.store.sjes_user.Sjes_Black', {
     extend: 'Ext.data.Store',
 

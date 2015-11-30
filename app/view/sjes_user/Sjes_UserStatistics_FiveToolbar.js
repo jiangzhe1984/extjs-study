@@ -1,4 +1,6 @@
-
+/**
+ * 用户统计页面查询工具栏，第五行
+ */
 Ext.define('TutorialApp.view.sjes_user.Sjes_UserStatistics_FiveToolbar', {
     extend:'Ext.toolbar.Toolbar',
     renderTo: document.body,

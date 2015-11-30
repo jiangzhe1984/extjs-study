@@ -1,3 +1,6 @@
+/**
+ * 系统用户查询栏
+ */
 Ext.define('TutorialApp.view.user.UserTopToolbar', {
     extend:'Ext.toolbar.Toolbar',
     xtype: 'app-userTopToolbar',
@@ -12,7 +15,7 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
                 success : function(response, options){
 
                     var result = Ext.decode(response.responseText);
-
+                    //循环当前用户的所有权限，加载按钮
                     Ext.each(result, function(authority){
                         if(authority == 'USER_SAVE'){
                             var add = new Object();
@@ -32,6 +35,7 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
                             view.add(update);
 
                         }
+
 
                         if(authority == 'USER_DELETE'){
                             var del = new Object();
@@ -77,59 +81,4 @@ Ext.define('TutorialApp.view.user.UserTopToolbar', {
         }
     }
 
-    /*items: [
-        {
-            // xtype: 'button', // default for Toolbars
-            text: '新增',
-            iconCls : 'icon-plus-sign-alt',
-            listeners: {
-                click: 'addUserRecord'
-            }
-        },
-        {
-            // xtype: 'button', // default for Toolbars
-            text: '修改',
-            iconCls : 'icon-edit',
-            listeners: {
-                click: 'editUserRecord'
-            }
-        },
-        {
-            // xtype: 'button', // default for Toolbars
-            text: '删除',
-            iconCls : 'icon-remove',
-            listeners: {
-                click: 'removeUserRecord'
-            }
-        },
-        {
-            // xtype: 'button', // default for Toolbars
-            text: '显示',
-            iconCls : 'icon-eye-open',
-            listeners: {
-                click: 'viewUserRecord'
-            }
-        },
-        '->',
-        {
-            xtype    : 'textfield',
-            id       : 'search_user_name',
-            emptyText: '快速检索'
-        }, {
-            // xtype: 'button', // default for Toolbars
-            text: '查询',
-            iconCls : 'icon-search',
-            handler: function(){
-                var search_user_name = Ext.getCmp('search_user_name').getValue();
-                var user_store = Ext.getCmp('user_list').store;
-
-                user_store.on('beforeload', function (store, options) {
-                    var new_params = { username: search_user_name};
-                    Ext.apply(user_store.proxy.extraParams, new_params);
-                });
-                //  role_store.filter('name', search_org_name);
-                user_store.load();
-            }
-        }
-    ]*/
 });
