@@ -46,6 +46,12 @@
       text: '订单查询',
       leaf: true,
       url:'orderSearch_list'
+    },
+    {
+      id: 'orderToExamine',
+      text: '订单审核',
+      leaf: true,
+      url:'orderToExamine_list'
     }
   ]
 },
