@@ -1,0 +1,7 @@
+{
+
+  data : [
+    {categoryValue:"lysp", text:"粮油食品"},
+    {categoryValue:"jsyl", text:"酒水饮料"}
+  ]
+}

@@ -19,7 +19,7 @@ Ext.define('TutorialApp.model.sjes_user.Sjes_User', {
         {name: 'dateLine',  type: 'string'},//会员卡有效期
         {name: 'virtualCardNum',  type: 'string'},//虚拟会员卡号
         {name: 'portraitPath',  type: 'string'},//头像路径
-        {name: 'enable',  type: 'boolean', defaultValue: true},//用户是否激活
+        {name: 'enable',  type: 'boolean'},//用户是否激活
         {name: 'createdDate',  type: 'string'},//生成时间
         {name: 'updatedDate',  type: 'string'},//更新时间
         {name: 'lastLoginTime', type: 'string'},//最后登录时间

@@ -59,12 +59,12 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_UserTopToolbar', {
 
                     view.add('->');
 
-                    var searchSjesUser = new Object();
-                    searchSjesUser.xtype = "textfield";
-                    searchSjesUser.id = "search_sjes_username";
-                    searchSjesUser.emptyText = "用户名";
+                    var searchSjesUsername = new Object();
+                    searchSjesUsername.xtype = "textfield";
+                    searchSjesUsername.id = "search_sjes_username";
+                    searchSjesUsername.emptyText = "用户名";
 
-                    view.add(searchSjesUser);
+                    view.add(searchSjesUsername);
 
                     var searchSjesUserMobile = new Object();
                     searchSjesUserMobile.xtype = "textfield";
@@ -93,7 +93,7 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_UserTopToolbar', {
                     searchButton.text = "查询";
                     searchButton.iconCls = "icon-search";
                     var searchListener = new Object();
-                    searchListener.click = "searchOrg";
+                    searchListener.click = "searchSjesUser";
                     searchButton.listeners = searchListener;
                     view.add(searchButton);
                 }

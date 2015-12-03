@@ -45,10 +45,15 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
                 align: 'center',
                 dataIndex: 'email'
             }, {
-                text: '密码',
+                text: '会员卡有效期',
                 flex: 1,
                 align: 'center',
-                dataIndex: 'password'
+                dataIndex: 'dateLine'
+            }, {
+                text: '会员卡号',
+                flex: 1,
+                align: 'center',
+                dataIndex: 'cardNum'
             }, {
                 text: '手机号',
                 flex: 1,
@@ -60,14 +65,9 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
                 align: 'center',
                 dataIndex: 'sex',
                 renderer: function(value){
-                    return value == 1 ? '男' : '女';
+                    return value == 0 ? '男' : '女';
                 }
             }, {
-             text: '会员卡号',
-             flex: 1,
-             align: 'center',
-             dataIndex: 'cardNum'
-             }, {
                 text: '是否激活',
                 flex: 1,
                 align: 'center',
@@ -75,20 +75,6 @@ Ext.define('TutorialApp.view.sjes_user.Sjes_User', {
                 renderer: function(value){
                     return value  ? '是' : '否';
                 }
-            },{
-                text:"操作",
-                width:130,
-                align:"center",
-                xtype:'actioncolumn',//这里就是放置按钮的地方
-                width:50,
-                items: [{
-                    iconCls : 'icon-eye-open',
-                    tooltip: '显示',
-                    handler: function(grid, rowIndex, colIndex) {
-                        var rec = grid.getStore().getAt(rowIndex);
-                        alert("mobile " + rec.get('mobile'));
-                    }
-                }]
             }
         ];
         me.dockedItems = [{

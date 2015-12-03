@@ -15,13 +15,13 @@ Ext.define('TutorialApp.store.sjes_user.Sjes_User', {
 
     proxy: {
         type: 'ajax',//跨域交互的代理JsonP
-        url: 'resources/data/Sjes_User.json',
-        //url: '/role/list',
+       // url: 'resources/data/Sjes_User.json',
+        url: '/sjes_users/list',
         reader: {
             type: 'json',
-            successProperty: 'success',
-            rootProperty: 'items',
-            totalProperty: 'total'
+           // successProperty: 'success',
+            rootProperty: 'list',
+            totalProperty: 'totalCount'
         }
     }
 });

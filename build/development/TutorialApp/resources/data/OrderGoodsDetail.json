@@ -1,0 +1,32 @@
+{ success: true,
+  total:10,
+  items: [
+    { id:1,
+      encodingManagement: "12013645",
+      commodityEncoding:'2013645',
+      commodityName:"三江购物大豆油5L",
+      sellingPrice: "￥33.6",
+      memberPrice:"￥33.6",
+      number:9,
+      participateInTheActivityName:"十天十夜满减"
+    },
+    { id:2,
+      encodingManagement: "12015894",
+      commodityEncoding:'2015894',
+      commodityName:"加多宝凉茶植物饮料250ml",
+      sellingPrice: "￥3.2",
+      memberPrice:"￥3.0",
+      number:1,
+      participateInTheActivityName:"十天十夜满减"
+    },
+    { id:3,
+      encodingManagement: "12015617",
+      commodityEncoding:'2015617',
+      commodityName:"农夫柠檬风味果味营养素饮750ml",
+      sellingPrice: "￥4.1",
+      memberPrice:"￥4.0",
+      number:1,
+      participateInTheActivityName:"十天十夜满减"
+    }
+  ]
+}

@@ -46,6 +46,25 @@
       text: '订单查询',
       leaf: true,
       url:'orderSearch_list'
+    },
+    {
+      id: 'orderToExamine',
+      text: '订单审核',
+      leaf: true,
+      url:'orderToExamine_list'
+    }
+  ]
+}, {
+  text: '商品管理',
+  id: 'commodityManagement',
+  expanded: false,
+  isParent:true,
+  children: [
+    {
+      id: 'commodityInformation',
+      text: '商品信息维护',
+      leaf: true,
+      url:'commodityInformationList'
     }
   ]
 },

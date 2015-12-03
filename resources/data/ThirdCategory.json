@@ -1,0 +1,8 @@
+{
+  data : [
+    {firstCategory:"lysp",categoryValue:"lyspC0", text:"粮油"},
+    {firstCategory:"lysp",categoryValue:"lyspC1", text:"食品"},
+    {firstCategory:"jsyl",categoryValue:"jsylC0", text:"酒水"},
+    {firstCategory:"jsyl",categoryValue:"jsylC1", text:"饮料"}
+  ]
+}

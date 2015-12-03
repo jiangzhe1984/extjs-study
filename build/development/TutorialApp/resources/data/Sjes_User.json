@@ -1,7 +1,7 @@
 { success: true,
   total:2,
   items: [
-    {id:1, username: "aa", nickname: "aa",email: "aa@163.com",password:"aa",pwdStrength:1, mobile: "13265478987",sex:1,birthday:"aa" ,cardNum:"123456", dateLine: "aa",virtualCardNum:"aa",portraitPath:"aa",enable:true,createdDate:"aa",updatedDate:"aa"  },
-    {id:2, username: "bb", nickname: "bb",email: "aa@163.com",password:"aa",pwdStrength:2, mobile: "13654785474",sex:2,birthday:"aa" ,cardNum:"321654", dateLine: "aa",virtualCardNum:"aa",portraitPath:"aa",enable:false,createdDate:"aa",updatedDate:"aa"  }
+    {id:1, username: "aa", nickname: "aa",email: "aa@163.com",password:"aa",pwdStrength:1, mobile: "13265478987",sex:0,birthday:"aa" ,cardNum:"123456", dateLine: "aa",virtualCardNum:"aa",portraitPath:"aa",enable:true,createdDate:"aa",updatedDate:"aa"  },
+    {id:2, username: "bb", nickname: "bb",email: "aa@163.com",password:"aa",pwdStrength:2, mobile: "13654785474",sex:1,birthday:"aa" ,cardNum:"321654", dateLine: "aa",virtualCardNum:"aa",portraitPath:"aa",enable:false,createdDate:"aa",updatedDate:"aa"  }
   ]
 }

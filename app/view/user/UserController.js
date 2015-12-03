@@ -55,7 +55,7 @@ Ext.define('Override.form.field.VTypes', {
     },
     // RegExp for the value to be tested against within the validation function
     mobileRe: /^1\d{10}$/i,
-    mobileText: '请输入手机号',
+    mobileText: '手机号不符合规定',
     idCardRe:/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/,
     idCardText: '身份证号码不符合规定'
 });
