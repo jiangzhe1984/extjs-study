@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var cancelReason_states = Ext.create('Ext.data.Store', {
     fields: ['cancelReason', 'name'],
     data : [
@@ -51,6 +52,8 @@ Ext.define('Ext.ux.ban.ComboBox', {
 });
 
 
+=======
+>>>>>>> origin/master
 
 //销售总金额
 function saleAmount(id){
@@ -388,11 +391,15 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                 text: '会员ID',
                 flex: 1,
                 align: 'center',
+<<<<<<< HEAD
                 dataIndex: 'memberId',
                 renderer: function(value, metaData, record) {
                     metaData.tdAttr = 'data-qtip="' + value + '"';
                     return value;
                 }
+=======
+                dataIndex: 'memberId'
+>>>>>>> origin/master
             }, {
                 text: '收货人',
                 flex: 1,
@@ -402,16 +409,21 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                 text: '手机号',
                 flex: 1,
                 align: 'center',
+<<<<<<< HEAD
                 dataIndex: 'telphone',
                 renderer: function(value, metaData, record) {
                     metaData.tdAttr = 'data-qtip="' + value + '"';
                     return value;
                 }
 
+=======
+                dataIndex: 'telphone'
+>>>>>>> origin/master
             }, {
                 text: '收货地址',
                 flex: 1,
                 align: 'center',
+<<<<<<< HEAD
                 dataIndex: 'sendAddress',
                 renderer: function(value, metaData, record){
                     metaData.tdAttr = 'data-qtip="' + value + '"';
@@ -436,16 +448,31 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                     return value;*/
                 }
 
+=======
+                dataIndex: 'sendAddress'
+
+                /*,
+
+                   beforeshow:function updateTipBody(tip){
+                       var rowIndex = m.getView().findRowIndex(tip.triggerElement);
+                       alert(rowIndex);
+
+                   }*/
+>>>>>>> origin/master
 
             }, {
                 text: '所属商场',
                 flex: 1,
                 align: 'center',
+<<<<<<< HEAD
                 dataIndex: 'ownMarket',
                 renderer: function(value, metaData, record) {
                     metaData.tdAttr = 'data-qtip="' + value + '"';
                     return value;
                 }
+=======
+                dataIndex: 'ownMarket'
+>>>>>>> origin/master
             }, {
                 text: '下单来源',
                 flex: 1,
@@ -496,11 +523,15 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                 text: '支付时间',
                 flex: 1,
                 align: 'center',
+<<<<<<< HEAD
                 dataIndex: 'payDate',
                 renderer: function(value, metaData, record) {
                     metaData.tdAttr = 'data-qtip="' + value + '"';
                     return value;
                 }
+=======
+                dataIndex: 'payDate'
+>>>>>>> origin/master
             }, {
                 text: '支付类型',
                 flex: 1,
@@ -519,7 +550,10 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                         case 3: reason = '单品数量过大'; break;
                         case 4: reason = '首次订单'; break;
                     }
+<<<<<<< HEAD
                     metaData.tdAttr = 'data-qtip="' + reason + '"';
+=======
+>>>>>>> origin/master
 
                     return reason;
                 }
@@ -533,6 +567,7 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                     iconCls : 'icon-thumbs-up',
                     tooltip: '通过',
                     handler: function(grid, rowIndex, colIndex) {
+<<<<<<< HEAD
                         Ext.Msg.confirm('温馨提示', '确定要通过吗?', function (choice) {
                             if (choice === 'yes') {
                                 Ext.Msg.alert('温馨提示','通过');
@@ -541,11 +576,16 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                       /*  var rec = grid.getStore().getAt(rowIndex);
                         alert(rec.get('username'));*/
 
+=======
+                      /*  var rec = grid.getStore().getAt(rowIndex);
+                        alert(rec.get('username'));*/
+>>>>>>> origin/master
                     }
                 },{
                     iconCls : 'icon-thumbs-down',
                     tooltip: '取消',
                     handler: function(grid, rowIndex, colIndex) {
+<<<<<<< HEAD
                         Ext.create('Ext.window.Window', {
                             id: 'menuUpdateForm',
 
@@ -617,6 +657,8 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
                                 }]
                             }
                         });
+=======
+>>>>>>> origin/master
                         /*  var rec = grid.getStore().getAt(rowIndex);
                          alert(rec.get('username'));*/
                     }
@@ -642,6 +684,33 @@ Ext.define('TutorialApp.view.orderManagement.OrderToExamineList', {
             })
         }];
         me.callParent();
+<<<<<<< HEAD
+=======
+    },
+    listeners : {
+        scope : this,
+        render: function (grid){
+            //var store = grid.getStore();  // Capture the Store.
+            var view = grid.getView();    // Capture the GridView.
+            var tip = Ext.create('Ext.tip.ToolTip', {
+                // The overall target element.
+                target: view.el,
+                // Each grid row causes its own separate show and hide.
+                delegate: view.itemSelector,
+                // Moving within the row should not hide the tip.
+                trackMouse: true,
+                // Render immediately so that tip.body can be referenced prior to the first show.
+                renderTo: Ext.getBody(),
+                listeners: {
+                    // Change content dynamically depending on which element triggered the show.
+                    beforeshow: function updateTipBody(tip) {
+
+                        tip.update('Over company "' + view.getRecord(tip.triggerElement).get('sendAddress') + '"');
+                    }
+                }
+            });
+        }
+>>>>>>> origin/master
     }
 
 
